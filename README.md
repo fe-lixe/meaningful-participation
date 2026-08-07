@@ -9,21 +9,21 @@ Rather than prescribing what participation should mean, MPRA and MPP enable each
 
 The protocol standardises the representation of participation while leaving interoperability policies, interpretation and incentives under the control of each ecosystem..
 
-Why?
+## Why?
 
 Digital ecosystems increasingly depend upon meaningful human contribution, yet participation histories typically remain isolated within individual platforms and organisations.
 
 This repository proposes open infrastructure that enables participants to carry portable records of Meaningful Participation while allowing every ecosystem to retain complete control over how those records are interpreted and rewarded.
 
-Potential application domains include:
+## Potential application domains include:
 
-civic participation
-corporate ecosystems
-education
-media
-open-source software
-professional communities
-scientific collaboration
-sport
-volunteering
-many other participatory ecosystems
+- civic participation
+- corporate ecosystems
+- education
+- media
+- open-source software
+- professional communities
+- scientific collaboration
+- sport
+- volunteering
+- many other participatory ecosystems
