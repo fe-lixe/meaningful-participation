@@ -141,15 +141,15 @@ policies and incentive systems.
     policy evaluation, interpretation, scoring, incentives and other
     behaviours built upon Protocol Objects.
 
-3.  **Evidence Before Inference  
-    **MPP records assertions of Meaningful Participation together with
+3.  **Evidence Before Inference**  
+    MPP records assertions of Meaningful Participation together with
     supporting Evidence. It does not standardise derived metrics,
     reputation or other interpretations. Applications remain free to
     infer reputation, credibility, influence or other metrics from
     protocol-compliant Participation Records.
 
-4.  **Technology Neutrality  
-    **MPP is implementation independent. The protocol supports
+4.  **Technology Neutrality**  
+    MPP is implementation independent. The protocol supports
     centralised, federated and decentralised deployments. It does not
     require blockchain, distributed ledgers or any specific storage
     architecture.
@@ -169,8 +169,8 @@ policies and incentive systems.
     existing implementations. Extensions should extend the protocol
     without reducing interoperability.
 
-7.  **Participant Agency  
-    **MPP enables Participants to retain portable Participation Records
+7.  **Participant Agency**  
+    MPP enables Participants to retain portable Participation Records
     that are not permanently confined to individual applications or
     organisations. The protocol should enable Participation Records to
     remain portable, reusable and independently verifiable wherever
@@ -1148,15 +1148,15 @@ MPP defines the following Participant Roles:
 
 ## 10. Participation Type
 
-## The Participation Type identifies the category of Participation represented by a Participation Record.
+The Participation Type identifies the category of Participation represented by a Participation Record.
 
 ### Representation
 
-## Participation Types are Ecosystem-defined and need not be understood outside the originating Ecosystem. Interoperability across Ecosystems is provided through the protocol-defined Commitment Classes.
+Participation Types are Ecosystem-defined and need not be understood outside the originating Ecosystem. Interoperability across Ecosystems is provided through the protocol-defined Commitment Classes.
 
-## A Participation Type MUST be represented by a persistent identifier and MAY additionally include a human-readable name.
+A Participation Type MUST be represented by a persistent identifier and MAY additionally include a human-readable name.
 
-## The persistent identifier is authoritative. The human-readable name is informative and MAY change without changing the identity of the Participation Type.
+The persistent identifier is authoritative. The human-readable name is informative and MAY change without changing the identity of the Participation Type.
 
 ### Example
 
