@@ -122,14 +122,6 @@ The protocol does not define identity systems, credential standards, participati
 
 ---
 
-## First Implementation
-
-U Media is the first implementation of the Meaningful Participation Reference Architecture.
-
-It applies MPRA and MPP to strengthen the recognition of Meaningful Participation within the news media ecosystem while demonstrating how the same architecture can be applied across many other participatory ecosystems.
-
----
-
 ## Status
 
 MPRA is published as an open reference architecture to encourage discussion, experimentation and implementation.
