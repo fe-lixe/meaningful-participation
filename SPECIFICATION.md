@@ -216,75 +216,75 @@ The following terms are used throughout this specification. These
 definitions describe how the terms are used within the Meaningful
 Participation Protocol and are not intended to be universal definitions.
 
-**Participant  
-**An individual, organisation, system or other identifiable entity
+**Participant**  
+An individual, organisation, system or other identifiable entity
 associated with an instance of Participation represented by a
 Participation Record.
 
-**Participant Role  
-**The function performed by a Participant in relation to the
+**Participant Role**  
+The function performed by a Participant in relation to the
 Participation or the Participation Record.
 
-**Ecosystem  
-**A set of Participants, rules, governance and interactions within which
+**Ecosystem**  
+A set of Participants, rules, governance and interactions within which
 Meaningful Participation is defined and occurs. An Ecosystem determines
 its own criteria for Meaningful Participation.
 
-**Ecosystem Relationship  
-**A Protocol Object representing an assertion that one Ecosystem has a
+**Ecosystem Relationship**  
+A Protocol Object representing an assertion that one Ecosystem has a
 defined relationship with another Ecosystem.
 
-**Interoperability Policy  
-**An ecosystem-defined set of rules determining whether and under what
+**Interoperability Policy**  
+An ecosystem-defined set of rules determining whether and under what
 conditions Participation Records originating from other Ecosystems may
 be considered. Interoperability Policies are outside the scope of MPP.
 
-**Relationship Type  
-**The protocol-defined or Ecosystem-defined identifier describing the
+**Relationship Type**  
+The protocol-defined or Ecosystem-defined identifier describing the
 nature and direction of an Ecosystem Relationship.
 
-**Relationship Scope  
-**The limitations, conditions or domains to which an Ecosystem
+**Relationship Scope**  
+The limitations, conditions or domains to which an Ecosystem
 Relationship applies.
 
-**Participation  
-**An action, contribution, interaction or other activity performed by a
+**Participation**  
+An action, contribution, interaction or other activity performed by a
 Participant within an Ecosystem. Participation may subsequently be
 recognised by an Ecosystem as Meaningful Participation.
 
-**Meaningful Participation  
-**Participation that an Ecosystem asserts satisfies its own criteria for
+**Meaningful Participation**  
+Participation that an Ecosystem asserts satisfies its own criteria for
 meaningful participation. MPP does not define those criteria; it defines
 how such assertions are represented and exchanged.
 
-**Participation Record  
-**The primary protocol object representing a single assertion of
+**Participation Record**  
+The primary protocol object representing a single assertion of
 Meaningful Participation by an Ecosystem. A Participation Record
 contains the information defined by this specification for representing,
 exchanging, verifying and managing the lifecycle of that assertion.
 
-**Participation History  
-**The collection of Participation Records associated with a Participant.
+**Participation History**  
+The collection of Participation Records associated with a Participant.
 
-**Commitment Classes  
-**The categories of commitment assigned by an Ecosystem to describe the
+**Commitment Classes**  
+The categories of commitment assigned by an Ecosystem to describe the
 commitments materially contributing to a Participation Record. MPP
 defines four Commitment Classes: Effort, Capital, Knowledge and
 Standing.
 
-**Evidence  
-**Information supporting the occurrence or characteristics of Meaningful
+**Evidence**  
+Information supporting the occurrence or characteristics of Meaningful
 Participation. Evidence may be supplied directly or referenced by a
 Participation Record.
 
-**Verification  
-**The assessment of a Participation Record, Ecosystem Relationship or
+**Verification**  
+The assessment of a Participation Record, Ecosystem Relationship or
 supporting Evidence according to the rules of an Ecosystem or another
 recognised authority. MPP represents verification outcomes but does not
 prescribe verification methods.
 
-**Status  
-**The lifecycle state of a Protocol Object, including whether it is
+**Status**  
+The lifecycle state of a Protocol Object, including whether it is
 active, suspended, superseded, revoked, disputed or otherwise modified
 in accordance with this specification.
 
