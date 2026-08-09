@@ -76,11 +76,11 @@ Participation Records can represent commitments of:
 
 These Commitment Classes describe what a Participant committed through an instance of participation. They do not determine how valuable that participation is.
 
-### Ecosystem Relationship Records
+### Ecosystem Relationships
 
-Represent relationships between ecosystems that may affect how Participation Records are created, recognised or exchanged.
+These represent relationships between ecosystems that may affect how Participation Records are created, recognised or exchanged.
 
-These enable ecosystems to represent structures such as membership, delegation and interoperability relationships without requiring a universal ecosystem hierarchy.
+They enable ecosystems to represent structures such as membership, delegation and interoperability relationships without requiring a universal ecosystem hierarchy.
 
 ## Where It Could Be Used
 
