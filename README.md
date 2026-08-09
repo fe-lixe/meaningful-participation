@@ -9,7 +9,7 @@ This repository develops open infrastructure for representing **Meaningful Parti
 It contains two related components:
 
 - **Meaningful Participation Reference Architecture (MPRA)** — a reference architecture for designing ecosystems around five layers: Identity, Credentials, Participation, Interpretation and Incentives.
-- **Meaningful Participation Protocol (MPP)** — an open protocol within the Participation layer for representing Meaningful Participation through portable Participation Records and Ecosystem Relationship Records.
+- **Meaningful Participation Protocol (MPP)** — an open protocol within the Participation layer for representing Meaningful Participation through portable Participation Records and Ecosystem Relationships.
 
 The central principle is simple:
 
