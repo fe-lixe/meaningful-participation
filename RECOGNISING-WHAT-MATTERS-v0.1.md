@@ -9,7 +9,7 @@
 **Current version:** v0.1  
 **Target v1.0 publication:** 30 August 2026
 
-This is a working version of Making Meaningful Participation Portable, published openly to invite review, critique and contribution.
+This is a working version of Recognising What Matters, published openly to invite review, critique and contribution.
 
 We aim to publish v1.0 on 30 August 2026. At that point, contributions accepted during this review period will be incorporated into a designed PDF edition, creating the first stable publication of the white paper. The Markdown version will remain available as part of the project's open record.
 
