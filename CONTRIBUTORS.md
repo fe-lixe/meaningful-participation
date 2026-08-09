@@ -10,9 +10,9 @@ Participants may be identified using one or more public identifiers where approp
 
 | Participant | Identifier | Relationship to Project |
 | --- | --- | --- |
-| Jason Lambert | [GitHub](https://github.com/felixe-jason) | Author and project steward |
-| Sophie | — | Contributor |
-| Jelena | — | Contributor |
+| Jason Lambert | [LinkedIn]([https://github.com/felixe-jason](https://www.linkedin.com/in/jasonlambertcph/)) | Author and project steward |
+| Sophie Vandyck | — | Contributor |
+| Jelena Hadzovic | — | Contributor |
 | Elshad Gojayev | — | Contributor |
 | OpenAI ChatGPT | [OpenAI](https://openai.com/) | AI contributor |
 
