@@ -1,13 +1,12 @@
 # Recognising What Matters
-
 ## An Open Architecture for Meaningful Participation Across Ecosystems
 
-**Author:** Jason Lambert
+**Working Paper v0.1**  
+**Author:** Jason Lambert  
+**Steward:** [Felixe](https://felixe.com)  
+**Target v1.0 publication:** 30 August 2026
 
 ## About This Working Paper
-
-**Current version:** v0.1  
-**Target v1.0 publication:** 30 August 2026
 
 This is a working version of Recognising What Matters, published openly to invite review, critique and contribution.
 
@@ -461,26 +460,6 @@ The protocol specification, schemas and examples are published as open resources
 This white paper is published as a working document to encourage discussion and development of the ideas presented here. Comments, critiques, examples and proposed changes are welcome. Please use GitHub Issues for discussion and Pull Requests for proposed amendments.
 
 The author welcomes discussion with organisations, communities and practitioners interested in applying MPRA and MPP, exploring ecosystem-specific implementations, or contributing to the protocol’s further development.
-
-## Author & Contributors
-
-### Author
-
-Jason Lambert
-
-Founder, Felixe
-
-Jason Lambert works on digital infrastructure for recognising meaningful participation and aligning incentives with long-term ecosystem health. His work spans media, digital ecosystems, open protocols and participation architecture.
-
-Website: felixe.com
-
-LinkedIn: https://www.linkedin.com/in/jasonlambertcph/
-
-### Contributors
-
-[add]
-
-AI assistance: This paper was developed with editorial, research and drafting assistance from OpenAI's ChatGPT. All architectural concepts, conclusions and final editorial decisions are those of the author.
 
 ## Appendices
 
