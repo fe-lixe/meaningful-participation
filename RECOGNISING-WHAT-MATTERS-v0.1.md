@@ -492,5 +492,5 @@ Follow-up prompt:
 
 > Imagine our organisation had fully adopted MPRA and MPP five years from now. Describe how participants, communities, partners and neighbouring ecosystems would experience the difference. Explain what new capabilities, behaviours, incentives, collaborations and business opportunities would become possible, and identify the strategic advantages this could create for our ecosystem.
 
-[^1]: *The 2026 AI Index Report*, Stanford University, accessed 4 August 2026.
-[^2]: *The Dynamics of Costly Signaling*, University of Amsterdam, 26 April 2013.
+[^1]: [*The 2026 AI Index Report*](https://hai.stanford.edu/ai-index/2026-ai-index-report), Stanford University, accessed 4 August 2026.
+[^2]: [*The Dynamics of Costly Signaling*](https://www.mdpi.com/2073-4336/4/2/163), University of Amsterdam, 26 April 2013.
