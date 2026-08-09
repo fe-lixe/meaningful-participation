@@ -32,9 +32,9 @@ Proposed changes do not automatically become part of the paper. Contributions wi
 
 Contributions intended for consideration in v1.0 should be submitted before 30 August 2026.
 
-As an initial demonstration of the protocol proposed in this paper, we will manually create Participation Records recognising contributors and the commitments they make to this process. These may include commitments of Effort, Knowledge, Standing and Capital, supported where appropriate by evidence such as Issues, Pull Requests, reviews, public endorsements or other contributions.
+As an initial demonstration of the protocol proposed in this paper, we will manually create Participation Records recognising contributors and the commitments they make to this process. These may include commitments of **Effort, Knowledge, Standing and Capital**, supported where appropriate by evidence such as Issues, Pull Requests, reviews, public endorsements or other contributions.
 
-Contributors may choose whether and how they are publicly profiled. See `WHITE-PAPER-CONTRIBUTORS.md` for contributor profiles and Participation Records.
+Contributors may choose whether and how they are publicly profiled. See **`WHITE-PAPER-CONTRIBUTORS.md`** for contributor profiles and Participation Records.
 
 After v1.0, the repository will remain open for discussion and future development of the ideas, architecture and protocol.
 
@@ -44,21 +44,21 @@ Participatory ecosystems - including societies, organisations, sectors, networks
 
 This structural gap makes Meaningful Participation difficult to retain, recognise or reuse beyond the ecosystem in which it occurs. Each ecosystem develops its own representations and measures, while participants have limited ability to carry meaningful records of their contributions with them. As increasingly capable AI systems reshape how humans and agents contribute, the need for better ways to recognise human contribution - and for people to retain agency over how their participation is represented and shared - becomes increasingly urgent.
 
-This paper introduces the Meaningful Participation Reference Architecture (MPRA), comprising five distinct but interconnected layers: Identity, Credentials, Participation, Interpretation and Incentives. Together, these provide a way of thinking about how ecosystems can identify participants, establish relevant credentials, represent participation, interpret its meaning and align incentives with the behaviours and outcomes they value.
+This paper introduces the **Meaningful Participation Reference Architecture (MPRA)**, comprising five distinct but interconnected layers: Identity, Credentials, Participation, Interpretation and Incentives. Together, these provide a way of thinking about how ecosystems can identify participants, establish relevant credentials, represent participation, interpret its meaning and align incentives with the behaviours and outcomes they value.
 
-For the Participation layer, the paper proposes the Meaningful Participation Protocol (MPP): an open protocol for representing Meaningful Participation in a form that supports participant portability, ecosystem interoperability and independent verification. MPP separates the representation of participation from its interpretation. It allows participation to be recorded consistently without prescribing what that participation should mean, how it should be valued or how it should be rewarded by any ecosystem.
+For the Participation layer, the paper proposes the **Meaningful Participation Protocol (MPP)**: an open protocol for representing Meaningful Participation in a form that supports participant portability, ecosystem interoperability and independent verification. MPP separates the representation of participation from its interpretation. It allows participation to be recorded consistently without prescribing what that participation should mean, how it should be valued or how it should be rewarded by any ecosystem.
 
 Together, MPRA and MPP are designed to enable:
 
 - **Participant agency** - giving participants greater control over how their Meaningful Participation is represented, retained and shared.
-- **Portability and interoperability** - enabling participants to carry records of Meaningful Participation between ecosystems (portability), while enabling ecosystems to recognise and work with participation originating elsewhere according to their own policies (interoperability).
+- **Portability and interoperability** - enabling participants to carry records of Meaningful Participation between ecosystems **(portability)**, while enabling ecosystems to recognise and work with participation originating elsewhere according to their own policies **(interoperability)**.
 - **Broad applicability** - providing an architecture that can be applied across very different participatory ecosystems, from organisations and industries to communities, digital platforms and societies.
 
 These capabilities are means rather than ends. By making Meaningful Participation more visible, portable and useful, this work ultimately seeks to:
 
 - **Strengthen recognition of human contribution**, particularly as increasingly capable AI systems reshape how humans and agents participate in economic and social life.
 - **Improve incentive design**, helping ecosystems recognise and encourage the behaviours that advance their objectives while contributing positively to wider human flourishing.
-- Address damaging systemic imbalances by giving ecosystems better ways to recognise, value and incentivise forms of participation that are beneficial to their participants and society - particularly where prevailing incentives reward behaviours that produce harmful long-term outcomes.
+- **Address damaging systemic imbalances** by giving ecosystems better ways to recognise, value and incentivise forms of participation that are beneficial to their participants and society - particularly where prevailing incentives reward behaviours that produce harmful long-term outcomes.
 
 MPRA and MPP are presented as open work for experimentation, implementation and further development. Rather than defining what meaningful participation should be, they provide infrastructure through which different ecosystems can make that determination for themselves, enabling participants a greater role in carrying the resulting record of their contributions with them.
 
@@ -92,7 +92,7 @@ Unlike identity or credentials, participation is dynamic. It accumulates through
 
 A common Participation layer would enable both participant portability and ecosystem interoperability. Participants could carry evidence of their Meaningful Participation under their own control, while ecosystems could recognise contributions originating elsewhere according to their own policies.
 
-These capabilities depend upon two complementary Protocol Objects: Participation Records, which participants can carry between ecosystems, and Ecosystem Relationships, which describe relationships between ecosystems that may inform interoperability policies.
+These capabilities depend upon two complementary Protocol Objects: **Participation Records**, which participants can carry between ecosystems, and **Ecosystem Relationships**, which describe relationships between ecosystems that may inform interoperability policies.
 
 ## Why Now?
 
@@ -126,7 +126,7 @@ Protocols succeed when they standardise representation and exchange while leavin
 
 An open Participation layer offers several advantages. Implemented through an open protocol, it provides a neutral foundation that can be adopted by organisations with different objectives and governance models. It enables participants to carry and selectively disclose evidence of participation between ecosystems instead of rebuilding their histories within every platform. As more organisations adopt a common representation, the value of participation records increases through network effects, making them more useful to both participants and ecosystems.
 
-Network effects are particularly important for open participation infrastructure. A participation record created within one ecosystem has limited value if it can only be understood within that ecosystem. However, as more organisations adopt a common protocol for representing participation, the utility of those records increases for everyone. Participants can demonstrate contributions across a wider range of ecosystems and organisations can recognise participation originating elsewhere through explicit Ecosystem Relationships rather than proprietary bilateral integrations.. Like many open internet standards, the value of such a layer therefore grows with each additional implementation, creating a shared participation infrastructure that benefits the broader digital economy rather than any single organisation.
+Network effects are particularly important for open participation infrastructure. A participation record created within one ecosystem has limited value if it can only be understood within that ecosystem. However, as more organisations adopt a common protocol for representing participation, the utility of those records increases for everyone. Participants can demonstrate contributions across a wider range of ecosystems and organisations can recognise participation originating elsewhere through explicit Ecosystem Relationships rather than proprietary bilateral integrations. Like many open internet standards, the value of such a layer therefore grows with each additional implementation, creating a shared participation infrastructure that benefits the broader digital economy rather than any single organisation.
 
 Open governance is equally important. As with other foundational internet infrastructure, the protocol governing a Participation layer should be openly specified and developed through transparent governance. No single organisation should define what participation means across society. A Participation layer should therefore standardise only the representation of participation and Ecosystem Relationships, leaving every ecosystem free to determine what it recognises, how it verifies contributions and how it designs incentives.
 
@@ -152,7 +152,7 @@ By separating these layers, MPRA enables portability where participants benefit 
 
 The Identity layer establishes who is participating within an ecosystem. It enables people, organisations and, increasingly, software agents to be identified consistently across digital services. Over the past three decades, digital identity has evolved into one of the most mature layers of digital infrastructure through widely adopted standards and interoperable technologies.
 
-Identity may be established using traditional username and password systems, enterprise Single Sign-On (SSO), social identity providers, national digital identity schemes such as MitID and the European Union's eIDAS framework. The emerging European Digital Identity Wallet (EUDI Wallet) extends this model by enabling participants to securely identify themselves and present digital credentials across borders and services. Decentralised approaches based on W3C Decentralized Identifiers (DIDs) and digital wallets further strengthen participant agency and interoperability. Federated identity standards such as OpenID Connect and OAuth 2.0 enable participants to authenticate securely across multiple services, while authentication technologies developed by the FIDO Alliance increasingly reduce reliance on passwords.
+Identity may be established using traditional username and password systems, enterprise Single Sign-On (SSO), social identity providers, national digital identity schemes such as [MitID](https://www.mitid.dk/en-gb/) and the European Union's [eIDAS framework](https://digital-strategy.ec.europa.eu/en/policies/eidas-regulation). The emerging [European Digital Identity Wallet (EUDI Wallet)](https://digital-strategy.ec.europa.eu/en/policies/eudi-wallet-implementation) extends this model by enabling participants to securely identify themselves and present digital credentials across borders and services. Decentralised approaches based on [W3C Decentralized Identifiers (DIDs)](https://www.w3.org/TR/did-core/) and digital wallets further strengthen participant agency and interoperability. Federated identity standards such as [OpenID Connect](https://openid.net/developers/how-connect-works/) and [OAuth 2.0](https://oauth.net/2/) enable participants to authenticate securely across multiple services, while authentication technologies developed by the [FIDO Alliance](https://fidoalliance.org/) increasingly reduce reliance on passwords.
 
 Collectively, these technologies have transformed identity from an application-specific capability into shared digital infrastructure. Although implementations continue to evolve, the fundamental challenge of identifying participants is now supported by mature standards, broad industry adoption and growing interoperability across centralised, federated and decentralised architectures.
 
@@ -160,9 +160,9 @@ Collectively, these technologies have transformed identity from an application-s
 
 The Credentials layer establishes what recognised attributes a participant possesses. While Identity answers who is participating, Credentials provide verifiable assertions about qualifications, memberships, permissions, certifications, achievements, affiliations and other recognised characteristics that influence how a participant is treated within an ecosystem. Participants may include individuals, organisations, teams, products, services or other recognised entities.
 
-Credentials have traditionally existed as physical or digitally issued documents, including passports, driving licences, educational qualifications, professional licences, memberships and certifications. Increasingly, these credentials are becoming portable and independently verifiable through open standards. The W3C Verifiable Credentials Data Model provides a common framework for issuing, presenting and verifying digital credentials, while the Open Badges 3.0 specification extends this model for educational achievements, skills and micro-credentials by aligning digital badges with Verifiable Credentials.
+Credentials have traditionally existed as physical or digitally issued documents, including passports, driving licences, educational qualifications, professional licences, memberships and certifications. Increasingly, these credentials are becoming portable and independently verifiable through open standards. The [W3C Verifiable Credentials Data Model](https://www.w3.org/TR/vc-data-model-2.0/) provides a common framework for issuing, presenting and verifying digital credentials, while the [Open Badges 3.0](https://openbadges.org/) specification extends this model for educational achievements, skills and micro-credentials by aligning digital badges with Verifiable Credentials.
 
-Interoperable credential ecosystems are already emerging across education, government and industry. Universities and the Digital Credentials Consortium are developing shared infrastructure for portable academic credentials, while online learning providers such as Coursera issue Open Badges that can be independently verified and shared beyond the learning platform. Governments are progressively adopting digital credentials for identity documents, licences and permits, while professional bodies increasingly issue digitally verifiable memberships and certifications. Organisations also represent certifications and standards digitally, including quality, security and environmental standards such as ISO certifications, allowing organisational attributes to become portable and independently verifiable alongside individual credentials.
+Interoperable credential ecosystems are already emerging across education, government and industry. Universities and the [Digital Credentials Consortium](https://dcconsortium.org/) are developing shared infrastructure for portable academic credentials, while online learning providers such as [Coursera](https://www.coursera.org/) issue Open Badges that can be independently verified and shared beyond the learning platform. Governments are progressively adopting digital credentials for identity documents, licences and permits, while professional bodies increasingly issue digitally verifiable memberships and certifications. Organisations also represent certifications and standards digitally, including quality, security and environmental standards such as ISO certifications, allowing organisational attributes to become portable and independently verifiable alongside individual credentials.
 
 Collectively, these developments demonstrate that portable credentials are becoming a mature layer of digital infrastructure. Although implementations continue to evolve, the combination of open standards, trusted issuers and growing interoperability enables recognised attributes to move increasingly independently of the applications in which they were originally issued.
 
@@ -172,7 +172,7 @@ The Participation layer establishes what participants do within and across ecosy
 
 Participation extends far beyond online activity. It may begin offline through attending an event, mentoring a colleague, purchasing a ticket, volunteering, coaching a sports team, donating to a charitable cause, conducting scientific research or participating in civic life. Once digitally represented, these activities add to a participation history. Online, participation may include creating content, publishing software, contributing to discussions, completing courses, moderating communities, making financial contributions, voting, collaborating, reviewing, recommending, purchasing, subscribing, sharing information or interacting with intelligent software agents. It may also include associated behavioural information, supporting evidence and contextual metadata.
 
-Participation is therefore represented in countless ways across today's digital infrastructure. Social networking protocols such as ActivityStreams 2.0 and ActivityPub define standard representations for social activities within federated networks. Decentralised social protocols including AT Protocol and Nostr provide new approaches to participant-controlled social interaction and portability. Software development platforms commonly represent contributions through distributed version control systems such as Git, while research ecosystems increasingly identify scholarly contributions using persistent identifiers such as ORCID and DOI Foundation identifiers. Every sector develops its own vocabulary, data structures and application-specific models for representing participation.
+Participation is therefore represented in countless ways across today's digital infrastructure. Social networking protocols such as [ActivityStreams 2.0](https://www.w3.org/TR/activitystreams-core/) and [ActivityPub](https://www.w3.org/TR/activitypub/) define standard representations for social activities within federated networks. Decentralised social protocols including [AT Protocol]([https://nostr.com/](https://atproto.com/) and [Nostr](https://nostr.com/) provide new approaches to participant-controlled social interaction and portability. Software development platforms commonly represent contributions through distributed version control systems such as [Git](https://git-scm.com/), while research ecosystems increasingly identify scholarly contributions using persistent identifiers such as [ORCID](https://orcid.org/) and [DOI Foundation identifiers](https://www.doi.org/). Every sector develops its own vocabulary, data structures and application-specific models for representing participation.
 
 Despite this diversity, these representations remain largely confined to the ecosystems in which they originate. Participation data is commonly treated as a proprietary asset that supports product differentiation, recommendation systems, participant retention and competitive advantage. Even where open protocols exist, they typically address communication, content exchange or domain-specific activities rather than providing a general representation of participation that can be recognised across diverse ecosystems.
 
@@ -196,7 +196,7 @@ Graphs are likely to become an increasingly important form of interpretation. By
 
 Interpretation therefore remains intentionally outside the scope of the Meaningful Participation Protocol. MPP standardises the representation of Meaningful Participation, not the meaning derived from it. This separation preserves ecosystem autonomy while creating new opportunities for innovation in graph design, analytics, AI reasoning and decision-support systems.
 
-As interoperable Participation Records become more widely available, the quality of interpretation is likely to become an increasingly important differentiator between ecosystems. Rather than asking how participation should be represented, ecosystems can focus on a more valuable question: how can participation be interpreted in ways that strengthen long-term ecosystem health?
+As interoperable Participation Records become more widely available, the quality of interpretation is likely to become an increasingly important differentiator between ecosystems. Rather than asking how participation should be represented, ecosystems can focus on a more valuable question: **how can participation be interpreted in ways that strengthen long-term ecosystem health?**
 
 ### Incentives
 
@@ -214,7 +214,7 @@ As portable Participation Records and ecosystem interoperability become more wid
 
 Ultimately, healthier ecosystems depend not only on recognising valuable participation, but on encouraging more of it. By separating incentives from representation, MPRA enables ecosystems to continuously refine how they encourage participation without changing the underlying participation infrastructure. This creates opportunities to address challenges that extend far beyond digital platforms, including education, scientific collaboration, professional development, civic participation, environmental stewardship and countless other domains in which long-term outcomes depend upon aligning individual incentives with collective success.
 
-The maturity of open standards decreases noticeably across the Meaningful Participation Reference Architecture. Identity is supported by decades of mature standards and widespread interoperability. Credentials are rapidly following the same trajectory. Participation, despite representing where value is created within ecosystems, remains largely proprietary and application specific. Interpretation and Incentives are intentionally left to individual ecosystems, where diversity, experimentation and competitive differentiation are desirable rather than standardisation. MPRA therefore identifies Participation as the next logical layer for open interoperability while preserving innovation where it creates the greatest value.
+*The maturity of open standards decreases noticeably across the Meaningful Participation Reference Architecture. Identity is supported by decades of mature standards and widespread interoperability. Credentials are rapidly following the same trajectory. Participation, despite representing where value is created within ecosystems, remains largely proprietary and application specific. Interpretation and Incentives are intentionally left to individual ecosystems, where diversity, experimentation and competitive differentiation are desirable rather than standardisation. MPRA therefore identifies Participation as the next logical layer for open interoperability while preserving innovation where it creates the greatest value.*
 
 ## Proposing the Meaningful Participation Protocol (MPP)
 
@@ -240,27 +240,27 @@ By enabling ecosystems to represent costly signals consistently, the Meaningful 
 
 The Meaningful Participation Protocol is guided by the following principles:
 
-- Representation, not Interpretation – MPP standardises the representation of Meaningful Participation and Ecosystem Relationships, not how ecosystems evaluate or reward these.
-- Ecosystem-defined Meaning – Every ecosystem determines which forms of participation are meaningful according to its own objectives.
-- Evidence before Inference – Participation should be supported by evidence wherever possible, leaving analysis and scoring to implementing ecosystems.
-- Participant Agency – Individuals should be able to carry and selectively share evidence of their Meaningful Participation across ecosystems, while Ecosystem Relationships make potential recognition pathways explicit.
-- Privacy by Design – The protocol represents Meaningful Participation rather than exhaustive behavioural data, supporting data minimisation and participant control.
-- Technology Neutral – MPP can be implemented using centralised, federated or decentralised technologies.
-- Portable and Interoperable – Participation Records should be portable between ecosystems under participant control, while the protocol should provide shared infrastructure through which ecosystems can establish their own interoperability policies.
+- **Representation, not Interpretation** – MPP standardises the representation of Meaningful Participation and Ecosystem Relationships, not how ecosystems evaluate or reward these.
+- **Ecosystem-defined Meaning** – Every ecosystem determines which forms of participation are meaningful according to its own objectives.
+- **Evidence before Inference** – Participation should be supported by evidence wherever possible, leaving analysis and scoring to implementing ecosystems.
+- **Participant Agency** – Individuals should be able to carry and selectively share evidence of their Meaningful Participation across ecosystems, while Ecosystem Relationships make potential recognition pathways explicit.
+- **Privacy by Design** – The protocol represents Meaningful Participation rather than exhaustive behavioural data, supporting data minimisation and participant control.
+- **Technology Neutral** – MPP can be implemented using centralised, federated or decentralised technologies.
+- **Portable and Interoperable** – Participation Records should be portable between ecosystems under participant control, while the protocol should provide shared infrastructure through which ecosystems can establish their own interoperability policies.
 
 MPP represents Meaningful Participation and Ecosystem Relationships through a minimal set of interoperable concepts. Participation Records identify Participants, originating Ecosystems, Commitment Classes and supporting Evidence. Ecosystem Relationships separately describe how Ecosystems relate, including recognition, delegation and structural relationships. Together these objects enable interoperability while preserving ecosystem-specific interpretation.
 
-This paper intentionally focuses on the protocol's conceptual architecture. Detailed definitions of the protocol objects, schemas, exchange mechanisms and conformance requirements are provided in the accompanying Meaningful Participation Protocol Specification.
+This paper intentionally focuses on the protocol's conceptual architecture. Detailed definitions of the protocol objects, schemas, exchange mechanisms and conformance requirements are provided in the accompanying **Meaningful Participation Protocol Specification**.
 
 ### Two Primary Protocol Objects
 
 The Meaningful Participation Protocol standardises two complementary Protocol Objects that together support participant portability and ecosystem interoperability while preserving ecosystem-specific interpretation.
 
-Participation Records represent individual instances of Meaningful Participation. They record participation that an originating ecosystem has explicitly chosen to recognise as advancing its objectives. Participation Records are designed to be participant-held and portable, allowing participants to decide when and where they present records of their Meaningful Participation.
+**Participation Records** represent individual instances of Meaningful Participation. They record participation that an originating ecosystem has explicitly chosen to recognise as advancing its objectives. Participation Records are designed to be participant-held and portable, allowing participants to decide when and where they present records of their Meaningful Participation.
 
-Ecosystem Relationships represent relationships between ecosystems. They describe structural relationships, delegated assertion authority and other relationships that receiving ecosystems may use when applying interoperability policies. Ecosystem Relationships are maintained by ecosystems rather than participants.
+**Ecosystem Relationships** represent relationships between ecosystems. They describe structural relationships, delegated assertion authority and other relationships that receiving ecosystems may use when applying interoperability policies. Ecosystem Relationships are maintained by ecosystems rather than participants.
 
-The two Protocol Objects therefore perform distinct but complementary roles. Participation Records enable portability; Ecosystem Relationships support interoperability. Neither determines whether participation should ultimately be interpreted, recognised or rewarded. Those decisions remain entirely within each ecosystem's Interpretation and Incentives layers.
+The two Protocol Objects therefore perform distinct but complementary roles. **Participation Records enable portability; Ecosystem Relationships support interoperability**. Neither determines whether participation should ultimately be interpreted, recognised or rewarded. Those decisions remain entirely within each ecosystem's Interpretation and Incentives layers.
 
 ### Participation Record
 
@@ -279,7 +279,7 @@ The Meaningful Participation Protocol is not intended to represent every digital
 | Knowledge | Information, understanding or expertise contributed through Participation | Research findings, local knowledge, specialist expertise, observations, insight |
 | Standing | Recognised position committed through Participation | Endorsements, governance roles, institutional affiliation, issuing credentials, accepting accountability |
 
-These Commitment Classes describe what is being committed rather than the activities through which participation occurs. They distinguish between the commitment of resources (Capital), the application of human capacity (Effort), the contribution of information or expertise (Knowledge), and the commitment of recognised position (Standing).
+These Commitment Classes describe **what is being committed** rather than the activities through which participation occurs. They distinguish between the commitment of resources (Capital), the application of human capacity (Effort), the contribution of information or expertise (Knowledge), and the commitment of recognised position (Standing).
 
 MPP standardises these four universal Commitment Classes rather than ecosystem-specific activity types. This enables diverse forms of participation to be represented consistently across different ecosystems while allowing each ecosystem to determine how those commitments should be interpreted, verified and valued.
 
@@ -316,8 +316,8 @@ Over time, this enables the club to develop a more complete understanding of how
 
 An Ecosystem Relationship describes how one ecosystem relates to another. Relationships may describe:
 
-- Structural relationships, such as membership within a wider federation or delegated assertion authority.
-- Recognition relationships, which define whether and under what conditions Participation Records from another ecosystem may be recognised.
+- **Structural relationships**, such as membership within a wider federation or delegated assertion authority.
+- **Recognition relationships**, which define whether and under what conditions Participation Records from another ecosystem may be recognised.
 
 Unlike Participation Records, Ecosystem Relationships are ecosystem-held because they describe relationships asserted or maintained by ecosystems rather than individual participation.
 
@@ -363,7 +363,7 @@ Ecosystem-specific Incentives
 
 The process begins when an originating ecosystem issues a Participation Record recognising a participant's Meaningful Participation. The participant retains this record and may subsequently choose to present it to any receiving ecosystem.
 
-The receiving ecosystem evaluates the Participation Record according to its own interoperability policy. This policy may reference Ecosystem Relationships, credentials, verification status or other local criteria to determine which Participation Records should proceed to interpretation.
+The receiving ecosystem evaluates the Participation Record according to its own **interoperability policy**. This policy may reference Ecosystem Relationships, credentials, verification status or other local criteria to determine which Participation Records should proceed to interpretation.
 
 For example, one ecosystem may choose to consider Participation Records only from ecosystems within its own organisation, while another may accept records originating from any ecosystem within the FIFA federation. Others may consider Participation Records from any ecosystem unless explicitly excluded.
 
@@ -384,7 +384,7 @@ MPP standardises the representation and portability of Meaningful Participation 
 
 ## What Becomes Possible?
 
-By separating the representation of Meaningful Participation from ecosystem-specific interpretation, MPP enables new forms of interoperability while preserving the autonomy of every ecosystem. Participants gain portability; ecosystems gain interoperability. Participants can carry Participation Records between ecosystems under their control, while receiving ecosystems remain free to determine which records they consider, how they interpret them and what incentives, if any, they provide.
+By separating the representation of Meaningful Participation from ecosystem-specific interpretation, MPP enables new forms of interoperability while preserving the autonomy of every ecosystem. **Participants gain portability; ecosystems gain interoperability**. Participants can carry Participation Records between ecosystems under their control, while receiving ecosystems remain free to determine which records they consider, how they interpret them and what incentives, if any, they provide.
 
 | Today | With MPP |
 | --- | --- |
