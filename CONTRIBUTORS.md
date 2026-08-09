@@ -10,7 +10,7 @@ Participants may be identified using one or more public identifiers where approp
 
 | Participant | Identifier | Relationship to Project |
 | --- | --- | --- |
-| Jason Lambert | [LinkedIn]([https://www.linkedin.com/in/jasonlambertcph/]) | Author and project steward |
+| Jason Lambert | [LinkedIn](https://www.linkedin.com/in/jasonlambertcph/) | Author and project steward |
 | Sophie Vandyck | — | Contributor |
 | Jelena Hadzovic | — | Contributor |
 | Elshad Gojayev | — | Contributor |
