@@ -34,7 +34,7 @@ Contributions intended for consideration in v1.0 should be submitted before 30 A
 
 As an initial demonstration of the protocol proposed in this paper, we will manually create Participation Records recognising contributors and the commitments they make to this process. These may include commitments of **Effort, Knowledge, Standing and Capital**, supported where appropriate by evidence such as Issues, Pull Requests, reviews, public endorsements or other contributions.
 
-Contributors may choose whether and how they are publicly profiled. See **`WHITE-PAPER-CONTRIBUTORS.md`** for contributor profiles and Participation Records.
+Contributors may choose whether and how they are publicly profiled. See **`CONTRIBUTORS.md`** for contributor profiles and Participation Records.
 
 After v1.0, the repository will remain open for discussion and future development of the ideas, architecture and protocol.
 
