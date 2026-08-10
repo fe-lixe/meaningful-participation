@@ -439,7 +439,7 @@ Digital ecosystems increasingly shape how people learn, work, collaborate, creat
 
 The Meaningful Participation Protocol does not attempt to prescribe what participation should mean. Instead, it provides a common foundation through which diverse ecosystems can represent Meaningful Participation consistently while remaining free to determine their own interoperability policies, interpretation models and incentives.
 
-Our own work began with a practical challenge in the news media sector, where recognising Meaningful Participation is essential to sustaining what we call Consequential Media - sources people genuinely rely on for current information that shapes how they understand and act in the world. As the underlying architecture evolved, however, it became clear that the same principles could apply wherever digital ecosystems depend upon sustained human contribution.
+Our own work began with a practical challenge in the news media sector, where recognising Meaningful Participation is essential to sustaining what we call Consequential Media[^3] - sources people genuinely rely on for current information that shapes how they understand and act in the world. As the underlying architecture evolved, however, it became clear that the same principles could apply wherever digital ecosystems depend upon sustained human contribution.
 
 We therefore hope MPP will be adopted not only by individual organisations seeking to better recognise participation within their own ecosystems, but also by organisations willing to act as ecosystem stewards, encouraging interoperable implementations and helping establish shared participation infrastructure within their sectors.
 
@@ -494,3 +494,4 @@ Follow-up prompt:
 
 [^1]: [*The 2026 AI Index Report*](https://hai.stanford.edu/ai-index/2026-ai-index-report), Stanford University, accessed 4 August 2026.
 [^2]: [*The Dynamics of Costly Signaling*](https://www.mdpi.com/2073-4336/4/2/163), University of Amsterdam, 26 April 2013.
+[^3]: [*Understanding the News Media Crisis: Three Threats to Consequential Media*](https://felixe.com/understanding-the-news-media-crisis/), Felixe, 27 January 2026.
