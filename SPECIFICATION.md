@@ -1801,6 +1801,11 @@ submitted research paper.",
 
 }
 
+
+This example is also available as a file at
+[`examples/peer-review.json`](examples/peer-review.json), together with further
+examples in [`examples/`](examples/).
+
 ## 21. Minimal Participation Record Example
 
 ### Example
@@ -1868,6 +1873,9 @@ Participation.",
 
 This example intentionally omits all optional properties. It illustrates
 the minimum information required for a conformant Participation Record.
+
+It is also available as a file at
+[`examples/minimal-participation-record.json`](examples/minimal-participation-record.json).
 
 ## 22. Participation Record JSON Schema
 
