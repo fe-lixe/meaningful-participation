@@ -18,7 +18,7 @@ The Meaningful Participation Protocol (MPP) provides the protocol specification 
 
 Many digital ecosystems depend upon valuable contributions from participants. These contributions may include creating knowledge, providing expertise, volunteering, investing resources, mentoring others, moderating communities or contributing content.
 
-While identity, credentials and incentives are common concepts, there has historically been no standard way to represent Meaningful Participation itself. As a result, participation histories are typically fragmented across platforms, difficult to reuse and controlled by proprietary systems.
+While identity, credentials and incentives are common concepts, there has historically been no standard way to represent participation. As a result, participation histories are typically fragmented across platforms, difficult to reuse and controlled by proprietary systems.
 
 MPRA addresses this gap by separating the representation of participation from its interpretation.
 
@@ -44,7 +44,7 @@ MPRA does not prescribe a credential standard and is compatible with existing cr
 
 ### 3. Participation
 
-Represents recognised instances of Meaningful Participation.
+Represents recognised instances of participation.
 
 This layer is standardised through the Meaningful Participation Protocol (MPP), which defines portable Participation Records, Ecosystem Relationships and supporting Protocol Objects.
 
