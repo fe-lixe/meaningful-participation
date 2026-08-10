@@ -11,10 +11,11 @@ Participants may be identified using one or more public identifiers where approp
 | Participant | Identifier | Relationship to Project |
 | --- | --- | --- |
 | Jason Lambert | [LinkedIn](https://www.linkedin.com/in/jasonlambertcph/) | Author and project steward |
-| Sophie Vandyck | — | Contributor |
-| Jelena Hadžović | — | Contributor |
-| Elshad Gojayev | — | Contributor |
+| Sophie Vandyck | [LinkedIn](https://www.linkedin.com/in/sophie-vandyck-ab4134a6) | Contributor |
+| Jelena Hadžović | [LinkedIn](https://www.linkedin.com/in/jelenahadzovic/) | Contributor |
+| Elshad Gojayev | [LinkedIn](https://www.linkedin.com/in/elshad-gojayev/) | Contributor |
 | OpenAI ChatGPT | [OpenAI](https://openai.com/) | AI contributor |
+| Claude Code | [Anthropic](https://github.com/anthropics/claude-code) | AI contributor |
 
 Participants may request that an identifier be added, changed or removed.
 
@@ -31,6 +32,8 @@ Each row below represents a distinct instance, or closely related set of instanc
 | Sophie Vandyck | Review and challenge | Reviewed and challenged the MPP working paper and associated concepts during development. | Working paper / MPP | Knowledge, Effort | Review and subsequent revisions | Helped identify issues, test arguments and improve the developing work. | 2026 |
 | Jelena Hadžović | Review and challenge | Reviewed and challenged the MPP working paper and associated concepts during development. | Working paper / MPP | Knowledge, Effort | Review and subsequent revisions | Helped identify issues, test arguments and improve the developing work. | 2026 |
 | OpenAI ChatGPT | Collaborative development | Contributed collaborative analysis, drafting, critique, restructuring, examples and stress-testing during development of the MPP specification, working paper and supporting repository materials. | Repository / MPP / MPRA | Knowledge, Effort | Resulting project materials and development history | Helped develop, test, explain and refine concepts and artefacts across the project. | 2026 |
+| Claude Code | Collaborative development | Contributed collaborative analysis, drafting, critique, restructuring, examples and stress-testing during development of the MPP specification, working paper and supporting repository materials. | Repository / MPP / MPRA | Knowledge, Effort | Resulting project materials and development history | Helped develop, test, explain and refine concepts and artefacts across the project. | 2026 |
+
 
 ## How Recognition Works
 
