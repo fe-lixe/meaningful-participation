@@ -69,10 +69,10 @@ Portable assertions about Meaningful Participation.
 
 Participation Records can represent commitments of:
 
-- **Effort**
 - **Capital**
-- **Standing**
+- **Effort**
 - **Knowledge**
+- **Standing**
 
 These Commitment Classes describe what a Participant committed through an instance of participation. They do not determine how valuable that participation is.
 
