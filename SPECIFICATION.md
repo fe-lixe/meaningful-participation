@@ -631,7 +631,7 @@ Examples include:
   interpreting, analysing, planning, designing, creating, reviewing,
   problem-solving and decision-making; and
 
-**Emotional:** caring, supporting, empathising, encouraging,
+- **Emotional:** caring, supporting, empathising, encouraging,
 counselling, comforting and maintaining emotional resilience.
 
 #### Behavioural Requirements
