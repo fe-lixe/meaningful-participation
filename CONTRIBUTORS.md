@@ -78,28 +78,6 @@ Identifiers are used to distinguish Participants and make attribution clearer. T
 
 Participants may request correction or removal of personal identifiers or other information associated with their entries.
 
-## Contributing
-
-We welcome challenges to the ideas presented here, suggested improvements, relevant research and standards, examples from different ecosystems, implementation experience and proposed changes to repository materials.
-
-You can contribute by:
-
-- **opening an Issue** to raise a question, critique, suggestion or area for discussion;
-- **submitting a Pull Request** to propose a specific change; or
-- **joining an existing Issue or Pull Request** to contribute to an ongoing discussion.
-
-Proposed changes do not automatically become part of MPP. Contributions may be discussed, revised, accepted or declined by the project maintainers.
-
-Where a contribution constitutes Meaningful Participation, it may be recognised in this file whether or not the proposed change is ultimately accepted.
-
-## Stewardship and Future Development
-
-Recognition is currently maintained manually by the project steward.
-
-As MPP develops, this repository may move towards generating machine-readable Participation Records for recognised contributions. The intention is for the repository to become an increasingly complete reference implementation of the protocol it develops while preserving a clear human-readable contribution history.
-
-Recognition in this file does not imply endorsement of MPP, agreement with every part of the project, authorship of the specification or working paper, or any transfer of intellectual property beyond the terms applicable to the relevant contribution.
-
 ## Corrections
 
 If you believe a contribution has been omitted, incorrectly described, incorrectly classified or attributed to the wrong Participant, please open an Issue so the record can be reviewed and corrected.
