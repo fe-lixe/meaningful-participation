@@ -26,7 +26,7 @@ We welcome challenges to the ideas presented here, suggested improvements, relev
 
 You can then ask it to identify forms of Meaningful Participation that may currently go unrecognised, opportunities for participant portability and ecosystem interoperability, and ways in which different recognition or incentive models might strengthen your ecosystem. If the analysis surfaces something interesting, we encourage you to bring it back to the repository as an Issue, example or proposed contribution.
 
-Appendix A provides additional questions and prompts for exploring MPRA and MPP with AI.
+[Appendix A](RECOGNISING-WHAT-MATTERS-v0.1.md/#appendix-a--exploring-mpra-and-mpp-with-ai) provides additional questions and prompts for exploring MPRA and MPP with AI.
 
 Proposed changes do not automatically become part of the paper. Contributions will be reviewed by the project maintainers and may be discussed, revised, accepted or declined before inclusion.
 
