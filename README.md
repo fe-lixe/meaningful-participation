@@ -31,6 +31,7 @@ MPP provides a common way to represent participation while leaving each ecosyste
 | [Schemas](schemas/) | JSON Schemas for each Protocol Object, extracted from the specification |
 | [Examples](examples/) | Example Participation Records and Ecosystem Relationships |
 | [Contributors](CONTRIBUTORS.md) | Recognises Meaningful Participation in the development of this repository |
+| [Governance](GOVERNANCE.md) | Describes stewardship, decision-making, openness and the relationship between MPP and commercial implementations |
 | [Licence](LICENSE) | Terms under which repository materials may be used |
 
 If you are new to the project, the **Working Paper** is the best place to begin. Implementers should then refer to the **MPP Specification**.
@@ -129,19 +130,13 @@ Open an **Issue** to raise a question, critique or proposal. Submit a **Pull Req
 
 A contribution does not necessarily need to be accepted into the repository to constitute Meaningful Participation. Contributions may be recognised where they materially improve, test or challenge the work.
 
-See [CONTRIBUTORS.md](CONTRIBUTORS.md) for how contributions are recognised.
+See `CONTRIBUTORS.md` for how contributions are recognised.
 
 ## Open Stewardship ##
 
-MPP and MPRA are stewarded by [Felixe](https://felixe.com), where the work originated from practical exploration of how digital ecosystems can better recognise and incentivise meaningful participation.
+MPP and MPRA are open initiatives stewarded by [Felixe](https://felixe.com). Felixe may develop commercial implementations informed by MPP, as may other organisations; stewardship does not confer exclusive rights over the published protocol.
 
-The general-purpose architecture and protocol are published openly so that they can be examined, challenged, implemented, adapted and improved independently of any particular commercial application.
-
-Felixe may develop commercial products, services and implementations informed by or compatible with MPP, as may any other organisation. Such implementations are separate from the protocol itself and do not confer ownership of, or preferential rights over, the open standard.
-
-Published versions of MPP remain available under the licence applicable to those versions. Stewardship does not provide Felixe with exclusive rights to implement, use or commercialise the protocol.
-
-Development of MPP takes place transparently through this repository. Contributions, proposed changes and challenges are welcome, and the project's governance arrangements are described in [GOVERNANCE.md](GOVERNANCE.md).
+Governance, commercial separation, contributions, decision-making and protections for continued open use are described in `GOVERNANCE.md`.
 
 ## Status
 
