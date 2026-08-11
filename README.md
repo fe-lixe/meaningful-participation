@@ -2,7 +2,7 @@
 
 **Open infrastructure for recognising what matters across ecosystems**
 
-Participatory ecosystems — including organisations, sectors, networks, communities, teams and digital platforms — depend on valuable contributions. Yet there is no common way to represent the participation they consider meaningful in a form that can be recognised across ecosystem boundaries.
+Participatory ecosystems - including organisations, sectors, networks, communities, teams and digital platforms - depend on valuable contributions. Yet there is no common way to represent the participation they consider meaningful in a consistent, verifiable form that can be recognised across ecosystem boundaries.
 
 The Meaningful Participation Protocol (MPP) explores a simple proposition:
 
@@ -12,8 +12,8 @@ This repository develops open infrastructure for representing Meaningful Partici
 
 It contains two related components:
 
-- **Meaningful Participation Reference Architecture (MPRA)** — a reference architecture for designing ecosystems around five layers: Identity, Credentials, Participation, Interpretation and Incentives.
-- **Meaningful Participation Protocol (MPP)** — an open protocol within the Participation layer for representing Meaningful Participation through portable Participation Records and Ecosystem Relationships.
+- **Meaningful Participation Reference Architecture (MPRA)** - a reference architecture for designing ecosystems around five layers: Identity, Credentials, Participation, Interpretation and Incentives.
+- **Meaningful Participation Protocol (MPP)** - an open protocol within the Participation layer for representing Meaningful Participation through portable Participation Records and Ecosystem Relationships.
 
 The central principle is simple:
 
@@ -37,29 +37,29 @@ If you are new to the project, the **Working Paper** is the best place to begin.
 
 ## Why Meaningful Participation?
 
-Most systems are much better at recording activity than what a participant meaningfully contributed.
+Ecosystems depend on participation to achieve their objectives. Yet the participation they measure, recognise and reward is often what is easiest to observe rather than what creates the most value.
 
-A professional profile might show where somebody worked and what qualifications they hold. A platform might record posts, clicks, transactions or reputation scores. An organisation might record job titles and performance ratings.
+A digital platform might optimise for clicks, posts or transactions. An organisation might recognise outputs while overlooking mentoring, knowledge-sharing or relationship-building. A community might count activity without distinguishing between participation that strengthens the community and participation that merely generates more activity.
 
-These representations are usually ecosystem-specific and difficult to carry elsewhere.
+This creates an incentive problem: **what an ecosystem chooses to recognise helps determine what participants are encouraged to do.**
 
-MPP explores a different model:
+Meaningful Participation describes participation that an ecosystem considers valuable in advancing its objectives. What qualifies is deliberately not universal: the same participation may be highly meaningful in one ecosystem, marginal in another and irrelevant in a third.
 
-> **What did a Participant contribute, why did an ecosystem consider it meaningful, and what evidence supports that assertion?**
+MPP provides a common way to represent such participation and the evidence supporting it while keeping interpretation with the ecosystem.
 
-A Participation Record can represent that contribution without requiring another ecosystem to agree with the originating ecosystem's interpretation of it.
+> **MPP standardises the representation of Meaningful Participation, not its meaning**
 
-The receiving ecosystem remains free to decide whether the record matters in its own context.
+A Participation Record can therefore travel beyond the ecosystem in which it originated without requiring another ecosystem to accept the originating ecosystem's interpretation. A receiving ecosystem remains free to recognise, reinterpret or disregard it according to its own objectives.
 
 ## The Architecture
 
 MPRA separates Meaningful Participation into five layers:
 
-1. **Identity** — Who are you?
-2. **Credentials** — What are you qualified, authorised or entitled to do?
-3. **Participation** — What have you contributed?
-4. **Interpretation** — What does that participation mean here?
-5. **Incentives** — What recognition, access, opportunity or reward follows?
+1. **Identity** - Who are you?
+2. **Credentials** - What are you qualified, authorised or entitled to do?
+3. **Participation** - What did you commit or contribute?
+4. **Interpretation** - What does that participation mean here?
+5. **Incentives** - What recognition, access, opportunity or reward follows?
 
 MPP standardises part of the **Participation** layer.
 
@@ -71,16 +71,14 @@ MPP currently defines two primary protocol objects:
 
 ### Participation Records
 
-Portable assertions about Meaningful Participation.
+Participation Records classify participation according to what the Participant committed:
 
-Participation Records can represent commitments of:
+- **Capital** - Financial or other economic resources committed through participation.
+- **Effort** - Time, attention or labour committed through participation.
+- **Knowledge** - Information, expertise, insight or intellectual contribution committed through participation.
+- **Standing** - Reputation, relationships, authority or social position put behind an ecosystem, participant or activity.
 
-- **Capital**
-- **Effort**
-- **Knowledge**
-- **Standing**
-
-These Commitment Classes describe what a Participant committed through an instance of participation. They do not determine how valuable that participation is.
+These four Commitment Classes provide a common vocabulary for describing what a Participant put into an instance of participation. They do not determine whether the participation was valuable or how much value it created; those judgements remain ecosystem-specific.
 
 ### Ecosystem Relationships
 
@@ -90,22 +88,9 @@ They enable ecosystems to represent structures such as membership, delegation an
 
 ## Where It Could Be Used
 
-Meaningful Participation is intended to be general-purpose. Potential application domains include:
+Meaningful Participation is intended to be general-purpose. Its concepts may be applicable across organisations, communities, sectors, networks and digital platforms - from companies, education and scientific collaboration to media, open-source software and civic participation.
 
-- civic participation;
-- companies and professional ecosystems;
-- education;
-- media;
-- open-source software;
-- professional communities;
-- scientific collaboration;
-- sport;
-- volunteering; and
-- other ecosystems in which participants make contributions that matter.
-
-The same Participation Record may be interpreted differently by different ecosystems.
-
-That is intentional.
+The same Participation Record may be interpreted differently by different ecosystems. That is intentional.
 
 ## An Open Reference, Not a Prescription ##
 
@@ -146,12 +131,20 @@ A contribution does not necessarily need to be accepted into the repository to c
 
 See [CONTRIBUTORS.md](CONTRIBUTORS.md) for how contributions are recognised.
 
+## Open Stewardship ##
+
+MPP and MPRA are stewarded by [Felixe](https://felixe.com), where the work originated from practical exploration of how digital ecosystems can better recognise and incentivise meaningful participation.
+
+The general-purpose architecture and protocol are published openly so that they can be examined, challenged, implemented, adapted and improved independently of any particular commercial application.
+
+Felixe may develop commercial products, services and implementations informed by or compatible with MPP, as may any other organisation. Such implementations are separate from the protocol itself and do not confer ownership of, or preferential rights over, the open standard.
+
+Published versions of MPP remain available under the licence applicable to those versions. Stewardship does not provide Felixe with exclusive rights to implement, use or commercialise the protocol.
+
+Development of MPP takes place transparently through this repository. Contributions, proposed changes and challenges are welcome, and the project's governance arrangements are described in [GOVERNANCE.md](GOVERNANCE.md).
+
 ## Status
 
 MPP and MPRA are under active development.
 
 The current materials should be treated as working specifications and proposals rather than established standards. Feedback, testing and implementation experiments are encouraged.
-
----
-
-**Steward:** [Felixe](https://felixe.com)
