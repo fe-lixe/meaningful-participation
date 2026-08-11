@@ -4,7 +4,11 @@
 
 Participatory ecosystems — including organisations, sectors, networks, communities, teams and digital platforms — depend on valuable contributions. Yet there is no common way to represent the participation they consider meaningful in a form that can be recognised across ecosystem boundaries.
 
-This repository develops open infrastructure for representing **Meaningful Participation** in a portable, interoperable and independently verifiable way.
+The Meaningful Participation Protocol (MPP) explores a simple proposition:
+
+> **If meaningful participation can be represented consistently, ecosystems can become better at recognising, interpreting and incentivising the contributions they value**.
+
+This repository develops open infrastructure for representing Meaningful Participation in a portable, interoperable and independently verifiable way.
 
 It contains two related components:
 
@@ -33,7 +37,7 @@ If you are new to the project, the **Working Paper** is the best place to begin.
 
 ## Why Meaningful Participation?
 
-Most systems are much better at recording **presence, activity and credentials** than they are at representing what someone actually contributed.
+Most systems are much better at recording activity than what a participant meaningfully contributed.
 
 A professional profile might show where somebody worked and what qualifications they hold. A platform might record posts, clicks, transactions or reputation scores. An organisation might record job titles and performance ratings.
 
@@ -41,7 +45,7 @@ These representations are usually ecosystem-specific and difficult to carry else
 
 MPP explores a different model:
 
-> **What did a Participant contribute, why did an Ecosystem consider it meaningful, and what evidence supports that assertion?**
+> **What did a Participant contribute, why did an ecosystem consider it meaningful, and what evidence supports that assertion?**
 
 A Participation Record can represent that contribution without requiring another ecosystem to agree with the originating ecosystem's interpretation of it.
 
@@ -102,6 +106,16 @@ Meaningful Participation is intended to be general-purpose. Potential applicatio
 The same Participation Record may be interpreted differently by different ecosystems.
 
 That is intentional.
+
+## An Open Reference, Not a Prescription ##
+
+MPP is published openly to make the underlying ideas available for critique, experimentation, adaptation and reuse.
+
+An ecosystem does not need to adopt MPP in full to find the work useful. The architecture, concepts, protocol objects or design principles may independently inform the design of participation, recognition and incentive systems.
+
+Likewise, MPP does not depend on widespread adoption to be useful. It can serve as a common reference for thinking about how participation is represented and as an interoperable protocol where interoperability is valuable.
+
+Real-world implementations may also reveal where the protocol should change.
 
 ## This Repository Is Also an Experiment
 
