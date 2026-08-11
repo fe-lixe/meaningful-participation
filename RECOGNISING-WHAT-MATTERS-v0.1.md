@@ -28,8 +28,6 @@ You can then ask it to identify forms of Meaningful Participation that may curre
 
 [Appendix A](RECOGNISING-WHAT-MATTERS-v0.1.md/#appendix-a--exploring-mpra-and-mpp-with-ai) provides additional questions and prompts for exploring MPRA and MPP with AI.
 
-Proposed changes do not automatically become part of the paper. Contributions will be reviewed by the project maintainers and may be discussed, revised, accepted or declined before inclusion.
-
 Contributions intended for consideration in v1.0 should be submitted before 30 August 2026.
 
 As an initial demonstration of the protocol proposed in this paper, we will manually create Participation Records recognising contributors and the commitments they make to this process. These may include commitments of **Effort, Knowledge, Standing and Capital**, supported where appropriate by evidence such as Issues, Pull Requests, reviews, public endorsements or other contributions.
@@ -128,7 +126,7 @@ An open Participation layer offers several advantages. Implemented through an op
 
 Network effects are particularly important for open participation infrastructure. A participation record created within one ecosystem has limited value if it can only be understood within that ecosystem. However, as more organisations adopt a common protocol for representing participation, the utility of those records increases for everyone. Participants can demonstrate contributions across a wider range of ecosystems and organisations can recognise participation originating elsewhere through explicit Ecosystem Relationships rather than proprietary bilateral integrations. Like many open internet standards, the value of such a layer therefore grows with each additional implementation, creating a shared participation infrastructure that benefits the broader digital economy rather than any single organisation.
 
-Open governance is equally important. As with other foundational internet infrastructure, the protocol governing a Participation layer should be openly specified and developed through transparent governance. No single organisation should define what participation means across society. A Participation layer should therefore standardise only the representation of participation and Ecosystem Relationships, leaving every ecosystem free to determine what it recognises, how it verifies contributions and how it designs incentives.
+Open governance is equally important. The protocol should be openly specified, its development should be transparent, and published versions should remain available for independent implementation and development. No single organisation should define what participation means across society. Stewardship of the protocol does not confer authority to determine what participation means within individual ecosystems: interpretation remains ecosystem-specific.
 
 The broader digital landscape is also evolving towards greater participant agency. Initiatives such as the European Digital Identity Wallet, Verifiable Credentials and personal data store architectures increasingly seek to give individuals greater control over their identities, credentials and personal information. A Participation layer naturally extends this trajectory by enabling participants to carry and selectively share evidence of participation across ecosystems, while preserving each ecosystem's ability to interpret that participation according to its own objectives.
 
@@ -222,7 +220,7 @@ For the purposes of this protocol, Meaningful Participation is participation tha
 
 The Meaningful Participation Protocol originated during the design of a digital participation model for the news media sector. While developing that system, it became apparent that many of its underlying architectural principles were not media-specific, but addressed a broader challenge shared by digital ecosystems: participation is often optimised for what is easy to measure rather than what creates lasting value.
 
-Rather than embedding these concepts solely within a media application, the underlying representation model was extracted into the open, general-purpose MPP. The protocol continues to underpin the original media implementation while also providing a common foundation that other sectors can adapt to recognise the forms of participation they consider meaningful.
+Rather than embedding these concepts solely within a media application, the general-purpose representation model was extracted and published openly as MPP. The original media implementation applies related principles in a specific commercial context, while MPP makes the underlying general-purpose concepts available for independent critique, adaptation and implementation.
 
 Although MPP was inspired by challenges observed in media, its design is intentionally domain neutral. The protocol can be applied wherever an ecosystem wishes to represent Meaningful Participation in a way that supports participant portability, ecosystem interoperability and independent verification, while remaining free to define what meaningful participation means within its own context.
 
@@ -427,7 +425,7 @@ This allows organisations to become stewards of healthier digital ecosystems rat
 
 ### Open Participatory Ecosystem
 
-As adoption grows, independent organisations begin issuing and interpreting Participation Records across the ecosystem.
+Where interoperability creates value, independent organisations may begin issuing and interpreting compatible Participation Records across the ecosystem.
 
 Participants accumulate portable histories of Meaningful Participation that they choose when and where to share. Ecosystems define their own interoperability policies and interpretation models while benefiting from a common protocol for representing participation.
 
@@ -441,7 +439,11 @@ The Meaningful Participation Protocol does not attempt to prescribe what partici
 
 Our own work began with a practical challenge in the news media sector, where recognising Meaningful Participation is essential to sustaining what we call Consequential Media[^3] - sources people genuinely rely on for current information that shapes how they understand and act in the world. As the underlying architecture evolved, however, it became clear that the same principles could apply wherever digital ecosystems depend upon sustained human contribution.
 
-We therefore hope MPP will be adopted not only by individual organisations seeking to better recognise participation within their own ecosystems, but also by organisations willing to act as ecosystem stewards, encouraging interoperable implementations and helping establish shared participation infrastructure within their sectors.
+We have therefore published the general-purpose architecture and protocol openly. Their value does not depend on MPP becoming a universally adopted standard. An organisation may use the architecture simply to think more clearly about participation and incentives, implement MPP within its own ecosystem, adapt its concepts to another context, or pursue interoperability with other ecosystems where doing so creates value.
+
+If wider adoption emerges through practical use, MPP provides a foundation upon which shared participation infrastructure could develop. But interoperability is a means rather than an objective in itself. The larger objective is to help ecosystems become better at recognising the participation that advances their objectives and designing incentives that encourage more of it.
+
+Open infrastructure and commercial implementation are not mutually exclusive. Organisations may build proprietary products, services, interpretation models and incentive systems using or informed by MPP while the general-purpose protocol remains openly available to others.
 
 No protocol, on its own, can create healthier ecosystems. That responsibility rests with the organisations and communities that define what they value and how they choose to recognise and incentivise it. MPP provides common infrastructure for representing those choices in a way that supports participant portability, ecosystem interoperability and independent verification.
 
@@ -451,15 +453,9 @@ The opportunity is to build ecosystems that become better at recognising what ma
 
 ## Get Involved
 
-Organisations interested in applying MPRA and MPP are encouraged to begin by exploring how Meaningful Participation is currently recognised within their own ecosystems. Modern AI tools can be valuable in identifying opportunities, designing Participation Records and developing candidate interpretation and incentive models tailored to specific organisational contexts.
+Organisations interested in MPRA and MPP can begin by examining how Meaningful Participation is currently recognised within their own ecosystems: what participation advances their objectives, what currently goes unrecognised, and how different forms of recognition or incentive might change participant behaviour.
 
-MPRA and MPP are intended to evolve through practical implementation across diverse ecosystems. We welcome feedback on the architecture, protocol, examples and reference implementations, as well as discussion of new use cases and ecosystem-specific requirements.
-
-The protocol specification, schemas and examples are published as open resources to encourage experimentation, implementation and community participation.
-
-This white paper is published as a working document to encourage discussion and development of the ideas presented here. Comments, critiques, examples and proposed changes are welcome. Please use GitHub Issues for discussion and Pull Requests for proposed amendments.
-
-The author welcomes discussion with organisations, communities and practitioners interested in applying MPRA and MPP, exploring ecosystem-specific implementations, or contributing to the protocol’s further development.
+The architecture, protocol specification, schemas and examples are published openly for critique, experimentation, adaptation and implementation. Comments, counterexamples, relevant research, implementation experience and proposed improvements are welcome.
 
 ## Appendices
 
@@ -481,12 +477,11 @@ Questions worth exploring include:
 - What interoperability policies would be appropriate for our ecosystem?
 - Which incentives might better align participant behaviour with our long-term objectives?
 - How could portable Participation Records benefit our participants?
-- With which neighbouring ecosystems would interoperability create value for participants or the ecosystem?
-- Could our organisation become a steward of participation interoperability within our sector?
+- Would interoperability with neighbouring ecosystems create meaningful value, and if so, could our organisation help enable it?
 
 A useful starting prompt is:
 
-> Using the Meaningful Participation Reference Architecture (MPRA) and the Meaningful Participation Protocol (MPP), analyse my organisation, community or ecosystem. Identify the participants, ecosystem boundaries and forms of Meaningful Participation that contribute to long-term ecosystem health. Propose appropriate Participation Records, Credentials, Ecosystem Relationships, interoperability policies, Interpretation models, participation graphs and Incentive models. Recommend how these components should work together, identify opportunities to strengthen participant agency and ecosystem health, and describe a phased roadmap from internal deployment to wider ecosystem interoperability. Where appropriate, identify opportunities for our organisation to become an ecosystem steward within its sector.
+> Using the Meaningful Participation Reference Architecture (MPRA) and the Meaningful Participation Protocol (MPP), analyse my organisation, community or ecosystem. Identify the participants, ecosystem boundaries and forms of Meaningful Participation that contribute to long-term ecosystem health. Propose appropriate Participation Records, Credentials, Ecosystem Relationships, interoperability policies, Interpretation models, participation graphs and Incentive models. Recommend how these components should work together, identify opportunities to strengthen participant agency and ecosystem health, and describe a phased roadmap from internal deployment to wider ecosystem interoperability. Where appropriate, identify where interoperability with neighbouring ecosystems would create sufficient value to justify shared infrastructure.
 
 Follow-up prompt:
 
