@@ -28,11 +28,11 @@ MPP provides a common way to represent participation while leaving each ecosyste
 | [Working Paper](RECOGNISING-WHAT-MATTERS-v0.1.md) | Introduces the problem, MPRA, MPP and what they could make possible |
 | [MPRA](MPRA.md) | Defines the five-layer Meaningful Participation Reference Architecture |
 | [MPP Specification](SPECIFICATION.md) | Defines the normative requirements of the Meaningful Participation Protocol |
-| [Schemas](schemas/) | JSON Schemas for each Protocol Object, extracted from the specification |
-| [Examples](examples/) | Example Participation Records and Ecosystem Relationships |
+| [Schemas](schemas/) | Includes JSON Schemas for each Protocol Object, extracted from the specification |
+| [Examples](examples/) | Includes example Participation Records and Ecosystem Relationships |
 | [Contributors](CONTRIBUTORS.md) | Recognises Meaningful Participation in the development of this repository |
 | [Governance](GOVERNANCE.md) | Describes stewardship, decision-making, openness and the relationship between MPP and commercial implementations |
-| [Licence](LICENSE) | Terms under which repository materials may be used |
+| [Licence](LICENSE) | Includes terms under which repository materials may be used |
 
 If you are new to the project, the **Working Paper** is the best place to begin. Implementers should then refer to the **MPP Specification**.
 
@@ -95,13 +95,9 @@ The same Participation Record may be interpreted differently by different ecosys
 
 ## An Open Reference, Not a Prescription ##
 
-MPP is published openly to make the underlying ideas available for critique, experimentation, adaptation and reuse.
+MPP is published openly to make the underlying ideas available for critique, experimentation, adaptation and reuse. It can be used as a design framework and source of hypotheses without requiring adoption or implementation of the protocol. Likewise, MPP does not depend on widespread adoption to be useful.
 
-An ecosystem does not need to adopt MPP in full to find the work useful. The architecture, concepts, protocol objects or design principles may independently inform the design of participation, recognition and incentive systems.
-
-Likewise, MPP does not depend on widespread adoption to be useful. It can serve as a common reference for thinking about how participation is represented and as an interoperable protocol where interoperability is valuable.
-
-Real-world implementations may also reveal where the protocol should change.
+Applying these ideas to real-world ecosystems - conceptually or through implementation - may also reveal where the protocol should change.
 
 ## This Repository Is Also an Experiment
 
@@ -142,4 +138,4 @@ Governance, commercial separation, contributions, decision-making and protection
 
 MPP and MPRA are under active development.
 
-The current materials should be treated as working specifications and proposals rather than established standards. Feedback, testing and implementation experiments are encouraged.
+They are intentionally published at this stage to enable their ideas to be explored, tested, challenged and improved across different ecosystems. Feedback, testing and implementation experiments are encouraged.
