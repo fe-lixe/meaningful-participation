@@ -20,11 +20,9 @@ We welcome challenges to the ideas presented here, suggested improvements, relev
 - Submit a Pull Request to propose a specific change to the paper.
 - Join an existing Issue or Pull Request to contribute to an ongoing discussion.
 
-**Not sure where to start?** This paper and the accompanying specification have been written to be semantically rich and readily explored by both humans and AI systems. Give a capable AI assistant the URL for this repository (https://github.com/fe-lixe/meaningful-participation) - or upload the white paper and specification - and ask:
+**Not sure where to start?** This paper and the accompanying specification have been written to be semantically rich and readily explored by both humans and AI systems. Try giving a capable AI assistant this prompt:
 
-> **“What is the relevance of MPRA and MPP to my organisation, sector, community or ecosystem?”**
-
-You can then ask it to identify forms of Meaningful Participation that may currently go unrecognised, opportunities for participant portability and ecosystem interoperability, and ways in which different recognition or incentive models might strengthen your ecosystem. If the analysis surfaces something interesting, we encourage you to bring it back to the repository as an Issue, example or proposed contribution.
+> **“How could the principles of https://github.com/fe-lixe/meaningful-participation be applied to my organisation, sector, community or ecosystem? Which forms of Meaningful Participation might currently go unrecognised? What opportunities are there for participant portability and ecosystem interoperability? How might different recognition or incentive models strengthen what we do? How could I or my organisation contribute to the protocol's development?”**
 
 [Appendix A](RECOGNISING-WHAT-MATTERS-v0.1.md/#appendix-a--exploring-mpra-and-mpp-with-ai) provides additional questions and prompts for exploring MPRA and MPP with AI.
 
