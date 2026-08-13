@@ -1,5 +1,13 @@
 # Meaningful Participation
 
+> **Experimental draft — open for critique**
+
+> This repository contains a proposed approach to meaningful participation that is under active development. It is not a final standard and is not currently intended as a recommendation that organisations adopt or implement.
+
+> It is published to invite critique, experimentation, implementation feedback and contributions from different ecosystems. The ideas, architecture and any emerging specifications may change substantially as a result.
+
+> You can use the materials herein as a conceptual framework without adopting or implementing the architecture and protocol they propose.
+
 **Open infrastructure for recognising what matters across ecosystems**
 
 Participatory ecosystems - including organisations, sectors, networks, communities, teams and digital platforms - depend on valuable contributions. Yet there is no common way to represent the participation they consider meaningful in a consistent, verifiable form that can be recognised across ecosystem boundaries.
