@@ -4,7 +4,7 @@
 **Working Paper v0.1**  
 **Author:** Jason Lambert  
 **Steward:** [Felixe](https://felixe.com)  
-**Target v1.0 publication:** 30 August 2026
+**Target v1.0 publication:** 30 September 2026
 
 ## About This Working Paper
 
