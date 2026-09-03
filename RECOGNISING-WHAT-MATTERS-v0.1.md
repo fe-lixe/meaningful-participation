@@ -10,7 +10,7 @@
 
 This is a working version of Recognising What Matters, published openly to invite review, critique and contribution.
 
-We aim to publish v1.0 on 30 August 2026. At that point, contributions accepted during this review period will be incorporated into a designed PDF edition, creating the first stable publication of the white paper. The Markdown version will remain available as part of the project's open record.
+We aim to publish v1.0 on 30 September 2026. At that point, contributions accepted during this review period will be incorporated into a designed PDF edition, creating the first stable publication of the white paper. The Markdown version will remain available as part of the project's open record.
 
 ### How to Contribute
 
@@ -26,7 +26,7 @@ We welcome challenges to the ideas presented here, suggested improvements, relev
 
 [Appendix A](RECOGNISING-WHAT-MATTERS-v0.1.md/#appendix-a--exploring-mpra-and-mpp-with-ai) provides additional questions and prompts for exploring MPRA and MPP with AI.
 
-Contributions intended for consideration in v1.0 should be submitted before 30 August 2026.
+Contributions intended for consideration in v1.0 should be submitted before 30 September 2026.
 
 As an initial demonstration of the protocol proposed in this paper, we will manually create Participation Records recognising contributors and the commitments they make to this process. These may include commitments of **Effort, Knowledge, Standing and Capital**, supported where appropriate by evidence such as Issues, Pull Requests, reviews, public endorsements or other contributions.
 
