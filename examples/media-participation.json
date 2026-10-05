@@ -4,14 +4,14 @@
   "id": "urn:uuid:9f2c1d84-6a3e-4a5b-8c17-2be0f4d9a731",
   "ecosystem": {
     "id": "urn:mpp:ecosystem:01K2M4PQXR7T9V0C3E5G8H1J4N",
-    "name": "U Media"
+    "name": "Example Media Network"
   },
   "participants": [
     {
-      "id": "urn:umedia:participant:7c9a1f2e4b6d8035",
+      "id": "https://media.example.org/participants/7c9a1f2e4b6d8035",
       "roles": [
         "subject",
-        "https://u.media/mpp/roles/supporter"
+        "https://media.example.org/mpp/roles/supporter"
       ]
     },
     {
@@ -22,7 +22,7 @@
     }
   ],
   "participationType": {
-    "id": "https://u.media/mpp/participation-types/touchpoint-support",
+    "id": "https://media.example.org/mpp/participation-types/touchpoint-support",
     "name": "Touchpoint support"
   },
   "participationDescription": {
@@ -33,7 +33,7 @@
     "capital"
   ],
   "meaningProfile": {
-    "id": "https://u.media/mpp/meaning-profiles/touchpoint-support/v1",
+    "id": "https://media.example.org/mpp/meaning-profiles/touchpoint-support/v1",
     "version": "1.0"
   },
   "participationEnd": "2026-08-08T09:41:00Z",

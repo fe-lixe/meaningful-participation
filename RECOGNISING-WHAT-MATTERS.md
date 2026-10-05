@@ -292,16 +292,16 @@ Unlike Participation Records, Ecosystem Relationships are ecosystem-held because
 
 By representing these relationships through a common protocol, ecosystems can make interoperability explicit while avoiding bespoke integrations and application-specific configuration.
 
-Example Ecosystem Relationships
+Example Ecosystem Relationships (all organisations are fictional)
 
 | Originating Ecosystem | Relationship | Target Ecosystem | Example Use |
 | --- | --- | --- | --- |
-| Real Madrid | constituentOf | Royal Spanish Football Federation | Identifies Real Madrid as part of the Spanish football hierarchy. |
-| Royal Spanish Football Federation | constituentOf | UEFA | Enables traversal to the continental federation. |
-| UEFA | constituentOf | FIFA | Completes the federation hierarchy. |
-| FIFA | delegatesAssertionAuthorityTo | Royal Spanish Football Federation | National associations may issue defined Participation Records on FIFA's behalf. |
+| Examplia City FC | constituentOf | Examplia Football Association | Identifies Examplia City FC as part of the national football hierarchy. |
+| Examplia Football Association | constituentOf | Continental Football Union | Enables traversal to the continental federation. |
+| Continental Football Union | constituentOf | Global Football Federation | Completes the federation hierarchy. |
+| Global Football Federation | delegatesAssertionAuthorityTo | Examplia Football Association | National associations may issue defined Participation Records on the Global Football Federation's behalf. |
 | Acme Subsidiary | constituentOf | Acme Group | Enables company-wide interoperability policies. |
-| Medical School | accreditedBy | National Medical Council | Enables receiving ecosystems to identify accredited institutions. |
+| Medical School | accreditedBy (Ecosystem-defined, identified by a URI) | National Medical Council | Enables receiving ecosystems to identify accredited institutions. |
 
 These structural relationships do not themselves determine whether Participation Records are accepted. They provide context that receiving ecosystems may use when evaluating interoperability according to their own policies.
 
@@ -334,16 +334,16 @@ The process begins when an originating ecosystem issues a Participation Record r
 
 The receiving ecosystem evaluates the Participation Record according to its own **interoperability policy**. This policy may reference Ecosystem Relationships, credentials, verification status or other local criteria to determine which Participation Records should proceed to interpretation.
 
-For example, one ecosystem may choose to consider Participation Records only from ecosystems within its own organisation, while another may accept records originating from any ecosystem within the FIFA federation. Others may consider Participation Records from any ecosystem unless explicitly excluded.
+For example, one ecosystem may choose to consider Participation Records only from ecosystems within its own organisation, while another may accept records originating from any ecosystem within the Global Football Federation. Others may consider Participation Records from any ecosystem unless explicitly excluded.
 
 Participation Records that satisfy the interoperability policy are then evaluated by the receiving ecosystem's Interpretation layer alongside its own credentials, graphs and other contextual information. Any resulting recognition, privileges or incentives are determined entirely by that ecosystem.
 
-MPP therefore standardises the representation and portability of Meaningful Participation without standardising how ecosystems determine interoperability, interpretation or incentives. In the example below, an Academy Coach at Real Madrid may present Participation Records to multiple ecosystems. Each ecosystem first applies its own interoperability policy to determine which records should be considered, then interprets those records according to its own objectives. The same Participation Record may therefore contribute to coaching accreditation, university admission, civic programmes or employment - or it may be ignored entirely.
+MPP therefore standardises the representation and portability of Meaningful Participation without standardising how ecosystems determine interoperability, interpretation or incentives. In the example below, an Academy Coach at Examplia City FC may present Participation Records to multiple ecosystems. Each ecosystem first applies its own interoperability policy to determine which records should be considered, then interprets those records according to its own objectives. The same Participation Record may therefore contribute to coaching accreditation, university admission, civic programmes or employment - or it may be ignored entirely.
 
 | Receiving Ecosystem | Example Interoperability Policy |
 | --- | --- |
 | Corporate Group | Consider Participation Records only from ecosystems within the corporate group. |
-| Football News Platform | Consider Participation Records originating from ecosystems within the FIFA federation. |
+| Football News Platform | Consider Participation Records originating from ecosystems within the Global Football Federation. |
 | University | Consider Participation Records from any ecosystem, giving additional weight to recognised educational and professional organisations. |
 | Municipality | Consider Participation Records relating to youth development, volunteering and community engagement regardless of originating ecosystem. |
 | Professional Coaching Association | Consider Participation Records from recognised football associations and affiliated clubs. |

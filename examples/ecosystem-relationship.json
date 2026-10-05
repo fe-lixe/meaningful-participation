@@ -3,27 +3,27 @@
   "mppVersion": "1.0",
   "id": "urn:uuid:52d115ef-b83e-44fa-a962-73ec548e91a2",
   "sourceEcosystem": {
-    "id": "urn:mpp:ecosystem:fifa",
-    "name": "FIFA"
+    "id": "urn:mpp:ecosystem:01K7Q3M8ZT5X9R2C4V6B8N0D1E",
+    "name": "Global Football Federation"
   },
   "relationshipType": "delegatesAssertionAuthorityTo",
   "targetEcosystem": {
-    "id": "urn:mpp:ecosystem:rfef",
-    "name": "Royal Spanish Football Federation"
+    "id": "urn:mpp:ecosystem:01K7Q3P2HW4Y6A8S0F3G5J7K9M",
+    "name": "Examplia Football Association"
   },
   "assertedByParticipant": {
-    "id": "urn:mpp:participant:fifa-authorised-system",
+    "id": "https://gff.example.org/identifiers/assertion-service",
     "roles": [
       "asserter"
     ]
   },
   "relationshipScope": {
     "participationTypes": [
-      "https://fifa.example.org/mpp/participation-types/referee-development",
-      "https://fifa.example.org/mpp/participation-types/coach-education"
+      "https://gff.example.org/mpp/participation-types/referee-development",
+      "https://gff.example.org/mpp/participation-types/coach-education"
     ],
     "meaningProfiles": [
-      "https://fifa.example.org/mpp/meaning-profiles/recognised-football-development/v1"
+      "https://gff.example.org/mpp/meaning-profiles/recognised-football-development/v1"
     ],
     "requiredVerificationOutcomes": [
       "verified"
