@@ -1,13 +1,5 @@
 # Meaningful Participation
 
-> **Experimental draft — open for critique**
-
-> This repository contains a proposed approach to meaningful participation that is under active development. It is not a final standard and is not currently intended as a recommendation that organisations adopt or implement.
-
-> It is published to invite critique, experimentation, implementation feedback and contributions from different ecosystems. The ideas, architecture and any emerging specifications may change substantially as a result.
-
-> You can use the materials herein as a conceptual framework without adopting or implementing the architecture and protocol they propose.
-
 **Open infrastructure for recognising what matters across ecosystems**
 
 Participatory ecosystems - including organisations, sectors, networks, communities, teams and digital platforms - depend on valuable contributions. Yet there is no common way to represent the participation they consider meaningful in a consistent, verifiable form that can be recognised across ecosystem boundaries.
@@ -33,7 +25,7 @@ MPP provides a common way to represent participation while leaving each ecosyste
 
 | Resource | Purpose |
 | --- | --- |
-| [Working Paper](RECOGNISING-WHAT-MATTERS.md) | Introduces the problem, MPRA, MPP and what they could make possible |
+| [White Paper](RECOGNISING-WHAT-MATTERS.md) | Introduces the problem, MPRA, MPP and what they could make possible |
 | [MPRA](MPRA.md) | Defines the five-layer Meaningful Participation Reference Architecture |
 | [MPP Specification](SPECIFICATION.md) | Defines the normative requirements of the Meaningful Participation Protocol |
 | [Schemas](schemas/) | Includes JSON Schemas for each Protocol Object, extracted from the specification |
@@ -43,7 +35,7 @@ MPP provides a common way to represent participation while leaving each ecosyste
 | [Governance](GOVERNANCE.md) | Describes stewardship, decision-making, openness and the relationship between MPP and commercial implementations |
 | [Licence](LICENSE) | Includes terms under which repository materials may be used |
 
-If you are new to the project, the **Working Paper** is the best place to begin. Implementers should then refer to the **MPP Specification**.
+If you are new to the project, the **White Paper**, *Recognising What Matters*, is the best place to begin. Implementers should then refer to the **MPP Specification**.
 
 Each released version's schemas and vocabularies are published at `https://fe-lixe.github.io/meaningful-participation/<version>/` and never changed after release (see section 28 of the specification).
 
@@ -104,42 +96,17 @@ Meaningful Participation is intended to be general-purpose. Its concepts may be 
 
 The same Participation Record may be interpreted differently by different ecosystems. That is intentional.
 
-## An Open Reference, Not a Prescription ##
+## An Open Reference, Not a Prescription
 
 MPP is published openly to make the underlying ideas available for critique, experimentation, adaptation and reuse. It can be used as a design framework and source of hypotheses without requiring adoption or implementation of the protocol. Likewise, MPP does not depend on widespread adoption to be useful.
 
 Applying these ideas to real-world ecosystems - conceptually or through implementation - may also reveal where the protocol should change.
 
-## This Repository Is Also an Experiment
-
-Where practical, this repository aims to apply the principles it proposes.
-
-`CONTRIBUTORS.md` therefore does more than acknowledge authorship. It maintains a simple human-readable representation of Meaningful Participation in the development, testing, critique, documentation and stewardship of the project.
-
-This is intentionally a primitive implementation rather than a claim of full MPP conformance. As the protocol develops, these records may evolve towards machine-readable Participation Records.
-
 ## Contributing
 
-MPP is being developed openly.
+Open an **Issue** to raise a question, critique or proposal, or a **Pull Request** to propose a specific change. [`GOVERNANCE.md`](GOVERNANCE.md) describes how contributions are considered, and [`CONTRIBUTORS.md`](CONTRIBUTORS.md) how they are recognised.
 
-We welcome:
-
-- challenges to the architecture or protocol;
-- proposed improvements;
-- relevant research and standards;
-- implementation experience;
-- examples from different ecosystems;
-- technical contributions;
-- critiques and edge cases; and
-- proposed changes to repository materials.
-
-Open an **Issue** to raise a question, critique or proposal. Submit a **Pull Request** to propose a specific change.
-
-A contribution does not necessarily need to be accepted into the repository to constitute Meaningful Participation. Contributions may be recognised where they materially improve, test or challenge the work.
-
-See `CONTRIBUTORS.md` for how contributions are recognised.
-
-## Open Stewardship ##
+## Open Stewardship
 
 MPP and MPRA are open initiatives stewarded by [Felixe](https://felixe.com). Felixe may develop commercial implementations informed by MPP, as may other organisations; stewardship does not confer exclusive rights over the published protocol.
 
@@ -147,6 +114,4 @@ Governance, commercial separation, contributions, decision-making and protection
 
 ## Status
 
-MPP and MPRA are under active development.
-
-They are intentionally published at this stage to enable their ideas to be explored, tested, challenged and improved across different ecosystems. Feedback, testing and implementation experiments are encouraged.
+MPP and MPRA are at version 1.0. They continue to be developed openly, and changes to the protocol follow the versioning policy in section 28 of the specification.

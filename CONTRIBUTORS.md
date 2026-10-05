@@ -26,11 +26,11 @@ Each row below represents a distinct instance, or closely related set of instanc
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Jason Lambert | Origination and development | Originated and developed MPP and the Meaningful Participation Reference Architecture (MPRA), including the core concepts, terminology and application model. | MPP / MPRA | Knowledge, Effort | Repository history and project materials | Established and continues to develop the conceptual and architectural foundations of the project. | 2026 |
 | Jason Lambert | Specification authorship and stewardship | Drafted and stewarded the MPP specification, schemas, examples, governance materials and supporting repository content. | Repository | Knowledge, Effort | Repository history | Created and maintains the principal project artefacts and accepts stewardship responsibility for their development. | 2026 |
-| Jason Lambert | Working paper authorship | Authored and developed *Recognising What Matters*. | Working paper | Knowledge, Effort, Standing | Working paper and repository history | Developed the explanatory case, reference architecture and broader framing through which MPP is presented. | 2026 |
-| Sophie Vandyck | Review and challenge | Reviewed and challenged the MPP working paper and associated concepts during development. | Working paper / MPP | Knowledge, Effort | Review and subsequent revisions | Helped identify issues, test arguments and improve the developing work. | 2026 |
-| Jelena Hadžović | Review and challenge | Reviewed and challenged the MPP working paper and associated concepts during development. | Working paper / MPP | Knowledge, Effort | Review and subsequent revisions | Helped identify issues, test arguments and improve the developing work. | 2026 |
-| OpenAI ChatGPT | Collaborative development | Contributed collaborative analysis, drafting, critique, restructuring, examples and stress-testing during development of the MPP specification, working paper and supporting repository materials. | Repository / MPP / MPRA | Knowledge, Effort | Resulting project materials and development history | Helped develop, test, explain and refine concepts and artefacts across the project. | 2026 |
-| Claude Code | Collaborative development | Contributed collaborative analysis, drafting, critique, restructuring, examples and stress-testing during development of the MPP specification, working paper and supporting repository materials. | Repository / MPP / MPRA | Knowledge, Effort | Resulting project materials and development history | Helped develop, test, explain and refine concepts and artefacts across the project. | 2026 |
+| Jason Lambert | White paper authorship | Authored and developed *Recognising What Matters*. | White paper | Knowledge, Effort, Standing | White paper and repository history | Developed the explanatory case, reference architecture and broader framing through which MPP is presented. | 2026 |
+| Sophie Vandyck | Review and challenge | Reviewed and challenged the MPP white paper and associated concepts during development. | White paper / MPP | Knowledge, Effort | Review and subsequent revisions | Helped identify issues, test arguments and improve the developing work. | 2026 |
+| Jelena Hadžović | Review and challenge | Reviewed and challenged the MPP white paper and associated concepts during development. | White paper / MPP | Knowledge, Effort | Review and subsequent revisions | Helped identify issues, test arguments and improve the developing work. | 2026 |
+| OpenAI ChatGPT | Collaborative development | Contributed collaborative analysis, drafting, critique, restructuring, examples and stress-testing during development of the MPP specification, white paper and supporting repository materials. | Repository / MPP / MPRA | Knowledge, Effort | Resulting project materials and development history | Helped develop, test, explain and refine concepts and artefacts across the project. | 2026 |
+| Claude Code | Collaborative development | Contributed collaborative analysis, drafting, critique, restructuring, examples and stress-testing during development of the MPP specification, white paper and supporting repository materials. | Repository / MPP / MPRA | Knowledge, Effort | Resulting project materials and development history | Helped develop, test, explain and refine concepts and artefacts across the project. | 2026 |
 
 
 ## How Recognition Works
@@ -40,7 +40,7 @@ A contribution may be recognised when it materially helps to develop, improve, t
 Relevant participation may include contributions to:
 
 - the MPP specification;
-- the *Recognising What Matters* working paper;
+- the *Recognising What Matters* white paper;
 - schemas and technical artefacts;
 - examples and implementation guidance;
 - terminology and conceptual development;
