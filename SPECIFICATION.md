@@ -94,7 +94,7 @@ Participation Records and explicit relationships between Ecosystems.
 
 - Protocol Object lifecycle;
 
-- Exchange; and
+- Exchange, including the Verifiable Credentials binding; and
 
 - Conformance
 
@@ -1634,7 +1634,9 @@ A conformant implementation SHOULD provide a means to establish:
 
 ### Integrity Mechanisms
 
-MPP does not mandate a specific integrity or signature mechanism.
+MPP does not mandate a specific integrity or signature mechanism for
+Protocol Objects in their native form. A Participation Credential is
+secured in accordance with section 29.
 
 Implementations MAY use:
 
@@ -2431,7 +2433,9 @@ process.
   it matters to the receiving Ecosystem, the receiving Ecosystem SHOULD
   establish that the presenting party is a Participant assigned the
   `subject` Role, or is authorised by one, for example by authenticating
-  the presenting party against the `subject` identifier.
+  the presenting party against the `subject` identifier. The Verifiable
+  Credentials binding in section 29 provides this through verifiable
+  presentations.
 
 #### Volume of Assertions
 
@@ -2588,8 +2592,8 @@ Protocol Object states the version to which it conforms in its
 
 ### Published Artefacts
 
-The JSON Schemas, vocabularies and other machine-readable artefacts of
-each version are published at:
+The JSON Schemas, vocabularies, JSON-LD context and other
+machine-readable artefacts of each version are published at:
 
     https://fe-lixe.github.io/meaningful-participation/<version>/
 
@@ -2606,3 +2610,205 @@ for example
 - These locations are interim. If MPP adopts a permanent domain or
   permanent-identifier service, artefacts already published will remain
   available at the locations above.
+
+## 29. Verifiable Credentials Binding
+
+### Purpose
+
+This section defines how a Participation Record is expressed as a
+[W3C Verifiable Credential 2.0](https://www.w3.org/TR/vc-data-model-2.0/),
+called a Participation Credential. The binding lets Participation
+Records be held in wallets, presented by their subjects, secured with
+standard proofs and revoked through standard status lists, without
+changing the MPP data model.
+
+### Exchange
+
+MPP Protocol Objects MAY be exchanged by any means agreed between the
+parties, in their native form.
+
+- A Participation Record that leaves its originating Ecosystem SHOULD be
+  exchanged as a Participation Credential, presented by its subject in a
+  verifiable presentation.
+
+- Transport and presentation protocols are outside the scope of MPP.
+
+- Ecosystem Relationships and supporting Protocol Objects are exchanged
+  in their native form. This version of MPP does not define a binding
+  for them.
+
+### Credential Structure
+
+A Participation Credential:
+
+- MUST have a `@context` whose first value is
+  `https://www.w3.org/ns/credentials/v2`, followed by the MPP context
+  `https://fe-lixe.github.io/meaningful-participation/1.0/context/mpp.jsonld`
+  or the context of a later 1.x version;
+
+- MUST have a `type` that includes `VerifiableCredential` and
+  `ParticipationCredential`;
+
+- MUST have an `id` that differs from the identifier of the Participation
+  Record it carries;
+
+- MUST have an `issuer` equal to the identifier of the Participant
+  assigned the `asserter` Role in the Participation Record;
+
+- MUST have a `validFrom` equal to the Participation Record's
+  `recordCreationTimestamp`, and SHOULD NOT have a `validUntil`;
+
+- MUST have a single `credentialSubject` whose `id` is the identifier of
+  a Participant assigned the `subject` Role, and whose
+  `participationRecord` property contains the Participation Record; and
+
+- MUST NOT include the Participation Record's `integrity` property,
+  because the credential's proof secures the Participation Record in its
+  place.
+
+The JSON Schema for a Participation Credential is maintained at
+[`schemas/participation-credential.schema.json`](schemas/participation-credential.schema.json)
+and the MPP JSON-LD context at [`context/mpp.jsonld`](context/mpp.jsonld).
+
+The context maps MPP properties to IRIs in the namespace
+`https://fe-lixe.github.io/meaningful-participation/terms#`, which is the
+same for every version and identifies the properties defined by this
+specification. It maps Participant Role and Commitment Class term codes
+to the identifiers of their vocabulary terms (section 24), and treats
+`context` and `extensions` as opaque JSON.
+
+### One Credential per Subject
+
+- Where a Participation Record assigns the `subject` Role to more than
+  one Participant, the asserter MUST issue a separate Participation
+  Credential to each of them, each carrying the same Participation
+  Record.
+
+- Each subject can therefore hold and present their own credential
+  without disclosing the credentials of other subjects.
+
+### Securing
+
+- Implementations of this binding MUST support Data Integrity proofs
+  using the `eddsa-rdfc-2022` cryptosuite.
+
+- Implementations MAY additionally use the `ecdsa-sd-2023` cryptosuite,
+  or securing with JOSE or COSE, where selective disclosure or those
+  formats are required.
+
+### Status
+
+- The `revoked` and `suspended` Status Values SHOULD be represented
+  through a `BitstringStatusListEntry` with a `statusPurpose` of
+  `revocation` or `suspension`, in accordance with
+  [Bitstring Status List 1.0](https://www.w3.org/TR/vc-bitstring-status-list/).
+
+- A change of Status of a Participation Record applies to every
+  Participation Credential that carries it. The asserter SHOULD update
+  the status of each of them.
+
+- The `superseded` and `disputed` Status Values, and the `supersedes`
+  property, continue to be represented through Status Statements and the
+  Participation Record, in accordance with sections 14 and 25.
+
+### Presentation
+
+- A subject SHOULD present a Participation Credential within a
+  verifiable presentation whose `holder` is the `credentialSubject`
+  identifier, secured by a proof made by that subject.
+
+- A receiving Ecosystem SHOULD verify the presentation's proof before
+  relying on the Participation Credential. This provides the presenter
+  authentication recommended in section 27.
+
+### Conformance
+
+An implementation MAY claim conformance to this binding when it issues,
+or verifies, Participation Credentials in accordance with this section.
+The binding is not required for conformance to MPP.
+
+### Example
+
+The following Participation Credential carries the Participation Record
+in section 20 for its subject, with a revocation status entry and a Data
+Integrity proof.
+
+```json
+{
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://fe-lixe.github.io/meaningful-participation/1.0/context/mpp.jsonld"
+  ],
+  "id": "urn:uuid:c3a1e7d2-4b9f-4e60-a5d8-2f71b06c9e43",
+  "type": [
+    "VerifiableCredential",
+    "ParticipationCredential"
+  ],
+  "issuer": "https://journal.example.org/identifiers/editorial-system",
+  "validFrom": "2026-07-28T13:22:14Z",
+  "credentialSubject": {
+    "id": "https://orcid.org/0000-0002-1825-0097",
+    "participationRecord": {
+      "type": "ParticipationRecord",
+      "mppVersion": "1.0",
+      "id": "urn:uuid:77bf495d-f8ca-4661-9ed2-5b2c499607de",
+      "ecosystem": "urn:mpp:ecosystem:01JQ4C6AQ9H9H30C27Y4HPRT52",
+      "participants": [
+        {
+          "id": "https://orcid.org/0000-0002-1825-0097",
+          "roles": [
+            "subject",
+            "https://journal.example.org/mpp/roles/reviewer"
+          ]
+        },
+        {
+          "id": "https://journal.example.org/identifiers/editorial-system",
+          "roles": [
+            "asserter"
+          ]
+        }
+      ],
+      "participationType": "https://example.org/mpp/participation-types/peer-review",
+      "participationDescription": "Completed a substantive review of a submitted research paper.",
+      "commitmentClasses": [
+        "effort",
+        "knowledge",
+        "standing"
+      ],
+      "meaningProfile": "https://example.org/mpp/meaning-profiles/verified-peer-review/v1",
+      "participationStart": "2026-07-14",
+      "participationEnd": "2026-07-28T13:15:00Z",
+      "recordCreationTimestamp": "2026-07-28T13:22:14Z",
+      "evidence": [
+        "urn:uuid:8d5c4515-8985-41f3-9061-78f7d0e280ad"
+      ],
+      "context": {
+        "submissionId": "submission-48372",
+        "journal": "Journal of Example Research",
+        "reviewRound": 2
+      },
+      "privacy": {
+        "recordVisibility": "public"
+      }
+    }
+  },
+  "credentialStatus": {
+    "id": "https://journal.example.org/status/3#94567",
+    "type": "BitstringStatusListEntry",
+    "statusPurpose": "revocation",
+    "statusListIndex": "94567",
+    "statusListCredential": "https://journal.example.org/status/3"
+  },
+  "proof": {
+    "type": "DataIntegrityProof",
+    "cryptosuite": "eddsa-rdfc-2022",
+    "created": "2026-07-28T13:22:14Z",
+    "verificationMethod": "https://journal.example.org/identifiers/editorial-system#key-1",
+    "proofPurpose": "assertionMethod",
+    "proofValue": "z..."
+  }
+}
+```
+
+It is also available as a file at
+[`examples/peer-review-credential.json`](examples/peer-review-credential.json).
