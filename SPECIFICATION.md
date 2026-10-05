@@ -452,7 +452,7 @@ A Participation Record MUST include:
 
 - Meaning Profile identifier;
 
-- Participation timestamp;
+- Participation end time;
 
 - Record creation timestamp; and
 
@@ -466,6 +466,8 @@ identifier formats or deployment constraints.
 ### Optional Properties
 
 A Participation Record MAY include:
+
+- Participation start time;
 
 - contextual properties;
 
@@ -503,6 +505,81 @@ A Participation Record MAY include:
 - Implementations SHOULD avoid duplicating information available through
   persistent references, particularly where MPP objects are appended to
   larger payloads or exchanged at high volume.
+
+### Participation Time
+
+A Participation Record represents Participation that has been completed.
+It identifies when that Participation occurred through two properties:
+
+- **participationEnd** (REQUIRED): the time at which the Participation
+  was completed or, for Participation occurring at a single point in
+  time, the time at which it occurred; and
+
+- **participationStart** (OPTIONAL): the time at which the Participation
+  began, included where the Participation took place over a period of
+  time.
+
+#### Representation
+
+Each Participation time value MUST be either:
+
+- a date-time conforming to the RFC 3339 `date-time` format, including a
+  UTC offset or `Z`; or
+
+- a calendar date conforming to the RFC 3339 `full-date` format
+  (`YYYY-MM-DD`).
+
+A date-only value indicates that the Participation started or ended at an
+unspecified time on that calendar date. It does not imply a time of day
+or a time zone.
+
+The record creation timestamp MUST be a date-time conforming to the RFC
+3339 `date-time` format, including a UTC offset or `Z`.
+
+#### Behavioural Requirements
+
+- A Participation Record MUST include participationEnd.
+
+- A Participation Record MUST NOT represent Participation that is
+  ongoing at the time of issuance. Ongoing Participation SHOULD be
+  represented through separate Participation Records for each completed
+  period, such as a term, season or year.
+
+- Where Participation occurred at a single point in time,
+  participationStart SHOULD be omitted.
+
+- The absence of participationStart indicates only that no start time is
+  asserted. It MUST NOT be interpreted as evidence of the duration of
+  the Participation.
+
+- Where participationStart is included, it MUST NOT be later than
+  participationEnd.
+
+- participationEnd SHOULD NOT be later than the record creation
+  timestamp.
+
+- Where two time values have different precision, they MUST be compared
+  at the precision of the less precise value, using the calendar date as
+  written in the date-time value.
+
+- Implementations MUST NOT assign a time of day or a time zone to a
+  date-only value.
+
+- Consistent with Data Minimisation, an Ecosystem SHOULD use the least
+  precise time value sufficient for the intended use of the
+  Participation Record.
+
+#### Example
+
+The following properties represent Participation that took place over a
+period, with a start date and a precise completion time.
+
+```json
+{
+  "participationStart": "2026-07-14",
+  "participationEnd": "2026-07-28T13:15:00Z"
+}
+```
 
 ## 5. Commitment Classes
 
@@ -1637,7 +1714,8 @@ MPP.
     "standing"
   ],
   "meaningProfile": "https://example.org/mpp/meaning-profiles/verified-peer-review/v1",
-  "participationTimestamp": "2026-07-28T13:15:00Z",
+  "participationStart": "2026-07-14",
+  "participationEnd": "2026-07-28T13:15:00Z",
   "recordCreationTimestamp": "2026-07-28T13:22:14Z",
   "evidence": [
     "urn:uuid:8d5c4515-8985-41f3-9061-78f7d0e280ad"
@@ -1695,7 +1773,7 @@ conforming to MPP.
   "participationType": "https://example.org/mpp/participation-types/example",
   "participationDescription": "Completed an instance of recognised Participation.",
   "meaningProfile": "https://example.org/mpp/meaning-profiles/example/v1",
-  "participationTimestamp": "2026-08-01T12:00:00Z",
+  "participationEnd": "2026-08-01",
   "recordCreationTimestamp": "2026-08-01T12:00:03Z"
 }
 ```
@@ -1741,6 +1819,12 @@ The schema enforces the following requirements:
 
 - every Participant has at least one Role;
 
+- every Participation Record includes participationEnd;
+
+- participationStart and participationEnd are each an RFC 3339
+  date-time with a UTC offset or an RFC 3339 full-date, and the record
+  creation timestamp is an RFC 3339 date-time;
+
 - exactly one Participant has the asserter Role;
 
 - Ecosystem, Participation Type, Meaning Profile and Evidence references
@@ -1760,6 +1844,11 @@ The schema enforces the following requirements:
 The schema does not validate whether:
 
 - an identifier is genuinely globally unique;
+
+- participationStart is not later than participationEnd, or
+  participationEnd is not later than the record creation timestamp;
+
+- the Participation was completed at the time of issuance;
 
 - a referenced Protocol Object exists or is resolvable;
 

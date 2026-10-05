@@ -23,6 +23,6 @@
   "participationType": "https://example.org/mpp/participation-types/example",
   "participationDescription": "Completed an instance of recognised Participation.",
   "meaningProfile": "https://example.org/mpp/meaning-profiles/example/v1",
-  "participationTimestamp": "2026-08-01T12:00:00Z",
+  "participationEnd": "2026-08-01",
   "recordCreationTimestamp": "2026-08-01T12:00:03Z"
 }
