@@ -25,7 +25,10 @@
     "id": "https://u.media/mpp/participation-types/touchpoint-support",
     "name": "Touchpoint support"
   },
-  "participationDescription": "Financially supported a media Touchpoint published by a participating outlet.",
+  "participationDescription": {
+    "en": "Financially supported a media Touchpoint published by a participating outlet.",
+    "da": "Støttede økonomisk et medie-Touchpoint udgivet af et deltagende medie."
+  },
   "commitmentClasses": [
     "capital"
   ],

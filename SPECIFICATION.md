@@ -80,6 +80,10 @@ Participation Records and explicit relationships between Ecosystems.
 
 - Vocabularies;
 
+- Protocol Object lineage;
+
+- Language and translation;
+
 - Relationship Scope;
 
 - Identifiers;
@@ -473,6 +477,8 @@ A Participation Record MAY include:
 
 - Participation start time;
 
+- identifier of the Participation Record it supersedes;
+
 - contextual properties;
 
 - references to one or more Evidence objects;
@@ -487,6 +493,10 @@ A Participation Record MAY include:
   issuance. Changes to the assertion they contain MUST be represented
   through a new Participation Record and, where appropriate, an
   associated Status Statement.
+
+- A Participation Record that replaces an earlier Participation Record
+  SHOULD identify it through the supersedes property, in accordance with
+  section 25.
 
 - A Participation Record MUST identify one or more Participants.
 
@@ -917,6 +927,8 @@ An Ecosystem Relationship MAY include:
 
 - Relationship Scope;
 
+- identifier of the Ecosystem Relationship it supersedes;
+
 - references to one or more Evidence objects;
 
 - privacy information;
@@ -955,7 +967,9 @@ An Ecosystem Relationship MAY include:
   issuance. Changes to the lifecycle Status of an Ecosystem Relationship
   MUST be represented through a Status Statement. Materially changed
   relationships MUST be represented through a new Ecosystem
-  Relationship.
+  Relationship, which SHOULD identify the Ecosystem Relationship it
+  replaces through the supersedes property, in accordance with section
+  25.
 
 - An Ecosystem Relationship MAY reference one or more Evidence objects.
 
@@ -1523,7 +1537,16 @@ A Status Statement SHOULD identify:
   Relationship or another Protocol Object for which lifecycle Status is
   defined.
 
+- A superseded Status SHOULD identify the replacing Protocol Object
+  through the supersededBy property. The supersedes property of the
+  replacing Protocol Object does not itself change the Status of the
+  Protocol Object it identifies (see section 25).
+
 ### Example
+
+The following Status Statement marks the Participation Record in
+section 20 as superseded by the corrected Participation Record in
+[`examples/superseding-record.json`](examples/superseding-record.json).
 
 ```json
 {
@@ -1536,9 +1559,9 @@ A Status Statement SHOULD identify:
   "effectiveAt": "2026-08-14T09:30:00Z",
   "reason": {
     "code": "corrected-record",
-    "description": "The participant identifier in the original record was incorrect."
+    "description": "The Participation description in the original record omitted the review round."
   },
-  "supersededBy": "urn:uuid:1379eb36-5e6c-4f53-b064-f2365195e019"
+  "supersededBy": "urn:uuid:019fff9a-a240-7a3f-91c2-9e84b7d05f6e"
 }
 ```
 
@@ -1578,6 +1601,14 @@ Object MAY use:
 
 - MPP does not require Participation Records, Ecosystem Relationships,
   Evidence or other Protocol Objects to be publicly accessible.
+
+- Identifiers that embed a timestamp, such as UUID version 7
+  identifiers, disclose when the identifier was generated, to
+  millisecond precision, even where other properties are withheld
+  through selective disclosure. Where that disclosure would create
+  privacy risks, implementations SHOULD use identifiers that do not
+  embed a timestamp, such as UUID version 4 identifiers (see section
+  25).
 
 ## 16. Integrity and Authenticity
 
@@ -1889,6 +1920,9 @@ The schema enforces the following requirements:
 
 - each Role is either a core Participant Role or an absolute URI;
 
+- the Participation description and informative names are either a
+  string or a language map keyed by language tags;
+
 - Ecosystem, Participation Type, Meaning Profile and Evidence references
   may use either a compact identifier or a constrained reference object;
 
@@ -1911,6 +1945,11 @@ The schema does not validate whether:
   participationEnd is not later than the record creation timestamp;
 
 - the Participation was completed at the time of issuance;
+
+- a supersedes property identifies a different, existing Participation
+  Record;
+
+- a language tag is a valid, registered BCP 47 language tag;
 
 - a referenced Protocol Object exists or is resolvable;
 
@@ -1965,6 +2004,9 @@ The Ecosystem Relationship schema enforces the following requirements:
 - each Role and each required Verification outcome is either a core
   vocabulary term or an absolute URI;
 
+- the relationship description and informative names are either a
+  string or a language map keyed by language tags;
+
 - Relationship Scope, Evidence, privacy, integrity and extension
   properties are optional;
 
@@ -1985,6 +2027,9 @@ The schema does not validate whether:
 
 - the source and target identifiers represent different real-world
   Ecosystems;
+
+- a supersedes property identifies a different, existing Ecosystem
+  Relationship;
 
 - an asserted relationship is factually, organisationally or legally
   valid;
@@ -2085,5 +2130,194 @@ Role.
       ]
     }
   ]
+}
+```
+
+## 25. Identifiers and Lineage
+
+### Purpose
+
+Every Protocol Object is independently identifiable. Because
+Participation Records and Ecosystem Relationships are immutable, each
+identifier refers to exactly one version of an assertion. A correction
+or other change is a new Protocol Object with a new identifier, linked
+to the Protocol Object it replaces through explicit relationships.
+
+### Identifier Requirements
+
+- Every Protocol Object MUST have a persistent, globally unique
+  identifier.
+
+- Every new Protocol Object, including one that corrects or replaces
+  another, MUST have a new identifier. Identifiers MUST NOT be reused.
+
+- Where an implementation generates UUID-based identifiers, it SHOULD
+  express them as `urn:uuid:` URNs and SHOULD use UUID version 7, as
+  defined in RFC 9562, unless section 15 indicates otherwise.
+
+- Implementations MUST treat identifiers as opaque. They MUST NOT derive
+  time, order, lineage, issuer or any other meaning from the structure
+  of an identifier, including the timestamp embedded in a UUID version 7
+  identifier.
+
+- The order of Protocol Objects MUST be determined from their explicit
+  timestamps, such as the record creation timestamp, rather than from
+  their identifiers.
+
+UUID version 7 identifiers are time-ordered, which makes them efficient
+to index and convenient to sort within a single implementation. They do
+not provide a reliable order across Ecosystems, whose clocks are
+independent, and many Protocol Objects use identifiers that are not
+UUIDs.
+
+### Lineage
+
+A Participation Record or Ecosystem Relationship MAY include a
+supersedes property identifying the Protocol Object of the same type
+that it replaces.
+
+- A Protocol Object that replaces an earlier Protocol Object SHOULD
+  include the supersedes property.
+
+- The supersedes property MUST identify a Protocol Object of the same
+  type, and MUST NOT identify the Protocol Object that contains it.
+
+- The supersedes property records an assertion by the asserter of the
+  replacing Protocol Object. It MUST NOT be interpreted as changing the
+  Status of the Protocol Object it identifies. A change of Status MUST be
+  represented through a Status Statement, in accordance with section 14.
+
+- Lineage MUST be determined from supersedes properties and Status
+  Statements, not inferred from identifiers or timestamps.
+
+- A receiving Ecosystem SHOULD consider whether the asserter of a
+  replacing Protocol Object is entitled to replace the Protocol Object
+  it identifies.
+
+### Example
+
+The following Participation Record corrects the Participation Record in
+section 20. The Status Statement in section 14 records the
+corresponding change of Status.
+
+```json
+{
+  "type": "ParticipationRecord",
+  "mppVersion": "0.1",
+  "id": "urn:uuid:019fff9a-a240-7a3f-91c2-9e84b7d05f6e",
+  "supersedes": "urn:uuid:77bf495d-f8ca-4661-9ed2-5b2c499607de",
+  "ecosystem": "urn:mpp:ecosystem:01JQ4C6AQ9H9H30C27Y4HPRT52",
+  "participants": [
+    {
+      "id": "https://orcid.org/0000-0002-1825-0097",
+      "roles": [
+        "subject",
+        "https://journal.example.org/mpp/roles/reviewer"
+      ]
+    },
+    {
+      "id": "https://journal.example.org/identifiers/editorial-system",
+      "roles": [
+        "asserter"
+      ]
+    }
+  ],
+  "participationType": "https://example.org/mpp/participation-types/peer-review",
+  "participationDescription": "Completed a substantive second-round review of a submitted research paper.",
+  "commitmentClasses": [
+    "effort",
+    "knowledge",
+    "standing"
+  ],
+  "meaningProfile": "https://example.org/mpp/meaning-profiles/verified-peer-review/v1",
+  "participationStart": "2026-07-14",
+  "participationEnd": "2026-07-28T13:15:00Z",
+  "recordCreationTimestamp": "2026-08-14T09:29:12Z",
+  "evidence": [
+    "urn:uuid:8d5c4515-8985-41f3-9061-78f7d0e280ad"
+  ],
+  "context": {
+    "submissionId": "submission-48372",
+    "journal": "Journal of Example Research",
+    "reviewRound": 2
+  },
+  "privacy": {
+    "recordVisibility": "public"
+  },
+  "integrity": {
+    "type": "DataIntegrityProof",
+    "verificationMethod": "https://journal.example.org/identifiers/editorial-system#key-1",
+    "proofValue": "z..."
+  }
+}
+```
+
+It is also available as a file at
+[`examples/superseding-record.json`](examples/superseding-record.json).
+
+## 26. Language and Translation
+
+### Purpose
+
+The properties that carry the semantics of a Protocol Object, including
+Commitment Classes, Participant Roles, Relationship Types, Verification
+outcomes and Status Values, use language-neutral term codes and
+identifiers. Only descriptive text needs translation.
+
+### Language Maps
+
+The following properties MAY be represented either as a string or as a
+language map:
+
+- the Participation description;
+
+- the relationship description; and
+
+- the informative name of an Ecosystem, Participant or Participation
+  Type.
+
+A language map is a JSON object whose keys are language tags and whose
+values are the text in each language.
+
+### Language Tags
+
+Language tags MUST conform to BCP 47 (RFC 5646). BCP 47 incorporates
+ISO 639: it uses the two-letter ISO 639-1 code where one exists and
+three-letter ISO 639-2 or ISO 639-3 codes otherwise, and adds optional
+script, region and variant subtags, for example `da`, `en-GB`, `se` or
+`zh-Hant-TW`.
+
+### Behavioural Requirements
+
+- Every value in a language map MUST represent the same content in a
+  different language.
+
+- A language map MUST include at least one entry.
+
+- Language tags SHOULD use the shortest valid form, for example `da`
+  rather than `dan`, and SHOULD include script or region subtags only
+  where they are material.
+
+- Where a property is represented as a string, its language is
+  unspecified unless indicated by an implementation profile.
+
+- A translation produced after issuance is not a Protocol Object and
+  does not constitute a new version of the Protocol Object it renders.
+  It SHOULD reference the identifier of that Protocol Object and SHOULD
+  include a digest of it. It MUST NOT be presented as part of the issued
+  Protocol Object.
+
+- Where an Ecosystem requires a translation to form part of the issued
+  assertion, it MUST issue a new Protocol Object in accordance with
+  section 25.
+
+### Example
+
+```json
+{
+  "participationDescription": {
+    "en": "Financially supported a media Touchpoint published by a participating outlet.",
+    "da": "Støttede økonomisk et medie-Touchpoint udgivet af et deltagende medie."
+  }
 }
 ```

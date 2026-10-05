@@ -31,6 +31,10 @@
       "minLength": 1,
       "description": "A persistent, globally unique Participation Record identifier."
     },
+    "supersedes": {
+      "$ref": "#/$defs/identifier",
+      "description": "The identifier of the Participation Record that this Participation Record replaces. It does not itself change the Status of that Participation Record."
+    },
     "commitmentClasses": {
       "type": "array",
       "description": "The Commitment Classes assigned to the Participation Record (vocabularies/commitment-classes.jsonld). This vocabulary is closed.",
@@ -78,8 +82,7 @@
       "$ref": "#/$defs/participationTypeReference"
     },
     "participationDescription": {
-      "type": "string",
-      "minLength": 1,
+      "$ref": "#/$defs/text",
       "description": "A description of the specific instance of Participation."
     },
     "meaningProfile": {
@@ -131,6 +134,27 @@
     }
   },
   "$defs": {
+    "text": {
+      "description": "A string, or a language map whose keys are BCP 47 language tags and whose values represent the same text in each language.",
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "object",
+          "minProperties": 1,
+          "propertyNames": {
+            "type": "string",
+            "pattern": "^[A-Za-z]{2,3}(-[A-Za-z0-9]{1,8})*$"
+          },
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      ]
+    },
     "participationTime": {
       "description": "An RFC 3339 date-time with a UTC offset, or an RFC 3339 full-date indicating an unspecified time on that calendar date.",
       "anyOf": [
@@ -158,8 +182,7 @@
           "description": "An identifier for the Participant."
         },
         "name": {
-          "type": "string",
-          "minLength": 1,
+          "$ref": "#/$defs/text",
           "description": "An optional informative name for the Participant."
         },
         "roles": {
@@ -239,8 +262,7 @@
               "$ref": "#/$defs/identifier"
             },
             "name": {
-              "type": "string",
-              "minLength": 1,
+              "$ref": "#/$defs/text",
               "description": "An informative human-readable Ecosystem name."
             }
           }
@@ -264,8 +286,7 @@
               "$ref": "#/$defs/identifier"
             },
             "name": {
-              "type": "string",
-              "minLength": 1,
+              "$ref": "#/$defs/text",
               "description": "An informative human-readable Participation Type name."
             }
           }
