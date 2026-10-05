@@ -763,21 +763,17 @@ An Ecosystem identifier MUST remain stable even if:
 - The identity of an Ecosystem MUST NOT depend solely on the continued
   availability or ownership of a domain name.
 
-### Example:
+### Example
 
+```json
 {
-
-"id": "urn:mpp:ecosystem:01JQ4C6AQ9H9H30C27Y4HPRT52",
-
-"name": "Example Research Community",
-
-"resolvesTo": \[
-
-"https://example.org/.well-known/mpp-ecosystem.json"
-
-\]
-
+  "id": "urn:mpp:ecosystem:01JQ4C6AQ9H9H30C27Y4HPRT52",
+  "name": "Example Research Community",
+  "resolvesTo": [
+    "https://example.org/.well-known/mpp-ecosystem.json"
+  ]
 }
+```
 
 ## 7. Ecosystem Relationship
 
@@ -842,7 +838,7 @@ An Ecosystem Relationship MAY include:
 
 - expiration timestamp.
 
-**Behavioural Requirements**
+### Behavioural Requirements
 
 - An Ecosystem Relationship MUST identify exactly one source Ecosystem.
 
@@ -976,73 +972,42 @@ authority to the Royal Spanish Football Federation (RFEF). The
 Relationship Scope limits that authority to specified forms of
 participation and Meaning Profiles.
 
+```json
 {
-
-"type": "EcosystemRelationship",
-
-"mppVersion": "0.1",
-
-"id": "urn:uuid:52d115ef-b83e-44fa-a962-73ec548e91a2",
-
-"sourceEcosystem": {
-
-"id": "urn:mpp:ecosystem:fifa",
-
-"name": "FIFA"
-
-},
-
-"relationshipType": "delegatesAssertionAuthorityTo",
-
-"targetEcosystem": {
-
-"id": "urn:mpp:ecosystem:rfef",
-
-"name": "Royal Spanish Football Federation"
-
-},
-
-"assertedByParticipant": {
-
-"id": "urn:mpp:participant:fifa-authorised-system",
-
-"roles": \[
-
-"asserter"
-
-\]
-
-},
-
-"relationshipScope": {
-
-"participationTypes": \[
-
-"https://fifa.example.org/mpp/participation-types/referee-development",
-
-"https://fifa.example.org/mpp/participation-types/coach-education"
-
-\],
-
-"meaningProfiles": \[
-
-"https://fifa.example.org/mpp/meaning-profiles/recognised-football-development/v1"
-
-\],
-
-"requiredVerificationOutcomes": \[
-
-"verified"
-
-\]
-
-},
-
-"effectiveFrom": "2026-01-01T00:00:00Z",
-
-"recordCreationTimestamp": "2026-08-05T12:00:00Z"
-
+  "type": "EcosystemRelationship",
+  "mppVersion": "0.1",
+  "id": "urn:uuid:52d115ef-b83e-44fa-a962-73ec548e91a2",
+  "sourceEcosystem": {
+    "id": "urn:mpp:ecosystem:fifa",
+    "name": "FIFA"
+  },
+  "relationshipType": "delegatesAssertionAuthorityTo",
+  "targetEcosystem": {
+    "id": "urn:mpp:ecosystem:rfef",
+    "name": "Royal Spanish Football Federation"
+  },
+  "assertedByParticipant": {
+    "id": "urn:mpp:participant:fifa-authorised-system",
+    "roles": [
+      "asserter"
+    ]
+  },
+  "relationshipScope": {
+    "participationTypes": [
+      "https://fifa.example.org/mpp/participation-types/referee-development",
+      "https://fifa.example.org/mpp/participation-types/coach-education"
+    ],
+    "meaningProfiles": [
+      "https://fifa.example.org/mpp/meaning-profiles/recognised-football-development/v1"
+    ],
+    "requiredVerificationOutcomes": [
+      "verified"
+    ]
+  },
+  "effectiveFrom": "2026-01-01T00:00:00Z",
+  "recordCreationTimestamp": "2026-08-05T12:00:00Z"
 }
+```
 
 In this example, FIFA delegates assertion authority to RFEF only within
 the scope described by the Ecosystem Relationship. The relationship does
@@ -1160,17 +1125,14 @@ The persistent identifier is authoritative. The human-readable name is informati
 
 ### Example
 
+```json
 {
-
-"participationType": {
-
-"id": "https://example.org/mpp/participation-types/peer-review",
-
-"name": "Peer review"
-
+  "participationType": {
+    "id": "https://example.org/mpp/participation-types/peer-review",
+    "name": "Peer review"
+  }
 }
-
-}
+```
 
 ## 11. Meaning Profile
 
@@ -1223,87 +1185,48 @@ measure of meaningfulness.
 
 ### Example
 
+```json
 {
-
-"type": "MeaningProfile",
-
-"mppVersion": "0.1",
-
-"id":
-"https://example.org/mpp/meaning-profiles/verified-peer-review/v1",
-
-"ecosystem": "urn:mpp:ecosystem:01JQ4C6AQ9H9H30C27Y4HPRT52",
-
-"name": "Verified Peer Review",
-
-"description": "Defines the criteria for recognising completed peer
-review as Meaningful Participation.",
-
-"version": "1.0",
-
-"applicableParticipationTypes": \[
-
-"https://example.org/mpp/participation-types/peer-review"
-
-\],
-
-"recognitionCriteria": \[
-
-{
-
-"id": "review-submitted",
-
-"description": "A substantive review was submitted for a research
-paper."
-
-},
-
-{
-
-"id": "submission-confirmed",
-
-"description": "Submission of the review was confirmed by the journal."
-
+  "type": "MeaningProfile",
+  "mppVersion": "0.1",
+  "id": "https://example.org/mpp/meaning-profiles/verified-peer-review/v1",
+  "ecosystem": "urn:mpp:ecosystem:01JQ4C6AQ9H9H30C27Y4HPRT52",
+  "name": "Verified Peer Review",
+  "description": "Defines the criteria for recognising completed peer review as Meaningful Participation.",
+  "version": "1.0",
+  "applicableParticipationTypes": [
+    "https://example.org/mpp/participation-types/peer-review"
+  ],
+  "recognitionCriteria": [
+    {
+      "id": "review-submitted",
+      "description": "A substantive review was submitted for a research paper."
+    },
+    {
+      "id": "submission-confirmed",
+      "description": "Submission of the review was confirmed by the journal."
+    }
+  ],
+  "minimumEvidenceRequirements": [
+    {
+      "type": "submission-record",
+      "description": "Evidence that the review was submitted."
+    }
+  ],
+  "verificationRequirements": [
+    {
+      "type": "editorial-confirmation",
+      "description": "Verification by an authorised representative of the journal."
+    }
+  ],
+  "effectiveFrom": "2026-08-01T00:00:00Z",
+  "status": "active",
+  "integrity": {
+    "type": "DataIntegrityProof",
+    "proofValue": "z..."
+  }
 }
-
-\],
-
-"minimumEvidenceRequirements": \[
-
-{
-
-"type": "submission-record",
-
-"description": "Evidence that the review was submitted."
-
-}
-
-\],
-
-"verificationRequirements": \[
-
-{
-
-"type": "editorial-confirmation",
-
-"description": "Verification by an authorised representative of the
-journal."
-
-}
-
-\],
-
-"effectiveFrom": "2026-08-01T00:00:00Z",
-
-"status": "active",
-
-"integrity": {
-
-"type": "DataIntegrityProof",
-
-"proofValue": "z..."
-
-}
+```
 
 ## 12. Evidence
 
@@ -1339,8 +1262,6 @@ An Evidence object MAY be:
 An Evidence object SHOULD include:
 
 - evidence type;
-
-<!-- -->
 
 - location or content reference;
 
@@ -1473,35 +1394,22 @@ A Status Statement SHOULD identify:
 
 ### Example
 
+```json
 {
-
-"type": "StatusStatement",
-
-"mppVersion": "0.1",
-
-"id": "urn:uuid:8ce46dc6-623f-4a27-ad6b-11c88c41de87",
-
-"subject": "urn:uuid:77bf495d-f8ca-4661-9ed2-5b2c499607de",
-
-"status": "superseded",
-
-"issuedByParticipant":
-"https://journal.example.org/identifiers/editorial-system",
-
-"effectiveAt": "2026-08-14T09:30:00Z",
-
-"reason": {
-
-"code": "corrected-record",
-
-"description": "The participant identifier in the original record was
-incorrect."
-
-},
-
-"supersededBy": "urn:uuid:1379eb36-5e6c-4f53-b064-f2365195e019"
-
+  "type": "StatusStatement",
+  "mppVersion": "0.1",
+  "id": "urn:uuid:8ce46dc6-623f-4a27-ad6b-11c88c41de87",
+  "subject": "urn:uuid:77bf495d-f8ca-4661-9ed2-5b2c499607de",
+  "status": "superseded",
+  "issuedByParticipant": "https://journal.example.org/identifiers/editorial-system",
+  "effectiveAt": "2026-08-14T09:30:00Z",
+  "reason": {
+    "code": "corrected-record",
+    "description": "The participant identifier in the original record was incorrect."
+  },
+  "supersededBy": "urn:uuid:1379eb36-5e6c-4f53-b064-f2365195e019"
 }
+```
 
 ## 15. Privacy and Selective Disclosure
 
@@ -1593,8 +1501,6 @@ MPP objects MAY include an extensions property.
   storing, forwarding or transforming an MPP Protocol Object, unless the
   implementation explicitly declares that it does not support lossless
   processing.
-
-<!-- -->
 
 - Extensions MUST NOT:
 
@@ -1703,104 +1609,54 @@ sufficient.
 The following example illustrates a Participation Record conforming to
 MPP.
 
+```json
 {
-
-"type": "ParticipationRecord",
-
-"mppVersion": "0.1",
-
-"id": "urn:uuid:77bf495d-f8ca-4661-9ed2-5b2c499607de",
-
-"ecosystem": "urn:mpp:ecosystem:01JQ4C6AQ9H9H30C27Y4HPRT52",
-
-"participants": \[
-
-{
-
-"id": "https://orcid.org/0000-0002-1825-0097",
-
-"roles": \[
-
-"reviewer"
-
-\]
-
-},
-
-{
-
-"id": "https://journal.example.org/identifiers/editorial-system",
-
-"roles": \[
-
-"asserter"
-
-\]
-
+  "type": "ParticipationRecord",
+  "mppVersion": "0.1",
+  "id": "urn:uuid:77bf495d-f8ca-4661-9ed2-5b2c499607de",
+  "ecosystem": "urn:mpp:ecosystem:01JQ4C6AQ9H9H30C27Y4HPRT52",
+  "participants": [
+    {
+      "id": "https://orcid.org/0000-0002-1825-0097",
+      "roles": [
+        "reviewer"
+      ]
+    },
+    {
+      "id": "https://journal.example.org/identifiers/editorial-system",
+      "roles": [
+        "asserter"
+      ]
+    }
+  ],
+  "participationType": "https://example.org/mpp/participation-types/peer-review",
+  "participationDescription": "Completed a substantive review of a submitted research paper.",
+  "commitmentClasses": [
+    "effort",
+    "knowledge",
+    "standing"
+  ],
+  "meaningProfile": "https://example.org/mpp/meaning-profiles/verified-peer-review/v1",
+  "participationTimestamp": "2026-07-28T13:15:00Z",
+  "recordCreationTimestamp": "2026-07-28T13:22:14Z",
+  "evidence": [
+    "urn:uuid:8d5c4515-8985-41f3-9061-78f7d0e280ad"
+  ],
+  "context": {
+    "submissionId": "submission-48372",
+    "journal": "Journal of Example Research",
+    "reviewRound": 2
+  },
+  "privacy": {
+    "recordVisibility": "public"
+  },
+  "integrity": {
+    "type": "DataIntegrityProof",
+    "verificationMethod": "https://journal.example.org/identifiers/editorial-system#key-1",
+    "proofValue": "z..."
+  }
 }
-
-\],
-
-"participationType":
-"https://example.org/mpp/participation-types/peer-review",
-
-"participationDescription": "Completed a substantive review of a
-submitted research paper.",
-
-"commitmentClasses": \[
-
-"effort",
-
-"knowledge",
-
-"standing"
-
-\],
-
-"meaningProfile":
-"https://example.org/mpp/meaning-profiles/verified-peer-review/v1",
-
-"participationTimestamp": "2026-07-28T13:15:00Z",
-
-"recordCreationTimestamp": "2026-07-28T13:22:14Z",
-
-"evidence": \[
-
-"urn:uuid:8d5c4515-8985-41f3-9061-78f7d0e280ad"
-
-\],
-
-"context": {
-
-"submissionId": "submission-48372",
-
-"journal": "Journal of Example Research",
-
-"reviewRound": 2
-
-},
-
-"privacy": {
-
-"recordVisibility": "public"
-
-},
-
-"integrity": {
-
-"type": "DataIntegrityProof",
-
-"verificationMethod":
-"https://journal.example.org/identifiers/editorial-system#key-1",
-
-"proofValue": "z..."
-
-},
-
-"extensions": {}
-
-}
-
+```
 
 This example is also available as a file at
 [`examples/peer-review.json`](examples/peer-review.json), together with further
@@ -1813,63 +1669,36 @@ examples in [`examples/`](examples/).
 The following example illustrates the minimum Participation Record
 conforming to MPP.
 
+```json
 {
-
-"type": "ParticipationRecord",
-
-"mppVersion": "0.1",
-
-"id": "urn:uuid:77bf495d-f8ca-4661-9ed2-5b2c499607de",
-
-"commitmentClasses": \[
-
-"effort"
-
-\],
-
-"ecosystem": "urn:mpp:ecosystem:01JQ4C6AQ9H9H30C27Y4HPRT52",
-
-"participants": \[
-
-{
-
-"id": "participant-123",
-
-"roles": \[
-
-"participant"
-
-\]
-
-},
-
-{
-
-"id": "ecosystem-operator",
-
-"roles": \[
-
-"asserter"
-
-\]
-
+  "type": "ParticipationRecord",
+  "mppVersion": "0.1",
+  "id": "urn:uuid:3d0b6c11-52af-4a90-9f3e-7c1d84a06e52",
+  "commitmentClasses": [
+    "effort"
+  ],
+  "ecosystem": "urn:mpp:ecosystem:01JQ4C6AQ9H9H30C27Y4HPRT52",
+  "participants": [
+    {
+      "id": "participant-123",
+      "roles": [
+        "participant"
+      ]
+    },
+    {
+      "id": "ecosystem-operator",
+      "roles": [
+        "asserter"
+      ]
+    }
+  ],
+  "participationType": "https://example.org/mpp/participation-types/example",
+  "participationDescription": "Completed an instance of recognised Participation.",
+  "meaningProfile": "https://example.org/mpp/meaning-profiles/example/v1",
+  "participationTimestamp": "2026-08-01T12:00:00Z",
+  "recordCreationTimestamp": "2026-08-01T12:00:03Z"
 }
-
-\],
-
-"participationType":
-"https://example.org/mpp/participation-types/example",
-
-"participationDescription": "Completed an instance of recognised
-Participation.",
-
-"meaningProfile": "https://example.org/mpp/meaning-profiles/example/v1",
-
-"participationTimestamp": "2026-08-01T12:00:00Z",
-
-"recordCreationTimestamp": "2026-08-01T12:00:03Z"
-
-}
+```
 
 This example intentionally omits all optional properties. It illustrates
 the minimum information required for a conformant Participation Record.
@@ -1895,7 +1724,7 @@ only the schema for Participation Records.
 The schema is maintained as a separate file at [`schemas/participation-record.schema.json`](schemas/participation-record.schema.json),
 which is the authoritative version. It is identified by:
 
-    https://meaningfulparticipation.org/schema/0.1/participation-record.json
+    https://raw.githubusercontent.com/fe-lixe/meaningful-participation/main/schemas/participation-record.schema.json
 
 Examples that validate against it are provided in
 [`examples/`](examples/).
@@ -1962,7 +1791,7 @@ object containing limited informative or integrity-related metadata.
 The schema is maintained as a separate file at [`schemas/ecosystem-relationship.schema.json`](schemas/ecosystem-relationship.schema.json),
 which is the authoritative version. It is identified by:
 
-    https://meaningfulparticipation.org/schema/0.1/ecosystem-relationship.json
+    https://raw.githubusercontent.com/fe-lixe/meaningful-participation/main/schemas/ecosystem-relationship.schema.json
 
 Examples that validate against it are provided in
 [`examples/`](examples/).

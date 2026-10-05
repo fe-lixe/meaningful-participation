@@ -33,7 +33,7 @@ MPP provides a common way to represent participation while leaving each ecosyste
 
 | Resource | Purpose |
 | --- | --- |
-| [Working Paper](RECOGNISING-WHAT-MATTERS-v0.1.md) | Introduces the problem, MPRA, MPP and what they could make possible |
+| [Working Paper](RECOGNISING-WHAT-MATTERS.md) | Introduces the problem, MPRA, MPP and what they could make possible |
 | [MPRA](MPRA.md) | Defines the five-layer Meaningful Participation Reference Architecture |
 | [MPP Specification](SPECIFICATION.md) | Defines the normative requirements of the Meaningful Participation Protocol |
 | [Schemas](schemas/) | Includes JSON Schemas for each Protocol Object, extracted from the specification |

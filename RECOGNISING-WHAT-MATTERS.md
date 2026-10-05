@@ -1,38 +1,11 @@
 # Recognising What Matters
 ## An Open Architecture for Meaningful Participation Across Ecosystems
 
-**Working Paper v0.1**  
+**Version 1.0**  
 **Author:** Jason Lambert  
 **Steward:** [Felixe](https://felixe.com)  
-**Target v1.0 publication:** 30 September 2026
-
-## About This Working Paper
-
-This is a working version of Recognising What Matters, published openly to invite review, critique and contribution.
-
-We aim to publish v1.0 on 30 September 2026. At that point, contributions accepted during this review period will be incorporated into a designed PDF edition, creating the first stable publication of the white paper. The Markdown version will remain available as part of the project's open record.
-
-### How to Contribute
-
-We welcome challenges to the ideas presented here, suggested improvements, relevant research and standards, applications to new ecosystems, examples from different domains, and proposed changes to the text.
-
-- Open an Issue to raise a question, critique, suggestion or area for discussion.
-- Submit a Pull Request to propose a specific change to the paper.
-- Join an existing Issue or Pull Request to contribute to an ongoing discussion.
-
-**Not sure where to start?** This paper and the accompanying specification have been written to be semantically rich and readily explored by both humans and AI systems. Try giving a capable AI assistant this prompt:
-
-> **“How could the principles of https://github.com/fe-lixe/meaningful-participation be applied to my organisation, sector, community or ecosystem? Which forms of Meaningful Participation might currently go unrecognised? What opportunities are there for participant portability and ecosystem interoperability? How might different recognition or incentive models strengthen what we do? How could I or my organisation contribute to the protocol's development?”**
-
-[Appendix A](RECOGNISING-WHAT-MATTERS-v0.1.md/#appendix-a--exploring-mpra-and-mpp-with-ai) provides additional questions and prompts for exploring MPRA and MPP with AI.
-
-Contributions intended for consideration in v1.0 should be submitted before 30 September 2026.
-
-As an initial demonstration of the protocol proposed in this paper, we will manually create Participation Records recognising contributors and the commitments they make to this process. These may include commitments of **Effort, Knowledge, Standing and Capital**, supported where appropriate by evidence such as Issues, Pull Requests, reviews, public endorsements or other contributions.
-
-Contributors may choose whether and how they are publicly profiled. See **`CONTRIBUTORS.md`** for contributor profiles and Participation Records.
-
-After v1.0, the repository will remain open for discussion and future development of the ideas, architecture and protocol.
+**Licence:** [Apache License 2.0](LICENSE)  
+**Source and discussion:** [github.com/fe-lixe/meaningful-participation](https://github.com/fe-lixe/meaningful-participation)
 
 ## Executive Summary
 
@@ -480,10 +453,6 @@ Questions worth exploring include:
 A useful starting prompt is:
 
 > Using the Meaningful Participation Reference Architecture (MPRA) and the Meaningful Participation Protocol (MPP), analyse my organisation, community or ecosystem. Identify the participants, ecosystem boundaries and forms of Meaningful Participation that contribute to long-term ecosystem health. Propose appropriate Participation Records, Credentials, Ecosystem Relationships, interoperability policies, Interpretation models, participation graphs and Incentive models. Recommend how these components should work together, identify opportunities to strengthen participant agency and ecosystem health, and describe a phased roadmap from internal deployment to wider ecosystem interoperability. Where appropriate, identify where interoperability with neighbouring ecosystems would create sufficient value to justify shared infrastructure.
-
-Follow-up prompt:
-
-> Imagine our organisation had fully adopted MPRA and MPP five years from now. Describe how participants, communities, partners and neighbouring ecosystems would experience the difference. Explain what new capabilities, behaviours, incentives, collaborations and business opportunities would become possible, and identify the strategic advantages this could create for our ecosystem.
 
 [^1]: [*The 2026 AI Index Report*](https://hai.stanford.edu/ai-index/2026-ai-index-report), Stanford University, accessed 4 August 2026.
 [^2]: [*The Dynamics of Costly Signaling*](https://www.mdpi.com/2073-4336/4/2/163), University of Amsterdam, 26 April 2013.

@@ -37,5 +37,10 @@
   },
   "privacy": {
     "recordVisibility": "public"
+  },
+  "integrity": {
+    "type": "DataIntegrityProof",
+    "verificationMethod": "https://journal.example.org/identifiers/editorial-system#key-1",
+    "proofValue": "z..."
   }
 }
