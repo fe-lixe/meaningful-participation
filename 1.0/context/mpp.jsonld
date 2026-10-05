@@ -1,0 +1,91 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@protected": true,
+    "mpp": "https://fe-lixe.github.io/meaningful-participation/terms#",
+    "ParticipationCredential": "mpp:ParticipationCredential",
+    "ParticipationRecord": "mpp:ParticipationRecord",
+    "participationRecord": {
+      "@id": "mpp:participationRecord",
+      "@type": "@id",
+      "@context": {
+        "@version": 1.1,
+        "@protected": true,
+        "mppVersion": "mpp:mppVersion",
+        "supersedes": {
+          "@id": "mpp:supersedes",
+          "@type": "@id"
+        },
+        "commitmentClasses": {
+          "@id": "mpp:commitmentClass",
+          "@type": "@vocab",
+          "@container": "@set",
+          "@context": {
+            "capital": "https://fe-lixe.github.io/meaningful-participation/1.0/vocabularies/commitment-classes.jsonld#capital",
+            "effort": "https://fe-lixe.github.io/meaningful-participation/1.0/vocabularies/commitment-classes.jsonld#effort",
+            "knowledge": "https://fe-lixe.github.io/meaningful-participation/1.0/vocabularies/commitment-classes.jsonld#knowledge",
+            "standing": "https://fe-lixe.github.io/meaningful-participation/1.0/vocabularies/commitment-classes.jsonld#standing"
+          }
+        },
+        "ecosystem": {
+          "@id": "mpp:ecosystem",
+          "@type": "@id"
+        },
+        "participants": {
+          "@id": "mpp:participant",
+          "@container": "@set"
+        },
+        "roles": {
+          "@id": "mpp:role",
+          "@type": "@vocab",
+          "@container": "@set",
+          "@context": {
+            "subject": "https://fe-lixe.github.io/meaningful-participation/1.0/vocabularies/participant-roles.jsonld#subject",
+            "asserter": "https://fe-lixe.github.io/meaningful-participation/1.0/vocabularies/participant-roles.jsonld#asserter",
+            "attestor": "https://fe-lixe.github.io/meaningful-participation/1.0/vocabularies/participant-roles.jsonld#attestor",
+            "verifier": "https://fe-lixe.github.io/meaningful-participation/1.0/vocabularies/participant-roles.jsonld#verifier"
+          }
+        },
+        "name": {
+          "@id": "https://schema.org/name",
+          "@container": "@language"
+        },
+        "participationType": {
+          "@id": "mpp:participationType",
+          "@type": "@id"
+        },
+        "participationDescription": {
+          "@id": "mpp:participationDescription",
+          "@container": "@language"
+        },
+        "meaningProfile": {
+          "@id": "mpp:meaningProfile",
+          "@type": "@id"
+        },
+        "version": "mpp:version",
+        "participationStart": "mpp:participationStart",
+        "participationEnd": "mpp:participationEnd",
+        "recordCreationTimestamp": "mpp:recordCreationTimestamp",
+        "evidence": {
+          "@id": "mpp:evidence",
+          "@type": "@id",
+          "@container": "@set"
+        },
+        "digest": "mpp:digest",
+        "algorithm": "mpp:digestAlgorithm",
+        "value": "mpp:digestValue",
+        "context": {
+          "@id": "mpp:context",
+          "@type": "@json"
+        },
+        "privacy": "mpp:privacy",
+        "recordVisibility": "mpp:recordVisibility",
+        "participantDisclosure": "mpp:participantDisclosure",
+        "extensions": {
+          "@id": "mpp:extensions",
+          "@type": "@json"
+        }
+      }
+    }
+  }
+}

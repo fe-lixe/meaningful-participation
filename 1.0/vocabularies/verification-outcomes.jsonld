@@ -1,0 +1,50 @@
+{
+  "@context": "https://schema.org/",
+  "@type": "DefinedTermSet",
+  "@id": "https://fe-lixe.github.io/meaningful-participation/1.0/vocabularies/verification-outcomes.jsonld",
+  "name": "MPP Verification Outcomes",
+  "description": "Core Verification outcomes defined by the Meaningful Participation Protocol. Each outcome applies only within the stated scope of the Verification. Additional outcomes may be identified by absolute URIs.",
+  "version": "1.0",
+  "hasDefinedTerm": [
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://fe-lixe.github.io/meaningful-participation/1.0/vocabularies/verification-outcomes.jsonld#verified",
+      "termCode": "verified",
+      "name": "Verified",
+      "description": "The verifier confirmed the assessed assertion or properties within the stated scope of the Verification.",
+      "inDefinedTermSet": "https://fe-lixe.github.io/meaningful-participation/1.0/vocabularies/verification-outcomes.jsonld"
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://fe-lixe.github.io/meaningful-participation/1.0/vocabularies/verification-outcomes.jsonld#partiallyVerified",
+      "termCode": "partiallyVerified",
+      "name": "Partially verified",
+      "description": "The verifier confirmed some, but not all, of the assessed assertion or properties within the stated scope of the Verification.",
+      "inDefinedTermSet": "https://fe-lixe.github.io/meaningful-participation/1.0/vocabularies/verification-outcomes.jsonld"
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://fe-lixe.github.io/meaningful-participation/1.0/vocabularies/verification-outcomes.jsonld#unverified",
+      "termCode": "unverified",
+      "name": "Unverified",
+      "description": "The verifier could not confirm the assessed assertion or properties within the stated scope of the Verification. This does not indicate that they are incorrect.",
+      "inDefinedTermSet": "https://fe-lixe.github.io/meaningful-participation/1.0/vocabularies/verification-outcomes.jsonld"
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://fe-lixe.github.io/meaningful-participation/1.0/vocabularies/verification-outcomes.jsonld#disputed",
+      "termCode": "disputed",
+      "name": "Disputed",
+      "description": "The verifier identified conflicting information or an unresolved challenge relating to the assessed assertion or properties.",
+      "inDefinedTermSet": "https://fe-lixe.github.io/meaningful-participation/1.0/vocabularies/verification-outcomes.jsonld"
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://fe-lixe.github.io/meaningful-participation/1.0/vocabularies/verification-outcomes.jsonld#rejected",
+      "termCode": "rejected",
+      "name": "Rejected",
+      "description": "The verifier concluded that the assessed assertion or properties are not supported within the stated scope of the Verification.",
+      "inDefinedTermSet": "https://fe-lixe.github.io/meaningful-participation/1.0/vocabularies/verification-outcomes.jsonld"
+    }
+  ]
+}

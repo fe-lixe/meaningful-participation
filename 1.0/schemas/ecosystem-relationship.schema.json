@@ -1,0 +1,396 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fe-lixe.github.io/meaningful-participation/1.0/schemas/ecosystem-relationship.schema.json",
+  "title": "MPP Ecosystem Relationship",
+  "description": "An Ecosystem Relationship conforming to Meaningful Participation Protocol version 1. Unknown properties are permitted so that Protocol Objects from later 1.x versions validate (SPECIFICATION.md section 28); Ecosystem-specific additions belong in extensions.",
+  "type": "object",
+  "required": [
+    "type",
+    "mppVersion",
+    "id",
+    "sourceEcosystem",
+    "relationshipType",
+    "targetEcosystem",
+    "assertedByParticipant",
+    "effectiveFrom",
+    "recordCreationTimestamp"
+  ],
+  "properties": {
+    "type": {
+      "const": "EcosystemRelationship"
+    },
+    "mppVersion": {
+      "type": "string",
+      "pattern": "^1\\.(0|[1-9][0-9]*)$",
+      "description": "The MPP version to which the Protocol Object conforms. Any 1.x version is accepted (SPECIFICATION.md section 28)."
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "A persistent, globally unique Ecosystem Relationship identifier."
+    },
+    "supersedes": {
+      "$ref": "#/$defs/identifier",
+      "description": "The identifier of the Ecosystem Relationship that this Ecosystem Relationship replaces. It does not itself change the Status of that Ecosystem Relationship."
+    },
+    "sourceEcosystem": {
+      "$ref": "#/$defs/ecosystemReference"
+    },
+    "relationshipType": {
+      "description": "A core Relationship Type (vocabularies/relationship-types.jsonld) or an Ecosystem-defined Relationship Type identified by an absolute URI.",
+      "anyOf": [
+        {
+          "$ref": "#/$defs/coreRelationshipType"
+        },
+        {
+          "type": "string",
+          "format": "uri"
+        }
+      ]
+    },
+    "targetEcosystem": {
+      "$ref": "#/$defs/ecosystemReference"
+    },
+    "assertedByParticipant": {
+      "$ref": "#/$defs/assertingParticipant"
+    },
+    "relationshipDescription": {
+      "$ref": "#/$defs/descriptionText",
+      "description": "An optional human-readable description of the relationship."
+    },
+    "relationshipScope": {
+      "$ref": "#/$defs/relationshipScope"
+    },
+    "effectiveFrom": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The time from which the Ecosystem Relationship is effective."
+    },
+    "expiresAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The time at which the Ecosystem Relationship expires, where applicable."
+    },
+    "recordCreationTimestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The time at which the Ecosystem Relationship was created."
+    },
+    "evidence": {
+      "type": "array",
+      "description": "References to Evidence objects supporting the relationship assertion.",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/evidenceReference"
+      }
+    },
+    "privacy": {
+      "$ref": "#/$defs/privacy"
+    },
+    "integrity": {
+      "type": "object",
+      "description": "Implementation-specific integrity proof or signature information.",
+      "minProperties": 1,
+      "additionalProperties": true
+    },
+    "extensions": {
+      "type": "object",
+      "description": "Namespaced extension properties.",
+      "propertyNames": {
+        "format": "uri"
+      },
+      "additionalProperties": true
+    }
+  },
+  "$defs": {
+    "nameText": {
+      "description": "An informative name: a string, or a language map whose keys are BCP 47 language tags and whose values represent the same text in each language. Each value is at most 200 characters (SPECIFICATION.md section 27).",
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        {
+          "type": "object",
+          "minProperties": 1,
+          "propertyNames": {
+            "type": "string",
+            "pattern": "^[A-Za-z]{2,3}(-[A-Za-z0-9]{1,8})*$"
+          },
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          }
+        }
+      ]
+    },
+    "descriptionText": {
+      "description": "A description: a string, or a language map whose keys are BCP 47 language tags and whose values represent the same text in each language. Each value is at most 2,000 characters (SPECIFICATION.md section 27).",
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        },
+        {
+          "type": "object",
+          "minProperties": 1,
+          "propertyNames": {
+            "type": "string",
+            "pattern": "^[A-Za-z]{2,3}(-[A-Za-z0-9]{1,8})*$"
+          },
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
+          }
+        }
+      ]
+    },
+    "ecosystemReference": {
+      "description": "A reference to an Ecosystem.",
+      "oneOf": [
+        {
+          "$ref": "#/$defs/identifier"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "$ref": "#/$defs/identifier"
+            },
+            "name": {
+              "$ref": "#/$defs/nameText",
+              "description": "An informative human-readable Ecosystem name."
+            }
+          }
+        }
+      ]
+    },
+    "assertingParticipant": {
+      "type": "object",
+      "required": [
+        "id",
+        "roles"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "name": {
+          "$ref": "#/$defs/nameText",
+          "description": "An optional informative name for the Participant."
+        },
+        "roles": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "contains": {
+            "const": "asserter"
+          },
+          "not": {
+            "contains": {
+              "const": "subject"
+            }
+          },
+          "items": {
+            "$ref": "#/$defs/participantRole"
+          },
+          "description": "The Participant Roles assigned to the asserting Participant. The roles MUST include asserter and MUST NOT include subject."
+        }
+      }
+    },
+    "participantRole": {
+      "description": "A core Participant Role (vocabularies/participant-roles.jsonld) or an Ecosystem-defined Role identified by an absolute URI.",
+      "anyOf": [
+        {
+          "$ref": "#/$defs/coreParticipantRole"
+        },
+        {
+          "type": "string",
+          "format": "uri"
+        }
+      ]
+    },
+    "coreParticipantRole": {
+      "type": "string",
+      "enum": [
+        "subject",
+        "asserter",
+        "attestor",
+        "verifier"
+      ]
+    },
+    "coreRelationshipType": {
+      "type": "string",
+      "enum": [
+        "constituentOf",
+        "governedBy",
+        "operatedBy",
+        "affiliatedWith",
+        "successorTo",
+        "delegatesAssertionAuthorityTo"
+      ]
+    },
+    "verificationOutcome": {
+      "description": "A core Verification outcome (vocabularies/verification-outcomes.jsonld) or an additional outcome identified by an absolute URI.",
+      "anyOf": [
+        {
+          "$ref": "#/$defs/coreVerificationOutcome"
+        },
+        {
+          "type": "string",
+          "format": "uri"
+        }
+      ]
+    },
+    "coreVerificationOutcome": {
+      "type": "string",
+      "enum": [
+        "verified",
+        "partiallyVerified",
+        "unverified",
+        "disputed",
+        "rejected"
+      ]
+    },
+    "relationshipScope": {
+      "type": "object",
+      "description": "Optional limitations, conditions or domains applying to the Ecosystem Relationship.",
+      "properties": {
+        "participationTypes": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/identifier"
+          }
+        },
+        "meaningProfiles": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/identifier"
+          }
+        },
+        "requiredVerificationMethods": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "requiredVerificationOutcomes": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/verificationOutcome"
+          }
+        },
+        "effectiveFrom": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "effectiveUntil": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "domains": {
+          "type": "array",
+          "description": "Activities, programmes, services or organisational domains to which the relationship applies.",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "extensions": {
+          "type": "object",
+          "propertyNames": {
+            "format": "uri"
+          },
+          "additionalProperties": true
+        }
+      }
+    },
+    "evidenceReference": {
+      "description": "A reference to an independently identifiable Evidence object.",
+      "oneOf": [
+        {
+          "$ref": "#/$defs/identifier"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "$ref": "#/$defs/identifier"
+            },
+            "digest": {
+              "$ref": "#/$defs/digest"
+            }
+          }
+        }
+      ]
+    },
+    "identifier": {
+      "type": "string",
+      "minLength": 1,
+      "description": "A persistent identifier. The applicable identifier system is implementation-specific."
+    },
+    "digest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "algorithm",
+        "value"
+      ],
+      "properties": {
+        "algorithm": {
+          "type": "string",
+          "minLength": 1
+        },
+        "value": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "privacy": {
+      "type": "object",
+      "properties": {
+        "recordVisibility": {
+          "type": "string",
+          "enum": [
+            "public",
+            "restricted",
+            "private"
+          ]
+        },
+        "participantDisclosure": {
+          "type": "string",
+          "enum": [
+            "identified",
+            "pseudonymous",
+            "selective"
+          ]
+        }
+      }
+    }
+  }
+}

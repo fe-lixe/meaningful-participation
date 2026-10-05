@@ -1,0 +1,416 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fe-lixe.github.io/meaningful-participation/1.0/schemas/participation-record.schema.json",
+  "title": "MPP Participation Record",
+  "description": "A Participation Record conforming to Meaningful Participation Protocol version 1. Unknown properties are permitted so that Protocol Objects from later 1.x versions validate (SPECIFICATION.md section 28); Ecosystem-specific additions belong in extensions.",
+  "type": "object",
+  "required": [
+    "type",
+    "mppVersion",
+    "id",
+    "commitmentClasses",
+    "ecosystem",
+    "participants",
+    "participationType",
+    "participationDescription",
+    "meaningProfile",
+    "participationEnd",
+    "recordCreationTimestamp"
+  ],
+  "properties": {
+    "type": {
+      "const": "ParticipationRecord"
+    },
+    "mppVersion": {
+      "type": "string",
+      "pattern": "^1\\.(0|[1-9][0-9]*)$",
+      "description": "The MPP version to which the Protocol Object conforms. Any 1.x version is accepted (SPECIFICATION.md section 28)."
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "A persistent, globally unique Participation Record identifier."
+    },
+    "supersedes": {
+      "$ref": "#/$defs/identifier",
+      "description": "The identifier of the Participation Record that this Participation Record replaces. It does not itself change the Status of that Participation Record."
+    },
+    "commitmentClasses": {
+      "type": "array",
+      "description": "The Commitment Classes assigned to the Participation Record (vocabularies/commitment-classes.jsonld). This vocabulary is closed.",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "capital",
+          "effort",
+          "knowledge",
+          "standing"
+        ]
+      }
+    },
+    "ecosystem": {
+      "$ref": "#/$defs/ecosystemReference"
+    },
+    "participants": {
+      "type": "array",
+      "description": "Participants associated with the Participation or Participation Record.",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/participant"
+      },
+      "allOf": [
+        {
+          "description": "Exactly one Participant has the asserter Role.",
+          "contains": {
+            "$ref": "#/$defs/hasAsserterRole"
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "description": "At least one Participant has the subject Role.",
+          "contains": {
+            "$ref": "#/$defs/hasSubjectRole"
+          },
+          "minContains": 1
+        }
+      ]
+    },
+    "participationType": {
+      "$ref": "#/$defs/participationTypeReference"
+    },
+    "participationDescription": {
+      "$ref": "#/$defs/descriptionText",
+      "description": "A description of the specific instance of Participation."
+    },
+    "meaningProfile": {
+      "$ref": "#/$defs/meaningProfileReference"
+    },
+    "participationStart": {
+      "$ref": "#/$defs/participationTime",
+      "description": "The time at which the Participation began, where it took place over a period of time."
+    },
+    "participationEnd": {
+      "$ref": "#/$defs/participationTime",
+      "description": "The time at which the Participation was completed or, for Participation at a single point in time, occurred."
+    },
+    "recordCreationTimestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The time at which the Participation Record was created."
+    },
+    "evidence": {
+      "type": "array",
+      "description": "References to Evidence objects associated with the assertion at issuance.",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/evidenceReference"
+      }
+    },
+    "context": {
+      "type": "object",
+      "description": "Optional Ecosystem-specific contextual properties.",
+      "additionalProperties": true
+    },
+    "privacy": {
+      "$ref": "#/$defs/privacy"
+    },
+    "integrity": {
+      "type": "object",
+      "description": "Implementation-specific integrity proof or signature information.",
+      "minProperties": 1,
+      "additionalProperties": true
+    },
+    "extensions": {
+      "type": "object",
+      "description": "Namespaced extension properties.",
+      "propertyNames": {
+        "format": "uri"
+      },
+      "additionalProperties": true
+    }
+  },
+  "$defs": {
+    "nameText": {
+      "description": "An informative name: a string, or a language map whose keys are BCP 47 language tags and whose values represent the same text in each language. Each value is at most 200 characters (SPECIFICATION.md section 27).",
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        {
+          "type": "object",
+          "minProperties": 1,
+          "propertyNames": {
+            "type": "string",
+            "pattern": "^[A-Za-z]{2,3}(-[A-Za-z0-9]{1,8})*$"
+          },
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          }
+        }
+      ]
+    },
+    "descriptionText": {
+      "description": "A description: a string, or a language map whose keys are BCP 47 language tags and whose values represent the same text in each language. Each value is at most 2,000 characters (SPECIFICATION.md section 27).",
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        },
+        {
+          "type": "object",
+          "minProperties": 1,
+          "propertyNames": {
+            "type": "string",
+            "pattern": "^[A-Za-z]{2,3}(-[A-Za-z0-9]{1,8})*$"
+          },
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
+          }
+        }
+      ]
+    },
+    "participationTime": {
+      "description": "An RFC 3339 date-time with a UTC offset, or an RFC 3339 full-date indicating an unspecified time on that calendar date.",
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "date-time"
+        },
+        {
+          "type": "string",
+          "format": "date"
+        }
+      ]
+    },
+    "participant": {
+      "type": "object",
+      "required": [
+        "id",
+        "roles"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "description": "An identifier for the Participant."
+        },
+        "name": {
+          "$ref": "#/$defs/nameText",
+          "description": "An optional informative name for the Participant."
+        },
+        "roles": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "description": "The Participant Roles assigned to this Participant.",
+          "items": {
+            "$ref": "#/$defs/participantRole"
+          }
+        }
+      }
+    },
+    "participantRole": {
+      "description": "A core Participant Role (vocabularies/participant-roles.jsonld) or an Ecosystem-defined Role identified by an absolute URI.",
+      "anyOf": [
+        {
+          "$ref": "#/$defs/coreParticipantRole"
+        },
+        {
+          "type": "string",
+          "format": "uri"
+        }
+      ]
+    },
+    "coreParticipantRole": {
+      "type": "string",
+      "enum": [
+        "subject",
+        "asserter",
+        "attestor",
+        "verifier"
+      ]
+    },
+    "hasAsserterRole": {
+      "type": "object",
+      "required": [
+        "roles"
+      ],
+      "properties": {
+        "roles": {
+          "type": "array",
+          "contains": {
+            "const": "asserter"
+          }
+        }
+      }
+    },
+    "hasSubjectRole": {
+      "type": "object",
+      "required": [
+        "roles"
+      ],
+      "properties": {
+        "roles": {
+          "type": "array",
+          "contains": {
+            "const": "subject"
+          }
+        }
+      }
+    },
+    "ecosystemReference": {
+      "description": "A reference to the originating Ecosystem.",
+      "oneOf": [
+        {
+          "$ref": "#/$defs/identifier"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "$ref": "#/$defs/identifier"
+            },
+            "name": {
+              "$ref": "#/$defs/nameText",
+              "description": "An informative human-readable Ecosystem name."
+            }
+          }
+        }
+      ]
+    },
+    "participationTypeReference": {
+      "description": "A reference to an Ecosystem-defined Participation Type.",
+      "oneOf": [
+        {
+          "$ref": "#/$defs/identifier"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "$ref": "#/$defs/identifier"
+            },
+            "name": {
+              "$ref": "#/$defs/nameText",
+              "description": "An informative human-readable Participation Type name."
+            }
+          }
+        }
+      ]
+    },
+    "meaningProfileReference": {
+      "description": "A reference to the Meaning Profile applied to the Participation Record.",
+      "oneOf": [
+        {
+          "$ref": "#/$defs/identifier"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "$ref": "#/$defs/identifier"
+            },
+            "version": {
+              "type": "string",
+              "minLength": 1,
+              "description": "An informative Meaning Profile version."
+            },
+            "digest": {
+              "$ref": "#/$defs/digest"
+            }
+          }
+        }
+      ]
+    },
+    "evidenceReference": {
+      "description": "A reference to an independently identifiable Evidence object.",
+      "oneOf": [
+        {
+          "$ref": "#/$defs/identifier"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "$ref": "#/$defs/identifier"
+            },
+            "digest": {
+              "$ref": "#/$defs/digest"
+            }
+          }
+        }
+      ]
+    },
+    "identifier": {
+      "type": "string",
+      "minLength": 1,
+      "description": "A persistent identifier. The applicable identifier system is implementation-specific."
+    },
+    "digest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "algorithm",
+        "value"
+      ],
+      "properties": {
+        "algorithm": {
+          "type": "string",
+          "minLength": 1
+        },
+        "value": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "privacy": {
+      "type": "object",
+      "properties": {
+        "recordVisibility": {
+          "type": "string",
+          "enum": [
+            "public",
+            "restricted",
+            "private"
+          ]
+        },
+        "participantDisclosure": {
+          "type": "string",
+          "enum": [
+            "identified",
+            "pseudonymous",
+            "selective"
+          ]
+        }
+      }
+    }
+  }
+}

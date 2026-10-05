@@ -1,0 +1,42 @@
+{
+  "@context": "https://schema.org/",
+  "@type": "DefinedTermSet",
+  "@id": "https://fe-lixe.github.io/meaningful-participation/1.0/vocabularies/commitment-classes.jsonld",
+  "name": "MPP Commitment Classes",
+  "description": "The four Commitment Classes defined by the Meaningful Participation Protocol. This vocabulary is closed: Ecosystems may not define additional Commitment Classes.",
+  "version": "1.0",
+  "hasDefinedTerm": [
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://fe-lixe.github.io/meaningful-participation/1.0/vocabularies/commitment-classes.jsonld#capital",
+      "termCode": "capital",
+      "name": "Capital",
+      "description": "A scarce resource committed through Participation that is transferred, reserved, consumed or otherwise made available in support of an Ecosystem.",
+      "inDefinedTermSet": "https://fe-lixe.github.io/meaningful-participation/1.0/vocabularies/commitment-classes.jsonld"
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://fe-lixe.github.io/meaningful-participation/1.0/vocabularies/commitment-classes.jsonld#effort",
+      "termCode": "effort",
+      "name": "Effort",
+      "description": "The application of human capacity through Participation.",
+      "inDefinedTermSet": "https://fe-lixe.github.io/meaningful-participation/1.0/vocabularies/commitment-classes.jsonld"
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://fe-lixe.github.io/meaningful-participation/1.0/vocabularies/commitment-classes.jsonld#knowledge",
+      "termCode": "knowledge",
+      "name": "Knowledge",
+      "description": "Information, understanding, expertise, judgement, insight or know-how contributed through Participation.",
+      "inDefinedTermSet": "https://fe-lixe.github.io/meaningful-participation/1.0/vocabularies/commitment-classes.jsonld"
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://fe-lixe.github.io/meaningful-participation/1.0/vocabularies/commitment-classes.jsonld#standing",
+      "termCode": "standing",
+      "name": "Standing",
+      "description": "The commitment of a Participant's recognised position, authority, accountability or reputation through Participation.",
+      "inDefinedTermSet": "https://fe-lixe.github.io/meaningful-participation/1.0/vocabularies/commitment-classes.jsonld"
+    }
+  ]
+}
