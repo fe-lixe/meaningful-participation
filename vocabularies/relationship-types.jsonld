@@ -1,0 +1,58 @@
+{
+  "@context": "https://schema.org/",
+  "@type": "DefinedTermSet",
+  "@id": "https://raw.githubusercontent.com/fe-lixe/meaningful-participation/main/vocabularies/relationship-types.jsonld",
+  "name": "MPP Relationship Types",
+  "description": "Core Relationship Types defined by the Meaningful Participation Protocol, read as source Ecosystem, Relationship Type, target Ecosystem. Ecosystems may define additional Relationship Types, identified by absolute URIs.",
+  "version": "0.1",
+  "hasDefinedTerm": [
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://raw.githubusercontent.com/fe-lixe/meaningful-participation/main/vocabularies/relationship-types.jsonld#constituentOf",
+      "termCode": "constituentOf",
+      "name": "Constituent of",
+      "description": "The source Ecosystem is a recognised constituent of the target Ecosystem while retaining its own identity.",
+      "inDefinedTermSet": "https://raw.githubusercontent.com/fe-lixe/meaningful-participation/main/vocabularies/relationship-types.jsonld"
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://raw.githubusercontent.com/fe-lixe/meaningful-participation/main/vocabularies/relationship-types.jsonld#governedBy",
+      "termCode": "governedBy",
+      "name": "Governed by",
+      "description": "The source Ecosystem is governed by the target Ecosystem.",
+      "inDefinedTermSet": "https://raw.githubusercontent.com/fe-lixe/meaningful-participation/main/vocabularies/relationship-types.jsonld"
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://raw.githubusercontent.com/fe-lixe/meaningful-participation/main/vocabularies/relationship-types.jsonld#operatedBy",
+      "termCode": "operatedBy",
+      "name": "Operated by",
+      "description": "The source Ecosystem is technically or administratively operated by the target Ecosystem.",
+      "inDefinedTermSet": "https://raw.githubusercontent.com/fe-lixe/meaningful-participation/main/vocabularies/relationship-types.jsonld"
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://raw.githubusercontent.com/fe-lixe/meaningful-participation/main/vocabularies/relationship-types.jsonld#affiliatedWith",
+      "termCode": "affiliatedWith",
+      "name": "Affiliated with",
+      "description": "The source Ecosystem maintains a recognised association with the target Ecosystem.",
+      "inDefinedTermSet": "https://raw.githubusercontent.com/fe-lixe/meaningful-participation/main/vocabularies/relationship-types.jsonld"
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://raw.githubusercontent.com/fe-lixe/meaningful-participation/main/vocabularies/relationship-types.jsonld#successorTo",
+      "termCode": "successorTo",
+      "name": "Successor to",
+      "description": "The source Ecosystem succeeds the target Ecosystem in whole or in part.",
+      "inDefinedTermSet": "https://raw.githubusercontent.com/fe-lixe/meaningful-participation/main/vocabularies/relationship-types.jsonld"
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://raw.githubusercontent.com/fe-lixe/meaningful-participation/main/vocabularies/relationship-types.jsonld#delegatesAssertionAuthorityTo",
+      "termCode": "delegatesAssertionAuthorityTo",
+      "name": "Delegates assertion authority to",
+      "description": "The source Ecosystem authorises the target Ecosystem to issue specified Participation Records or make specified assertions of Meaningful Participation on its behalf.",
+      "inDefinedTermSet": "https://raw.githubusercontent.com/fe-lixe/meaningful-participation/main/vocabularies/relationship-types.jsonld"
+    }
+  ]
+}

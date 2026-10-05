@@ -76,6 +76,10 @@ Participation Records and explicit relationships between Ecosystems.
 
 - Core Relationship Types;
 
+- Participant Roles;
+
+- Vocabularies;
+
 - Relationship Scope;
 
 - Identifiers;
@@ -494,6 +498,10 @@ A Participation Record MAY include:
   identifying the Participant responsible for the assertion represented
   by the Participation Record.
 
+- One or more Participants MUST be assigned the **subject** Role,
+  identifying the Participant or Participants whose Participation is
+  recognised by the Participation Record.
+
 - A Participation Record MUST include one or more Commitment Classes. An
   Ecosystem MUST assign only those Commitment Classes that apply to the
   Participation represented by the record.
@@ -599,7 +607,8 @@ A Participation Record MUST identify one or more Commitment Classes
 describing the finite commitments materially represented by the
 Participation.
 
-MPP defines four Commitment Classes:
+MPP defines four Commitment Classes, published in the
+[Commitment Classes vocabulary](vocabularies/commitment-classes.jsonld):
 
 1.  Capital
 
@@ -796,6 +805,9 @@ recognition of the Participation.
 - Implementations MUST use the four defined Commitment Class identifiers
   where they apply.
 
+- The Commitment Classes vocabulary is closed. Ecosystems MUST NOT
+  define additional Commitment Classes.
+
 - Ecosystems MAY define additional commitment-related properties using
   extensions.
 
@@ -952,11 +964,12 @@ An Ecosystem Relationship MAY include:
 
 ### Core Relationship Types
 
-MPP defines the following core Relationship Types.
+MPP defines the following core Relationship Types, published in the
+[Relationship Types vocabulary](vocabularies/relationship-types.jsonld).
 
-Ecosystems MAY define additional Relationship Types through extensions.
-Ecosystem-defined Relationship Types MUST NOT redefine the meaning of
-the core Relationship Types.
+Ecosystems MAY define additional Relationship Types. Ecosystem-defined
+Relationship Types MUST be identified in accordance with section 24 and
+MUST NOT redefine the meaning of the core Relationship Types.
 
 #### constituentOf
 
@@ -1167,7 +1180,11 @@ Each Participant identified within a Participation Record, Ecosystem
 Relationship or supporting Protocol Object MUST be assigned one or more
 Participant Roles.
 
-MPP defines the following Participant Roles:
+MPP defines the following core Participant Roles, published in the
+[Participant Roles vocabulary](vocabularies/participant-roles.jsonld):
+
+- **subject**: the Participant whose Participation is recognised by a
+  Participation Record;
 
 - **asserter**: the Participant responsible for the assertion
   represented by a Participation Record or Ecosystem Relationship;
@@ -1183,10 +1200,22 @@ MPP defines the following Participant Roles:
 
 - A Participant MAY be assigned multiple Roles.
 
-- Ecosystems MAY define additional Roles.
+- The subject Role applies only to Participation Records. An Ecosystem
+  Relationship MUST NOT assign the subject Role.
+
+- A Participant MAY be assigned both the subject and asserter Roles,
+  representing a self-asserted Participation Record. Receiving
+  Ecosystems remain free to interpret self-asserted Participation
+  Records differently from other Participation Records.
+
+- Ecosystems MAY define additional Roles. Ecosystem-defined Roles MUST
+  be identified in accordance with section 24.
 
 - Ecosystem-defined Roles MUST NOT replace or alter the meaning of Roles
   defined by MPP.
+
+- Where a core Role applies, it MUST be assigned using its core term,
+  even where an Ecosystem-defined Role is also assigned.
 
 ## 10. Participation Type
 
@@ -1398,17 +1427,30 @@ A Verification SHOULD include the following properties:
 
 ### Verification Outcomes
 
-MPP defines the following recommended Verification outcomes:
+MPP defines the following core Verification outcomes, published in the
+[Verification Outcomes vocabulary](vocabularies/verification-outcomes.jsonld):
 
-- verified
+- **verified**: the verifier confirmed the assessed assertion or
+  properties within the stated scope of the Verification;
 
-- partiallyVerified
+- **partiallyVerified**: the verifier confirmed some, but not all, of
+  the assessed assertion or properties within the stated scope of the
+  Verification;
 
-- unverified
+- **unverified**: the verifier could not confirm the assessed assertion
+  or properties within the stated scope of the Verification. This does
+  not indicate that they are incorrect;
 
-- disputed
+- **disputed**: the verifier identified conflicting information or an
+  unresolved challenge relating to the assessed assertion or
+  properties; and
 
-- rejected
+- **rejected**: the verifier concluded that the assessed assertion or
+  properties are not supported within the stated scope of the
+  Verification.
+
+Where a core Verification outcome applies, it MUST be used. Additional
+Verification outcomes MUST be identified in accordance with section 24.
 
 ### Behavioural Requirements
 
@@ -1429,17 +1471,29 @@ Relationship MUST be represented through Status Statements.
 
 ### Status Values
 
-MPP defines the following recommended Status Values:
+MPP defines the following core Status Values, published in the
+[Status Values vocabulary](vocabularies/status-values.jsonld):
 
-- active
+- **active**: the Protocol Object is in effect and may be relied upon
+  under the conditions stated by its issuer;
 
-- suspended
+- **suspended**: the Protocol Object should temporarily not be relied
+  upon. A suspended Protocol Object may later return to active;
 
-- revoked
+- **revoked**: the Protocol Object should no longer be relied upon under
+  the conditions stated by the issuing entity;
 
-- superseded
+- **superseded**: the Protocol Object has been replaced by another
+  Protocol Object, which the Status Statement SHOULD identify; and
 
-- disputed
+- **disputed**: the Protocol Object is subject to an unresolved
+  challenge.
+
+A disputed Status records a lifecycle state of the Protocol Object,
+whereas a disputed Verification outcome records a verifier's finding.
+
+Where a core Status Value applies, it MUST be used. Additional Status
+Values MUST be identified in accordance with section 24.
 
 ### Recommended Properties
 
@@ -1605,8 +1659,11 @@ A conformant MPP implementation MUST:
 - represent corrections through new immutable Protocol Objects and
   lifecycle changes through Status Statements;
 
-- preserve the semantic distinction between the asserter, attestor and
-  verifier Roles;
+- preserve the semantic distinction between the subject, asserter,
+  attestor and verifier Roles;
+
+- use core vocabulary terms where they apply, and identify
+  Ecosystem-defined terms in accordance with section 24;
 
 - reference a Meaning Profile for each Participation Record;
 
@@ -1696,7 +1753,8 @@ MPP.
     {
       "id": "https://orcid.org/0000-0002-1825-0097",
       "roles": [
-        "reviewer"
+        "subject",
+        "https://journal.example.org/mpp/roles/reviewer"
       ]
     },
     {
@@ -1760,7 +1818,7 @@ conforming to MPP.
     {
       "id": "participant-123",
       "roles": [
-        "participant"
+        "subject"
       ]
     },
     {
@@ -1826,6 +1884,10 @@ The schema enforces the following requirements:
   creation timestamp is an RFC 3339 date-time;
 
 - exactly one Participant has the asserter Role;
+
+- at least one Participant has the subject Role;
+
+- each Role is either a core Participant Role or an absolute URI;
 
 - Ecosystem, Participation Type, Meaning Profile and Evidence references
   may use either a compact identifier or a constrained reference object;
@@ -1894,10 +1956,14 @@ The Ecosystem Relationship schema enforces the following requirements:
 - every Ecosystem Relationship identifies a source Ecosystem and target
   Ecosystem;
 
-- every Ecosystem Relationship contains one Relationship Type;
+- every Ecosystem Relationship contains one Relationship Type, which is
+  either a core Relationship Type or an absolute URI;
 
 - every Ecosystem Relationship identifies exactly one Participant whose
-  Roles include the asserter Role;
+  Roles include the asserter Role and do not include the subject Role;
+
+- each Role and each required Verification outcome is either a core
+  vocabulary term or an absolute URI;
 
 - Relationship Scope, Evidence, privacy, integrity and extension
   properties are optional;
@@ -1947,3 +2013,77 @@ The schema does not validate whether:
 These requirements depend upon object resolution, cryptographic
 verification or Ecosystem-specific evaluation beyond structural JSON
 Schema validation.
+
+## 24. Vocabularies
+
+### Purpose
+
+MPP defines five controlled vocabularies. Each is published as a
+machine-readable [schema.org](https://schema.org/)
+[`DefinedTermSet`](https://schema.org/DefinedTermSet) in JSON-LD, in
+which every core term is a
+[`DefinedTerm`](https://schema.org/DefinedTerm) with a persistent
+identifier, a term code, a name and a description.
+
+| Vocabulary | File | Extensible |
+| --- | --- | --- |
+| Participant Roles | [`participant-roles.jsonld`](vocabularies/participant-roles.jsonld) | Yes |
+| Commitment Classes | [`commitment-classes.jsonld`](vocabularies/commitment-classes.jsonld) | No |
+| Relationship Types | [`relationship-types.jsonld`](vocabularies/relationship-types.jsonld) | Yes |
+| Verification Outcomes | [`verification-outcomes.jsonld`](vocabularies/verification-outcomes.jsonld) | Yes |
+| Status Values | [`status-values.jsonld`](vocabularies/status-values.jsonld) | Yes |
+
+### Representation in Protocol Objects
+
+Protocol Objects represent a core term by its term code, for example
+`"asserter"` or `"effort"`. They do not embed `DefinedTerm` objects.
+
+The persistent identifier of a core term is the identifier of its
+`DefinedTermSet` followed by `#` and the term code.
+
+### Behavioural Requirements
+
+- A core term MUST be represented by its term code exactly as published,
+  including case.
+
+- Where a core term applies, it MUST be used in preference to an
+  Ecosystem-defined term.
+
+- An Ecosystem-defined term in an extensible vocabulary MUST be
+  identified by an absolute URI under the control of the defining
+  Ecosystem. It SHOULD resolve to a human-readable or machine-readable
+  definition, which MAY itself be published as a `DefinedTerm`.
+
+- An Ecosystem-defined term MUST NOT reuse a core term code and MUST NOT
+  redefine the meaning of a core term.
+
+- Ecosystems MUST NOT define additional terms in a vocabulary that is not
+  extensible.
+
+- Where a vocabulary file and this specification differ, this
+  specification takes precedence.
+
+### Example
+
+The following Participants combine core Roles with an Ecosystem-defined
+Role.
+
+```json
+{
+  "participants": [
+    {
+      "id": "https://orcid.org/0000-0002-1825-0097",
+      "roles": [
+        "subject",
+        "https://journal.example.org/mpp/roles/reviewer"
+      ]
+    },
+    {
+      "id": "https://journal.example.org/identifiers/editorial-system",
+      "roles": [
+        "asserter"
+      ]
+    }
+  ]
+}
+```

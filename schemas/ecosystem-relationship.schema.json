@@ -33,9 +33,16 @@
       "$ref": "#/$defs/ecosystemReference"
     },
     "relationshipType": {
-      "type": "string",
-      "minLength": 1,
-      "description": "The core or Ecosystem-defined Relationship Type."
+      "description": "A core Relationship Type (vocabularies/relationship-types.jsonld) or an Ecosystem-defined Relationship Type identified by an absolute URI.",
+      "anyOf": [
+        {
+          "$ref": "#/$defs/coreRelationshipType"
+        },
+        {
+          "type": "string",
+          "format": "uri"
+        }
+      ]
     },
     "targetEcosystem": {
       "$ref": "#/$defs/ecosystemReference"
@@ -142,13 +149,71 @@
           "contains": {
             "const": "asserter"
           },
-          "items": {
-            "type": "string",
-            "minLength": 1
+          "not": {
+            "contains": {
+              "const": "subject"
+            }
           },
-          "description": "The Participant Roles assigned to the asserting Participant. The roles MUST include asserter."
+          "items": {
+            "$ref": "#/$defs/participantRole"
+          },
+          "description": "The Participant Roles assigned to the asserting Participant. The roles MUST include asserter and MUST NOT include subject."
         }
       }
+    },
+    "participantRole": {
+      "description": "A core Participant Role (vocabularies/participant-roles.jsonld) or an Ecosystem-defined Role identified by an absolute URI.",
+      "anyOf": [
+        {
+          "$ref": "#/$defs/coreParticipantRole"
+        },
+        {
+          "type": "string",
+          "format": "uri"
+        }
+      ]
+    },
+    "coreParticipantRole": {
+      "type": "string",
+      "enum": [
+        "subject",
+        "asserter",
+        "attestor",
+        "verifier"
+      ]
+    },
+    "coreRelationshipType": {
+      "type": "string",
+      "enum": [
+        "constituentOf",
+        "governedBy",
+        "operatedBy",
+        "affiliatedWith",
+        "successorTo",
+        "delegatesAssertionAuthorityTo"
+      ]
+    },
+    "verificationOutcome": {
+      "description": "A core Verification outcome (vocabularies/verification-outcomes.jsonld) or an additional outcome identified by an absolute URI.",
+      "anyOf": [
+        {
+          "$ref": "#/$defs/coreVerificationOutcome"
+        },
+        {
+          "type": "string",
+          "format": "uri"
+        }
+      ]
+    },
+    "coreVerificationOutcome": {
+      "type": "string",
+      "enum": [
+        "verified",
+        "partiallyVerified",
+        "unverified",
+        "disputed",
+        "rejected"
+      ]
     },
     "relationshipScope": {
       "type": "object",
@@ -185,14 +250,7 @@
           "minItems": 1,
           "uniqueItems": true,
           "items": {
-            "type": "string",
-            "enum": [
-              "verified",
-              "partiallyVerified",
-              "unverified",
-              "disputed",
-              "rejected"
-            ]
+            "$ref": "#/$defs/verificationOutcome"
           }
         },
         "effectiveFrom": {

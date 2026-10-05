@@ -1,0 +1,50 @@
+{
+  "@context": "https://schema.org/",
+  "@type": "DefinedTermSet",
+  "@id": "https://raw.githubusercontent.com/fe-lixe/meaningful-participation/main/vocabularies/status-values.jsonld",
+  "name": "MPP Status Values",
+  "description": "Core lifecycle Status values defined by the Meaningful Participation Protocol, represented through Status Statements. Additional Status values may be identified by absolute URIs.",
+  "version": "0.1",
+  "hasDefinedTerm": [
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://raw.githubusercontent.com/fe-lixe/meaningful-participation/main/vocabularies/status-values.jsonld#active",
+      "termCode": "active",
+      "name": "Active",
+      "description": "The Protocol Object is in effect and may be relied upon under the conditions stated by its issuer.",
+      "inDefinedTermSet": "https://raw.githubusercontent.com/fe-lixe/meaningful-participation/main/vocabularies/status-values.jsonld"
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://raw.githubusercontent.com/fe-lixe/meaningful-participation/main/vocabularies/status-values.jsonld#suspended",
+      "termCode": "suspended",
+      "name": "Suspended",
+      "description": "The Protocol Object should temporarily not be relied upon. A suspended Protocol Object may later return to active.",
+      "inDefinedTermSet": "https://raw.githubusercontent.com/fe-lixe/meaningful-participation/main/vocabularies/status-values.jsonld"
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://raw.githubusercontent.com/fe-lixe/meaningful-participation/main/vocabularies/status-values.jsonld#revoked",
+      "termCode": "revoked",
+      "name": "Revoked",
+      "description": "The Protocol Object should no longer be relied upon under the conditions stated by the issuing entity. Revocation does not erase the Protocol Object or deny that it existed.",
+      "inDefinedTermSet": "https://raw.githubusercontent.com/fe-lixe/meaningful-participation/main/vocabularies/status-values.jsonld"
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://raw.githubusercontent.com/fe-lixe/meaningful-participation/main/vocabularies/status-values.jsonld#superseded",
+      "termCode": "superseded",
+      "name": "Superseded",
+      "description": "The Protocol Object has been replaced by another Protocol Object, which the Status Statement should identify.",
+      "inDefinedTermSet": "https://raw.githubusercontent.com/fe-lixe/meaningful-participation/main/vocabularies/status-values.jsonld"
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://raw.githubusercontent.com/fe-lixe/meaningful-participation/main/vocabularies/status-values.jsonld#disputed",
+      "termCode": "disputed",
+      "name": "Disputed",
+      "description": "The Protocol Object is subject to an unresolved challenge. A disputed Status records a lifecycle state, whereas a disputed Verification outcome records a verifier's finding.",
+      "inDefinedTermSet": "https://raw.githubusercontent.com/fe-lixe/meaningful-participation/main/vocabularies/status-values.jsonld"
+    }
+  ]
+}
