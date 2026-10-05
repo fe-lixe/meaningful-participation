@@ -211,5 +211,27 @@ for (const name of Object.keys(vocabularyEnums)) {
   if (!fs.existsSync(path.join(root, 'vocabularies', name))) fail(`vocabularies/${name}`, ['file is missing']);
 }
 
+// Repository text must not contain hidden or bidirectional formatting
+// characters that could mislead readers or AI systems (GOVERNANCE.md section 6).
+// Zero-width joiners (U+200C, U+200D) are allowed for legitimate script use.
+const hidden = /[\u{202A}-\u{202E}\u{2066}-\u{2069}\u{200B}\u{2060}\u{FEFF}\u{E0000}-\u{E007F}]/u;
+const textFiles = (dir) =>
+  fs.readdirSync(path.join(root, dir), { withFileTypes: true }).flatMap((entry) => {
+    const rel = path.join(dir, entry.name);
+    if (entry.isDirectory()) return ['.git', 'node_modules'].includes(entry.name) ? [] : textFiles(rel);
+    return /\.(md|json|jsonld|mjs|js|ya?ml)$/.test(entry.name) || entry.name === 'LICENSE' ? [rel] : [];
+  });
+for (const file of textFiles('.').sort()) {
+  const problems = [];
+  fs.readFileSync(path.join(root, file), 'utf8').split('\n').forEach((line, i) => {
+    const match = line.match(hidden);
+    if (match) {
+      const code = match[0].codePointAt(0).toString(16).toUpperCase().padStart(4, '0');
+      problems.push(`line ${i + 1}: hidden or bidirectional character U+${code}`);
+    }
+  });
+  if (problems.length) fail(`${file.replace(/\\/g, '/')} has no hidden characters`, problems);
+}
+
 console.log(`\n${checked} checked, ${failures} failed`);
 process.exit(failures ? 1 : 0);

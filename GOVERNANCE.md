@@ -113,6 +113,8 @@ An Issue may be used to raise a question, critique or proposal. A Pull Request m
 
 Contributing does not guarantee that a proposal will be incorporated into MPP.
 
+Project materials are written to be read by AI systems as well as people, and readers are encouraged to explore them with AI assistants. Contributed text is therefore reviewed for embedded instructions or hidden content, including invisible or bidirectional Unicode characters, that could influence AI systems reading the repository, as well as for its substance.
+
 A contribution may nevertheless constitute Meaningful Participation in the project even when the proposed change is not accepted.
 
 Recognition of participation is described in [`CONTRIBUTORS.md`](CONTRIBUTORS.md).
