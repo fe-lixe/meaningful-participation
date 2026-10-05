@@ -32,7 +32,7 @@
     "id": "https://u.media/mpp/meaning-profiles/touchpoint-support/v1",
     "version": "1.0"
   },
-  "participationTimestamp": "2026-08-08T09:41:00Z",
+  "participationEnd": "2026-08-08T09:41:00Z",
   "recordCreationTimestamp": "2026-08-08T09:41:06Z",
   "evidence": [
     "urn:uuid:1a7d5e93-08bc-4f21-9d64-3e5c8b0af217"

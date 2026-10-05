@@ -15,7 +15,7 @@
     "participationType",
     "participationDescription",
     "meaningProfile",
-    "participationTimestamp",
+    "participationEnd",
     "recordCreationTimestamp"
   ],
   "properties": {
@@ -84,10 +84,13 @@
     "meaningProfile": {
       "$ref": "#/$defs/meaningProfileReference"
     },
-    "participationTimestamp": {
-      "type": "string",
-      "format": "date-time",
-      "description": "The time at which the Participation occurred."
+    "participationStart": {
+      "$ref": "#/$defs/participationTime",
+      "description": "The time at which the Participation began, where it took place over a period of time."
+    },
+    "participationEnd": {
+      "$ref": "#/$defs/participationTime",
+      "description": "The time at which the Participation was completed or, for Participation at a single point in time, occurred."
     },
     "recordCreationTimestamp": {
       "type": "string",
@@ -127,6 +130,19 @@
     }
   },
   "$defs": {
+    "participationTime": {
+      "description": "An RFC 3339 date-time with a UTC offset, or an RFC 3339 full-date indicating an unspecified time on that calendar date.",
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "date-time"
+        },
+        {
+          "type": "string",
+          "format": "date"
+        }
+      ]
+    },
     "participant": {
       "type": "object",
       "additionalProperties": false,

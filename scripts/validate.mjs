@@ -38,7 +38,14 @@ function check(label, data) {
     return;
   }
   if (validate(data)) {
-    console.log(`ok   ${label} (${data.type})`);
+    const problems = data.type === 'ParticipationRecord' ? participationTimeProblems(data) : [];
+    if (problems.length === 0) {
+      console.log(`ok   ${label} (${data.type})`);
+      return;
+    }
+    failures++;
+    console.error(`FAIL ${label} (${data.type})`);
+    for (const problem of problems) console.error(`       ${problem}`);
   } else {
     failures++;
     console.error(`FAIL ${label} (${data.type})`);
@@ -46,6 +53,28 @@ function check(label, data) {
       console.error(`       ${err.instancePath || '/'} ${err.message}`);
     }
   }
+}
+
+// Compares two schema-valid time values. Where either is date-only, both are
+// compared as calendar dates as written (SPECIFICATION.md, Participation Time).
+function compareTimes(a, b) {
+  if (a.length === 10 || b.length === 10) {
+    const [da, db] = [a.slice(0, 10), b.slice(0, 10)];
+    return da < db ? -1 : da > db ? 1 : 0;
+  }
+  return Math.sign(Date.parse(a) - Date.parse(b));
+}
+
+function participationTimeProblems(record) {
+  const problems = [];
+  const { participationStart: start, participationEnd: end, recordCreationTimestamp: created } = record;
+  if (start !== undefined && compareTimes(start, end) > 0) {
+    problems.push(`participationStart ${start} is later than participationEnd ${end}`);
+  }
+  if (compareTimes(end, created) > 0) {
+    problems.push(`participationEnd ${end} is later than recordCreationTimestamp ${created}`);
+  }
+  return problems;
 }
 
 function parse(label, text) {

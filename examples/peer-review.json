@@ -25,7 +25,8 @@
     "standing"
   ],
   "meaningProfile": "https://example.org/mpp/meaning-profiles/verified-peer-review/v1",
-  "participationTimestamp": "2026-07-28T13:15:00Z",
+  "participationStart": "2026-07-14",
+  "participationEnd": "2026-07-28T13:15:00Z",
   "recordCreationTimestamp": "2026-07-28T13:22:14Z",
   "evidence": [
     "urn:uuid:8d5c4515-8985-41f3-9061-78f7d0e280ad"
