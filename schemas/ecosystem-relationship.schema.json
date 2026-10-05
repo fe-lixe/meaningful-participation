@@ -29,6 +29,10 @@
       "minLength": 1,
       "description": "A persistent, globally unique Ecosystem Relationship identifier."
     },
+    "supersedes": {
+      "$ref": "#/$defs/identifier",
+      "description": "The identifier of the Ecosystem Relationship that this Ecosystem Relationship replaces. It does not itself change the Status of that Ecosystem Relationship."
+    },
     "sourceEcosystem": {
       "$ref": "#/$defs/ecosystemReference"
     },
@@ -51,8 +55,7 @@
       "$ref": "#/$defs/assertingParticipant"
     },
     "relationshipDescription": {
-      "type": "string",
-      "minLength": 1,
+      "$ref": "#/$defs/text",
       "description": "An optional human-readable description of the relationship."
     },
     "relationshipScope": {
@@ -101,6 +104,27 @@
     }
   },
   "$defs": {
+    "text": {
+      "description": "A string, or a language map whose keys are BCP 47 language tags and whose values represent the same text in each language.",
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "object",
+          "minProperties": 1,
+          "propertyNames": {
+            "type": "string",
+            "pattern": "^[A-Za-z]{2,3}(-[A-Za-z0-9]{1,8})*$"
+          },
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      ]
+    },
     "ecosystemReference": {
       "description": "A reference to an Ecosystem.",
       "oneOf": [
@@ -118,8 +142,7 @@
               "$ref": "#/$defs/identifier"
             },
             "name": {
-              "type": "string",
-              "minLength": 1,
+              "$ref": "#/$defs/text",
               "description": "An informative human-readable Ecosystem name."
             }
           }
@@ -138,8 +161,7 @@
           "$ref": "#/$defs/identifier"
         },
         "name": {
-          "type": "string",
-          "minLength": 1,
+          "$ref": "#/$defs/text",
           "description": "An optional informative name for the Participant."
         },
         "roles": {

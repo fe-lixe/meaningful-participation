@@ -54,7 +54,10 @@ function check(label, data) {
     return;
   }
   if (validate(data)) {
-    const problems = data.type === 'ParticipationRecord' ? participationTimeProblems(data) : [];
+    const problems = [
+      ...(data.type === 'ParticipationRecord' ? participationTimeProblems(data) : []),
+      ...lineageProblems(data),
+    ];
     if (problems.length === 0) {
       console.log(`ok   ${label} (${data.type})`);
       return;
@@ -91,6 +94,18 @@ function participationTimeProblems(record) {
     problems.push(`participationEnd ${end} is later than recordCreationTimestamp ${created}`);
   }
   return problems;
+}
+
+// SPECIFICATION.md section 25. Checked against examples/ only, since other
+// referenced Protocol Objects cannot be resolved here.
+function lineageProblems(object) {
+  if (object.supersedes === undefined) return [];
+  if (object.supersedes === object.id) return ['supersedes identifies the object itself'];
+  const target = examplesById[object.supersedes];
+  if (target && target.data.type !== object.type) {
+    return [`supersedes identifies ${target.label}, a ${target.data.type}, not a ${object.type}`];
+  }
+  return [];
 }
 
 function fail(label, problems) {
@@ -147,11 +162,15 @@ function parse(label, text) {
 
 // examples/*.json must each be a Protocol Object with a schema.
 const examplesById = {};
+const examples = [];
 for (const name of fs.readdirSync(path.join(root, 'examples')).filter((f) => f.endsWith('.json')).sort()) {
   const label = `examples/${name}`;
   const data = parse(label, fs.readFileSync(path.join(root, 'examples', name), 'utf8'));
   if (data === undefined) continue;
   examplesById[data.id] = { label, data };
+  examples.push({ label, data });
+}
+for (const { label, data } of examples) {
   if (!validators[data.type]) {
     failures++;
     checked++;
