@@ -380,6 +380,12 @@ The key words MUST, MUST NOT, REQUIRED, SHOULD, SHOULD NOT, MAY and
 OPTIONAL in this specification are to be interpreted as described in RFC
 2119 and RFC 8174, when and only when they appear in all capitals.
 
+Property names and literal values used in serialised Protocol Objects
+are shown in code formatting, for example `participationEnd` or
+`delegatesAssertionAuthorityTo`, and are case-sensitive. Capitalised
+terms such as Participation Record and Status Statement are defined
+terms of this specification.
+
 ## 3. Protocol Objects
 
 Participation Record and Ecosystem Relationship are the two primary
@@ -495,7 +501,7 @@ A Participation Record MAY include:
   associated Status Statement.
 
 - A Participation Record that replaces an earlier Participation Record
-  SHOULD identify it through the supersedes property, in accordance with
+  SHOULD identify it through the `supersedes` property, in accordance with
   section 25.
 
 - A Participation Record MUST identify one or more Participants.
@@ -556,7 +562,7 @@ The record creation timestamp MUST be a date-time conforming to the RFC
 
 #### Behavioural Requirements
 
-- A Participation Record MUST include participationEnd.
+- A Participation Record MUST include `participationEnd`.
 
 - A Participation Record MUST NOT represent Participation that is
   ongoing at the time of issuance. Ongoing Participation SHOULD be
@@ -564,16 +570,16 @@ The record creation timestamp MUST be a date-time conforming to the RFC
   period, such as a term, season or year.
 
 - Where Participation occurred at a single point in time,
-  participationStart SHOULD be omitted.
+  `participationStart` SHOULD be omitted.
 
-- The absence of participationStart indicates only that no start time is
+- The absence of `participationStart` indicates only that no start time is
   asserted. It MUST NOT be interpreted as evidence of the duration of
   the Participation.
 
-- Where participationStart is included, it MUST NOT be later than
-  participationEnd.
+- Where `participationStart` is included, it MUST NOT be later than
+  `participationEnd`.
 
-- participationEnd SHOULD NOT be later than the record creation
+- `participationEnd` SHOULD NOT be later than the record creation
   timestamp.
 
 - Where two time values have different precision, they MUST be compared
@@ -968,7 +974,7 @@ An Ecosystem Relationship MAY include:
   MUST be represented through a Status Statement. Materially changed
   relationships MUST be represented through a new Ecosystem
   Relationship, which SHOULD identify the Ecosystem Relationship it
-  replaces through the supersedes property, in accordance with section
+  replaces through the `supersedes` property, in accordance with section
   25.
 
 - An Ecosystem Relationship MAY reference one or more Evidence objects.
@@ -1061,7 +1067,7 @@ A Relationship Scope MAY identify:
 - A Relationship Scope MAY be used to qualify structural or
   delegated-authority relationships where appropriate.
 
-- For a Relationship Type of delegatesAssertionAuthorityTo, the
+- For a Relationship Type of `delegatesAssertionAuthorityTo`, the
   Relationship Scope SHOULD identify the assertions or Participation
   Types to which the delegated authority applies.
 
@@ -1533,12 +1539,12 @@ A Status Statement SHOULD identify:
 - A revoked Status indicates that the Protocol Object should no longer
   be relied upon under the conditions stated by the issuing entity.
 
-- The subject property MAY reference a Participation Record, Ecosystem
+- The `subject` property MAY reference a Participation Record, Ecosystem
   Relationship or another Protocol Object for which lifecycle Status is
   defined.
 
 - A superseded Status SHOULD identify the replacing Protocol Object
-  through the supersededBy property. The supersedes property of the
+  through the `supersededBy` property. The `supersedes` property of the
   replacing Protocol Object does not itself change the Status of the
   Protocol Object it identifies (see section 25).
 
@@ -1653,7 +1659,7 @@ Implementations MAY use:
 
 ## 17. Extensions
 
-MPP objects MAY include an extensions property.
+MPP objects MAY include an `extensions` property.
 
 ### Behavioural Requirements
 
@@ -1908,9 +1914,9 @@ The schema enforces the following requirements:
 
 - every Participant has at least one Role;
 
-- every Participation Record includes participationEnd;
+- every Participation Record includes `participationEnd`;
 
-- participationStart and participationEnd are each an RFC 3339
+- `participationStart` and `participationEnd` are each an RFC 3339
   date-time with a UTC offset or an RFC 3339 full-date, and the record
   creation timestamp is an RFC 3339 date-time;
 
@@ -1933,7 +1939,7 @@ The schema enforces the following requirements:
   be issued after the immutable Participation Record;
 
 - unknown top-level properties are prohibited, and Ecosystem-specific
-  additions must use the extensions property.
+  additions must use the `extensions` property.
 
 #### Out of Scope
 
@@ -1941,12 +1947,12 @@ The schema does not validate whether:
 
 - an identifier is genuinely globally unique;
 
-- participationStart is not later than participationEnd, or
-  participationEnd is not later than the record creation timestamp;
+- `participationStart` is not later than `participationEnd`, or
+  `participationEnd` is not later than the record creation timestamp;
 
 - the Participation was completed at the time of issuance;
 
-- a supersedes property identifies a different, existing Participation
+- a `supersedes` property identifies a different, existing Participation
   Record;
 
 - a language tag is a valid, registered BCP 47 language tag;
@@ -2019,7 +2025,7 @@ The Ecosystem Relationship schema enforces the following requirements:
 
 - unknown top-level properties are prohibited; and
 
-- Ecosystem-specific additions must use the extensions property.
+- Ecosystem-specific additions must use the `extensions` property.
 
 #### Out of Scope
 
@@ -2028,7 +2034,7 @@ The schema does not validate whether:
 - the source and target identifiers represent different real-world
   Ecosystems;
 
-- a supersedes property identifies a different, existing Ecosystem
+- a `supersedes` property identifies a different, existing Ecosystem
   Relationship;
 
 - an asserted relationship is factually, organisationally or legally
@@ -2043,7 +2049,7 @@ The schema does not validate whether:
 - a Relationship Scope is appropriate for the selected Relationship
   Type;
 
-- the effectiveFrom timestamp precedes expiresAt;
+- the `effectiveFrom` timestamp precedes `expiresAt`;
 
 - the Relationship Scope effective period falls within the effective
   period of the Ecosystem Relationship;
@@ -2173,21 +2179,21 @@ UUIDs.
 ### Lineage
 
 A Participation Record or Ecosystem Relationship MAY include a
-supersedes property identifying the Protocol Object of the same type
+`supersedes` property identifying the Protocol Object of the same type
 that it replaces.
 
 - A Protocol Object that replaces an earlier Protocol Object SHOULD
-  include the supersedes property.
+  include the `supersedes` property.
 
-- The supersedes property MUST identify a Protocol Object of the same
+- The `supersedes` property MUST identify a Protocol Object of the same
   type, and MUST NOT identify the Protocol Object that contains it.
 
-- The supersedes property records an assertion by the asserter of the
+- The `supersedes` property records an assertion by the asserter of the
   replacing Protocol Object. It MUST NOT be interpreted as changing the
   Status of the Protocol Object it identifies. A change of Status MUST be
   represented through a Status Statement, in accordance with section 14.
 
-- Lineage MUST be determined from supersedes properties and Status
+- Lineage MUST be determined from `supersedes` properties and Status
   Statements, not inferred from identifiers or timestamps.
 
 - A receiving Ecosystem SHOULD consider whether the asserter of a
