@@ -1077,8 +1077,9 @@ A Relationship Scope MAY identify:
 
 ### Example
 
-The following example illustrates FIFA delegating defined assertion
-authority to the Royal Spanish Football Federation (RFEF). The
+The following example illustrates a Global Football Federation (GFF)
+delegating defined assertion authority to the Examplia Football
+Association (EFA). Both organisations are fictional. The
 Relationship Scope limits that authority to specified forms of
 participation and Meaning Profiles.
 
@@ -1088,27 +1089,27 @@ participation and Meaning Profiles.
   "mppVersion": "1.0",
   "id": "urn:uuid:52d115ef-b83e-44fa-a962-73ec548e91a2",
   "sourceEcosystem": {
-    "id": "urn:mpp:ecosystem:fifa",
-    "name": "FIFA"
+    "id": "urn:mpp:ecosystem:01K7Q3M8ZT5X9R2C4V6B8N0D1E",
+    "name": "Global Football Federation"
   },
   "relationshipType": "delegatesAssertionAuthorityTo",
   "targetEcosystem": {
-    "id": "urn:mpp:ecosystem:rfef",
-    "name": "Royal Spanish Football Federation"
+    "id": "urn:mpp:ecosystem:01K7Q3P2HW4Y6A8S0F3G5J7K9M",
+    "name": "Examplia Football Association"
   },
   "assertedByParticipant": {
-    "id": "urn:mpp:participant:fifa-authorised-system",
+    "id": "https://gff.example.org/identifiers/assertion-service",
     "roles": [
       "asserter"
     ]
   },
   "relationshipScope": {
     "participationTypes": [
-      "https://fifa.example.org/mpp/participation-types/referee-development",
-      "https://fifa.example.org/mpp/participation-types/coach-education"
+      "https://gff.example.org/mpp/participation-types/referee-development",
+      "https://gff.example.org/mpp/participation-types/coach-education"
     ],
     "meaningProfiles": [
-      "https://fifa.example.org/mpp/meaning-profiles/recognised-football-development/v1"
+      "https://gff.example.org/mpp/meaning-profiles/recognised-football-development/v1"
     ],
     "requiredVerificationOutcomes": [
       "verified"
@@ -1119,15 +1120,15 @@ participation and Meaning Profiles.
 }
 ```
 
-In this example, FIFA delegates assertion authority to RFEF only within
-the scope described by the Ecosystem Relationship. The relationship does
-not grant RFEF unrestricted authority to issue Participation Records on
-FIFA's behalf.
+In this example, the GFF delegates assertion authority to the EFA only
+within the scope described by the Ecosystem Relationship. The
+relationship does not grant the EFA unrestricted authority to issue
+Participation Records on the GFF's behalf.
 
 A receiving Ecosystem may subsequently evaluate this Ecosystem
 Relationship as part of its own interoperability policy. For example, an
 Ecosystem might choose to consider Participation Records asserted under
-authority delegated by FIFA. MPP represents the Ecosystem Relationship
+authority delegated by the GFF. MPP represents the Ecosystem Relationship
 and its Relationship Scope, but does not standardise the
 interoperability policy or determine how the resulting Participation
 Records should be interpreted.
