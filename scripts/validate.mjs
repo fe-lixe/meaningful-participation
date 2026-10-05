@@ -1,11 +1,12 @@
 // Validates the JSON Schemas, the files in examples/, the JSON examples
-// embedded in SPECIFICATION.md and the vocabularies/ DefinedTermSets.
-// Run with: npm install && npm run validate
+// embedded in SPECIFICATION.md, the vocabularies/ DefinedTermSets and the
+// JSON-LD context. Run with: npm install && npm run validate
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import Ajv2020Module from 'ajv/dist/2020.js';
 import addFormatsModule from 'ajv-formats';
+import jsonld from 'jsonld';
 
 const Ajv2020 = Ajv2020Module.default ?? Ajv2020Module;
 const addFormats = addFormatsModule.default ?? addFormatsModule;
@@ -18,7 +19,12 @@ const readJson = (file) => JSON.parse(fs.readFileSync(file, 'utf8'));
 const schemaFiles = {
   ParticipationRecord: 'schemas/participation-record.schema.json',
   EcosystemRelationship: 'schemas/ecosystem-relationship.schema.json',
+  ParticipationCredential: 'schemas/participation-credential.schema.json',
 };
+
+// A VC 2.0 credential carries an array of types; MPP objects carry one.
+const typeOf = (data) =>
+  Array.isArray(data?.type) ? (data.type.includes('ParticipationCredential') ? 'ParticipationCredential' : undefined) : data?.type;
 
 // Published artefacts live under <base>/<version>/ (SPECIFICATION.md section 28).
 // The release workflow sets MPP_RELEASE_VERSION from the tag being published.
@@ -32,10 +38,11 @@ const versionBase = `${publicationBase}/${publicationVersion}`;
 const strictPointers = {
   ParticipationRecord: ['', '/$defs/participant', '/$defs/privacy'],
   EcosystemRelationship: ['', '/$defs/assertingParticipant', '/$defs/relationshipScope', '/$defs/privacy'],
+  ParticipationCredential: [], // VC 2.0 envelopes stay open; the embedded record is checked strictly.
 };
 
-const publishedAjv = new Ajv2020({ allErrors: true, strict: true });
-const strictAjv = new Ajv2020({ allErrors: true, strict: true });
+const publishedAjv = new Ajv2020({ allErrors: true, strict: true, strictTuples: false });
+const strictAjv = new Ajv2020({ allErrors: true, strict: true, strictTuples: false });
 addFormats(publishedAjv);
 addFormats(strictAjv);
 
@@ -67,28 +74,35 @@ const vocabularyEnums = {
 let failures = 0;
 let checked = 0;
 
+const credentials = [];
+
 function check(label, data) {
   checked++;
-  const validate = validators[data?.type];
+  const type = typeOf(data);
+  const validate = validators[type];
   if (!validate) {
     console.log(`ok   ${label} (well-formed JSON; no schema for type ${JSON.stringify(data?.type)})`);
     return;
   }
   if (validate(data)) {
-    const problems = [
-      ...(data.type === 'ParticipationRecord' ? participationTimeProblems(data) : []),
-      ...lineageProblems(data),
-    ];
+    let problems;
+    if (type === 'ParticipationCredential') {
+      credentials.push({ label, data });
+      const record = data.credentialSubject.participationRecord;
+      problems = [...bindingProblems(data), ...participationTimeProblems(record), ...lineageProblems(record)];
+    } else {
+      problems = [...(type === 'ParticipationRecord' ? participationTimeProblems(data) : []), ...lineageProblems(data)];
+    }
     if (problems.length === 0) {
-      console.log(`ok   ${label} (${data.type})`);
+      console.log(`ok   ${label} (${type})`);
       return;
     }
     failures++;
-    console.error(`FAIL ${label} (${data.type})`);
+    console.error(`FAIL ${label} (${type})`);
     for (const problem of problems) console.error(`       ${problem}`);
   } else {
     failures++;
-    console.error(`FAIL ${label} (${data.type})`);
+    console.error(`FAIL ${label} (${type})`);
     for (const err of validate.errors) {
       const extra = err.params?.additionalProperty;
       console.error(`       ${err.instancePath || '/'} ${err.message}${extra ? `: ${extra}` : ''}`);
@@ -115,6 +129,24 @@ function participationTimeProblems(record) {
   if (compareTimes(end, created) > 0) {
     problems.push(`participationEnd ${end} is later than recordCreationTimestamp ${created}`);
   }
+  return problems;
+}
+
+// SPECIFICATION.md section 29: the rules linking a credential to its record.
+function bindingProblems(credential) {
+  const problems = [];
+  const record = credential.credentialSubject.participationRecord;
+  const issuer = typeof credential.issuer === 'string' ? credential.issuer : credential.issuer.id;
+  const asserter = record.participants.find((p) => p.roles.includes('asserter'));
+  const subjects = record.participants.filter((p) => p.roles.includes('subject')).map((p) => p.id);
+  if (issuer !== asserter.id) problems.push(`issuer ${issuer} is not the asserter ${asserter.id}`);
+  if (!subjects.includes(credential.credentialSubject.id)) {
+    problems.push(`credentialSubject.id ${credential.credentialSubject.id} is not a subject Participant`);
+  }
+  if (credential.validFrom !== record.recordCreationTimestamp) {
+    problems.push(`validFrom ${credential.validFrom} differs from recordCreationTimestamp ${record.recordCreationTimestamp}`);
+  }
+  if (credential.id === record.id) problems.push('the credential id must differ from the Participation Record id');
   return problems;
 }
 
@@ -193,7 +225,7 @@ for (const name of fs.readdirSync(path.join(root, 'examples')).filter((f) => f.e
   examples.push({ label, data });
 }
 for (const { label, data } of examples) {
-  if (!validators[data.type]) {
+  if (!validators[typeOf(data)]) {
     failures++;
     checked++;
     console.error(`FAIL ${label}: no schema for type ${JSON.stringify(data.type)}`);
@@ -231,6 +263,41 @@ for (const name of fs.readdirSync(path.join(root, 'vocabularies')).filter((f) =>
 }
 for (const name of Object.keys(vocabularyEnums)) {
   if (!fs.existsSync(path.join(root, 'vocabularies', name))) fail(`vocabularies/${name}`, ['file is missing']);
+}
+
+// The JSON-LD context must map role and Commitment Class codes to exactly the
+// vocabulary term IRIs, and every credential must expand without any term
+// falling through to the VC 2.0 "issuer-dependent" vocabulary (i.e. undefined).
+const contextUrl = `${versionBase}/context/mpp.jsonld`;
+const contextFile = path.join(root, 'context', 'mpp.jsonld');
+{
+  const problems = [];
+  const scoped = readJson(contextFile)['@context'].participationRecord['@context'];
+  const vocabularyTerms = (file) =>
+    Object.fromEntries(readJson(path.join(root, 'vocabularies', file)).hasDefinedTerm.map((t) => [t.termCode, t['@id']]));
+  for (const [term, file] of [['roles', 'participant-roles.jsonld'], ['commitmentClasses', 'commitment-classes.jsonld']]) {
+    const inContext = JSON.stringify(scoped[term]['@context']);
+    if (inContext !== JSON.stringify(vocabularyTerms(file))) problems.push(`${term} terms differ from vocabularies/${file}`);
+  }
+  fail('context/mpp.jsonld matches the vocabularies', problems);
+}
+
+const nodeLoader = jsonld.documentLoaders.node();
+const documentLoader = async (url) =>
+  url === contextUrl
+    ? { contextUrl: null, documentUrl: url, document: readJson(contextFile) }
+    : nodeLoader(url);
+for (const { label, data } of credentials) {
+  const problems = [];
+  if (!data['@context'].includes(contextUrl)) problems.push(`@context does not include ${contextUrl}`);
+  try {
+    const expanded = JSON.stringify(await jsonld.expand(data, { documentLoader, safe: true }));
+    const undefinedTerms = [...new Set([...expanded.matchAll(/issuer-dependent#([^"]+)/g)].map((m) => m[1]))];
+    if (undefinedTerms.length) problems.push(`terms not defined by any context: ${undefinedTerms.join(', ')}`);
+  } catch (err) {
+    problems.push(`JSON-LD expansion failed: ${err.message}`);
+  }
+  fail(`${label} expands as JSON-LD`, problems);
 }
 
 // Every published identifier must sit under the same base and version, and a
@@ -277,4 +344,4 @@ for (const file of textFiles('.').sort()) {
 }
 
 console.log(`\n${checked} checked, ${failures} failed`);
-process.exit(failures ? 1 : 0);
+process.exitCode = failures ? 1 : 0;
