@@ -20,18 +20,39 @@ const schemaFiles = {
   EcosystemRelationship: 'schemas/ecosystem-relationship.schema.json',
 };
 
-const ajv = new Ajv2020({ allErrors: true, strict: true });
-addFormats(ajv);
+// Published artefacts live under <base>/<version>/ (SPECIFICATION.md section 28).
+// The release workflow sets MPP_RELEASE_VERSION from the tag being published.
+const publicationBase = 'https://fe-lixe.github.io/meaningful-participation';
+const publicationVersion = '1.0';
+const versionBase = `${publicationBase}/${publicationVersion}`;
+
+// The published schemas accept unknown properties for forward compatibility.
+// This repository's own examples are held to a strict copy, so a misspelt
+// property fails here instead of passing silently.
+const strictPointers = {
+  ParticipationRecord: ['', '/$defs/participant', '/$defs/privacy'],
+  EcosystemRelationship: ['', '/$defs/assertingParticipant', '/$defs/relationshipScope', '/$defs/privacy'],
+};
+
+const publishedAjv = new Ajv2020({ allErrors: true, strict: true });
+const strictAjv = new Ajv2020({ allErrors: true, strict: true });
+addFormats(publishedAjv);
+addFormats(strictAjv);
 
 const schemas = {};
 const validators = {};
 for (const [type, file] of Object.entries(schemaFiles)) {
   schemas[type] = readJson(path.join(root, file));
-  validators[type] = ajv.compile(schemas[type]);
+  publishedAjv.compile(schemas[type]);
+  const strict = structuredClone(schemas[type]);
+  for (const ptr of strictPointers[type]) {
+    ptr.split('/').slice(1).reduce((node, key) => node[key], strict).additionalProperties = false;
+  }
+  validators[type] = strictAjv.compile(strict);
 }
 
 // Vocabulary file → schema enums that must list exactly its term codes.
-const vocabularyBase = 'https://raw.githubusercontent.com/fe-lixe/meaningful-participation/main/vocabularies';
+const vocabularyBase = `${versionBase}/vocabularies`;
 const vocabularyEnums = {
   'participant-roles.jsonld': [
     ['ParticipationRecord', '/$defs/coreParticipantRole/enum'],
@@ -69,7 +90,8 @@ function check(label, data) {
     failures++;
     console.error(`FAIL ${label} (${data.type})`);
     for (const err of validate.errors) {
-      console.error(`       ${err.instancePath || '/'} ${err.message}`);
+      const extra = err.params?.additionalProperty;
+      console.error(`       ${err.instancePath || '/'} ${err.message}${extra ? `: ${extra}` : ''}`);
     }
   }
 }
@@ -209,6 +231,27 @@ for (const name of fs.readdirSync(path.join(root, 'vocabularies')).filter((f) =>
 }
 for (const name of Object.keys(vocabularyEnums)) {
   if (!fs.existsSync(path.join(root, 'vocabularies', name))) fail(`vocabularies/${name}`, ['file is missing']);
+}
+
+// Every published identifier must sit under the same base and version, and a
+// release must publish the version the files declare.
+{
+  const problems = [];
+  const release = process.env.MPP_RELEASE_VERSION;
+  if (release !== undefined && release !== publicationVersion) {
+    problems.push(`release ${release} does not match publicationVersion ${publicationVersion} in scripts/validate.mjs`);
+  }
+  for (const [type, file] of Object.entries(schemaFiles)) {
+    const expected = `${versionBase}/${file}`;
+    if (schemas[type].$id !== expected) problems.push(`${file} $id is ${schemas[type].$id}, expected ${expected}`);
+  }
+  for (const name of Object.keys(vocabularyEnums)) {
+    const file = path.join(root, 'vocabularies', name);
+    if (!fs.existsSync(file)) continue;
+    const version = readJson(file).version;
+    if (version !== publicationVersion) problems.push(`vocabularies/${name} version is ${version}, expected ${publicationVersion}`);
+  }
+  fail(`published identifiers use ${versionBase}/`, problems);
 }
 
 // Repository text must not contain hidden or bidirectional formatting

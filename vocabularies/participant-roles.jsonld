@@ -1,42 +1,42 @@
 {
   "@context": "https://schema.org/",
   "@type": "DefinedTermSet",
-  "@id": "https://raw.githubusercontent.com/fe-lixe/meaningful-participation/main/vocabularies/participant-roles.jsonld",
+  "@id": "https://fe-lixe.github.io/meaningful-participation/1.0/vocabularies/participant-roles.jsonld",
   "name": "MPP Participant Roles",
   "description": "Core Participant Roles defined by the Meaningful Participation Protocol. Ecosystems may define additional Roles, identified by absolute URIs.",
-  "version": "0.1",
+  "version": "1.0",
   "hasDefinedTerm": [
     {
       "@type": "DefinedTerm",
-      "@id": "https://raw.githubusercontent.com/fe-lixe/meaningful-participation/main/vocabularies/participant-roles.jsonld#subject",
+      "@id": "https://fe-lixe.github.io/meaningful-participation/1.0/vocabularies/participant-roles.jsonld#subject",
       "termCode": "subject",
       "name": "Subject",
       "description": "The Participant whose Participation is recognised by a Participation Record.",
-      "inDefinedTermSet": "https://raw.githubusercontent.com/fe-lixe/meaningful-participation/main/vocabularies/participant-roles.jsonld"
+      "inDefinedTermSet": "https://fe-lixe.github.io/meaningful-participation/1.0/vocabularies/participant-roles.jsonld"
     },
     {
       "@type": "DefinedTerm",
-      "@id": "https://raw.githubusercontent.com/fe-lixe/meaningful-participation/main/vocabularies/participant-roles.jsonld#asserter",
+      "@id": "https://fe-lixe.github.io/meaningful-participation/1.0/vocabularies/participant-roles.jsonld#asserter",
       "termCode": "asserter",
       "name": "Asserter",
       "description": "The Participant responsible for the assertion represented by a Participation Record or Ecosystem Relationship.",
-      "inDefinedTermSet": "https://raw.githubusercontent.com/fe-lixe/meaningful-participation/main/vocabularies/participant-roles.jsonld"
+      "inDefinedTermSet": "https://fe-lixe.github.io/meaningful-participation/1.0/vocabularies/participant-roles.jsonld"
     },
     {
       "@type": "DefinedTerm",
-      "@id": "https://raw.githubusercontent.com/fe-lixe/meaningful-participation/main/vocabularies/participant-roles.jsonld#attestor",
+      "@id": "https://fe-lixe.github.io/meaningful-participation/1.0/vocabularies/participant-roles.jsonld#attestor",
       "termCode": "attestor",
       "name": "Attestor",
       "description": "The Participant responsible for attesting to the authenticity, provenance or validity of the Evidence represented by an Evidence object.",
-      "inDefinedTermSet": "https://raw.githubusercontent.com/fe-lixe/meaningful-participation/main/vocabularies/participant-roles.jsonld"
+      "inDefinedTermSet": "https://fe-lixe.github.io/meaningful-participation/1.0/vocabularies/participant-roles.jsonld"
     },
     {
       "@type": "DefinedTerm",
-      "@id": "https://raw.githubusercontent.com/fe-lixe/meaningful-participation/main/vocabularies/participant-roles.jsonld#verifier",
+      "@id": "https://fe-lixe.github.io/meaningful-participation/1.0/vocabularies/participant-roles.jsonld#verifier",
       "termCode": "verifier",
       "name": "Verifier",
       "description": "The Participant responsible for the assessment represented by a Verification object.",
-      "inDefinedTermSet": "https://raw.githubusercontent.com/fe-lixe/meaningful-participation/main/vocabularies/participant-roles.jsonld"
+      "inDefinedTermSet": "https://fe-lixe.github.io/meaningful-participation/1.0/vocabularies/participant-roles.jsonld"
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "type": "ParticipationRecord",
-  "mppVersion": "0.1",
+  "mppVersion": "1.0",
   "id": "urn:uuid:3d0b6c11-52af-4a90-9f3e-7c1d84a06e52",
   "commitmentClasses": [
     "effort"

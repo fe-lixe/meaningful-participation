@@ -1,6 +1,6 @@
 {
   "type": "EcosystemRelationship",
-  "mppVersion": "0.1",
+  "mppVersion": "1.0",
   "id": "urn:uuid:52d115ef-b83e-44fa-a962-73ec548e91a2",
   "sourceEcosystem": {
     "id": "urn:mpp:ecosystem:fifa",
