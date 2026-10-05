@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://meaningfulparticipation.org/schema/0.1/ecosystem-relationship.json",
+  "$id": "https://raw.githubusercontent.com/fe-lixe/meaningful-participation/main/schemas/ecosystem-relationship.schema.json",
   "title": "MPP Ecosystem Relationship",
   "description": "An Ecosystem Relationship conforming to Meaningful Participation Protocol v0.1.",
   "type": "object",

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://meaningfulparticipation.org/schema/0.1/participation-record.json",
+  "$id": "https://raw.githubusercontent.com/fe-lixe/meaningful-participation/main/schemas/participation-record.schema.json",
   "title": "MPP Participation Record",
   "description": "A Participation Record conforming to Meaningful Participation Protocol v0.1.",
   "type": "object",
