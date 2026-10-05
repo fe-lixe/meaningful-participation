@@ -37,6 +37,7 @@ MPP provides a common way to represent participation while leaving each ecosyste
 | [MPRA](MPRA.md) | Defines the five-layer Meaningful Participation Reference Architecture |
 | [MPP Specification](SPECIFICATION.md) | Defines the normative requirements of the Meaningful Participation Protocol |
 | [Schemas](schemas/) | Includes JSON Schemas for each Protocol Object, extracted from the specification |
+| [Vocabularies](vocabularies/) | Publishes Participant Roles, Commitment Classes, Relationship Types, Verification Outcomes and Status Values as schema.org `DefinedTermSet`s |
 | [Examples](examples/) | Includes example Participation Records and Ecosystem Relationships |
 | [Contributors](CONTRIBUTORS.md) | Recognises Meaningful Participation in the development of this repository |
 | [Governance](GOVERNANCE.md) | Describes stewardship, decision-making, openness and the relationship between MPP and commercial implementations |

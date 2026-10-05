@@ -33,7 +33,7 @@
     },
     "commitmentClasses": {
       "type": "array",
-      "description": "The Commitment Classes assigned to the Participation Record.",
+      "description": "The Commitment Classes assigned to the Participation Record (vocabularies/commitment-classes.jsonld). This vocabulary is closed.",
       "minItems": 1,
       "uniqueItems": true,
       "items": {
@@ -56,22 +56,23 @@
       "items": {
         "$ref": "#/$defs/participant"
       },
-      "contains": {
-        "type": "object",
-        "required": [
-          "roles"
-        ],
-        "properties": {
-          "roles": {
-            "type": "array",
-            "contains": {
-              "const": "asserter"
-            }
-          }
+      "allOf": [
+        {
+          "description": "Exactly one Participant has the asserter Role.",
+          "contains": {
+            "$ref": "#/$defs/hasAsserterRole"
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "description": "At least one Participant has the subject Role.",
+          "contains": {
+            "$ref": "#/$defs/hasSubjectRole"
+          },
+          "minContains": 1
         }
-      },
-      "minContains": 1,
-      "maxContains": 1
+      ]
     },
     "participationType": {
       "$ref": "#/$defs/participationTypeReference"
@@ -167,8 +168,56 @@
           "uniqueItems": true,
           "description": "The Participant Roles assigned to this Participant.",
           "items": {
-            "type": "string",
-            "minLength": 1
+            "$ref": "#/$defs/participantRole"
+          }
+        }
+      }
+    },
+    "participantRole": {
+      "description": "A core Participant Role (vocabularies/participant-roles.jsonld) or an Ecosystem-defined Role identified by an absolute URI.",
+      "anyOf": [
+        {
+          "$ref": "#/$defs/coreParticipantRole"
+        },
+        {
+          "type": "string",
+          "format": "uri"
+        }
+      ]
+    },
+    "coreParticipantRole": {
+      "type": "string",
+      "enum": [
+        "subject",
+        "asserter",
+        "attestor",
+        "verifier"
+      ]
+    },
+    "hasAsserterRole": {
+      "type": "object",
+      "required": [
+        "roles"
+      ],
+      "properties": {
+        "roles": {
+          "type": "array",
+          "contains": {
+            "const": "asserter"
+          }
+        }
+      }
+    },
+    "hasSubjectRole": {
+      "type": "object",
+      "required": [
+        "roles"
+      ],
+      "properties": {
+        "roles": {
+          "type": "array",
+          "contains": {
+            "const": "subject"
           }
         }
       }

@@ -1,5 +1,6 @@
-// Validates the JSON Schemas, the files in examples/ and the JSON examples
-// embedded in SPECIFICATION.md. Run with: npm install && npm run validate
+// Validates the JSON Schemas, the files in examples/, the JSON examples
+// embedded in SPECIFICATION.md and the vocabularies/ DefinedTermSets.
+// Run with: npm install && npm run validate
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -22,10 +23,25 @@ const schemaFiles = {
 const ajv = new Ajv2020({ allErrors: true, strict: true });
 addFormats(ajv);
 
+const schemas = {};
 const validators = {};
 for (const [type, file] of Object.entries(schemaFiles)) {
-  validators[type] = ajv.compile(readJson(path.join(root, file)));
+  schemas[type] = readJson(path.join(root, file));
+  validators[type] = ajv.compile(schemas[type]);
 }
+
+// Vocabulary file → schema enums that must list exactly its term codes.
+const vocabularyBase = 'https://raw.githubusercontent.com/fe-lixe/meaningful-participation/main/vocabularies';
+const vocabularyEnums = {
+  'participant-roles.jsonld': [
+    ['ParticipationRecord', '/$defs/coreParticipantRole/enum'],
+    ['EcosystemRelationship', '/$defs/coreParticipantRole/enum'],
+  ],
+  'commitment-classes.jsonld': [['ParticipationRecord', '/properties/commitmentClasses/items/enum']],
+  'relationship-types.jsonld': [['EcosystemRelationship', '/$defs/coreRelationshipType/enum']],
+  'verification-outcomes.jsonld': [['EcosystemRelationship', '/$defs/coreVerificationOutcome/enum']],
+  'status-values.jsonld': [], // No Status Statement schema yet.
+};
 
 let failures = 0;
 let checked = 0;
@@ -77,6 +93,47 @@ function participationTimeProblems(record) {
   return problems;
 }
 
+function fail(label, problems) {
+  checked++;
+  if (problems.length === 0) {
+    console.log(`ok   ${label}`);
+    return;
+  }
+  failures++;
+  console.error(`FAIL ${label}`);
+  for (const problem of problems) console.error(`       ${problem}`);
+}
+
+const pointer = (obj, ptr) => ptr.split('/').slice(1).reduce((node, key) => node?.[key], obj);
+
+function vocabularyProblems(file, set) {
+  const problems = [];
+  const setId = `${vocabularyBase}/${file}`;
+  if (set['@type'] !== 'DefinedTermSet') problems.push(`@type is ${JSON.stringify(set['@type'])}, expected "DefinedTermSet"`);
+  if (set['@id'] !== setId) problems.push(`@id is ${JSON.stringify(set['@id'])}, expected ${JSON.stringify(setId)}`);
+  const terms = Array.isArray(set.hasDefinedTerm) ? set.hasDefinedTerm : [];
+  if (terms.length === 0) problems.push('hasDefinedTerm is missing or empty');
+  for (const term of terms) {
+    const code = term.termCode;
+    if (term['@type'] !== 'DefinedTerm') problems.push(`${code}: @type is not "DefinedTerm"`);
+    if (term['@id'] !== `${setId}#${code}`) problems.push(`${code}: @id is not ${setId}#${code}`);
+    if (term.inDefinedTermSet !== setId) problems.push(`${code}: inDefinedTermSet is not ${setId}`);
+    for (const key of ['termCode', 'name', 'description']) {
+      if (typeof term[key] !== 'string' || term[key].length === 0) problems.push(`${code}: ${key} is missing`);
+    }
+  }
+  const codes = terms.map((t) => t.termCode);
+  if (new Set(codes).size !== codes.length) problems.push('term codes are not unique');
+  if (!(file in vocabularyEnums)) problems.push('not registered in vocabularyEnums in scripts/validate.mjs');
+  for (const [type, ptr] of vocabularyEnums[file] ?? []) {
+    const values = pointer(schemas[type], ptr);
+    if (JSON.stringify([...(values ?? [])].sort()) !== JSON.stringify([...codes].sort())) {
+      problems.push(`term codes ${JSON.stringify(codes)} differ from ${schemaFiles[type]}#${ptr} ${JSON.stringify(values)}`);
+    }
+  }
+  return problems;
+}
+
 function parse(label, text) {
   try {
     return JSON.parse(text);
@@ -89,10 +146,12 @@ function parse(label, text) {
 }
 
 // examples/*.json must each be a Protocol Object with a schema.
+const examplesById = {};
 for (const name of fs.readdirSync(path.join(root, 'examples')).filter((f) => f.endsWith('.json')).sort()) {
   const label = `examples/${name}`;
   const data = parse(label, fs.readFileSync(path.join(root, 'examples', name), 'utf8'));
   if (data === undefined) continue;
+  examplesById[data.id] = { label, data };
   if (!validators[data.type]) {
     failures++;
     checked++;
@@ -111,8 +170,26 @@ for (let i = 0; i < spec.length; i++) {
   while (end < spec.length && spec[end].trim() !== '```') end++;
   const label = `SPECIFICATION.md:${start + 1}`;
   const data = parse(label, spec.slice(start, end).join('\n'));
-  if (data !== undefined) check(label, data);
+  if (data !== undefined) {
+    check(label, data);
+    // A spec block sharing an id with an examples/ file must be an exact copy of it.
+    const example = examplesById[data.id];
+    if (example) {
+      const same = JSON.stringify(data) === JSON.stringify(example.data);
+      fail(`${label} matches ${example.label}`, same ? [] : ['differs; copy the file into the specification']);
+    }
+  }
   i = end;
+}
+
+// vocabularies/*.jsonld must be well-formed DefinedTermSets that agree with the schemas.
+for (const name of fs.readdirSync(path.join(root, 'vocabularies')).filter((f) => f.endsWith('.jsonld')).sort()) {
+  const label = `vocabularies/${name}`;
+  const set = parse(label, fs.readFileSync(path.join(root, 'vocabularies', name), 'utf8'));
+  if (set !== undefined) fail(label, vocabularyProblems(name, set));
+}
+for (const name of Object.keys(vocabularyEnums)) {
+  if (!fs.existsSync(path.join(root, 'vocabularies', name))) fail(`vocabularies/${name}`, ['file is missing']);
 }
 
 console.log(`\n${checked} checked, ${failures} failed`);

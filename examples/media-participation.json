@@ -10,7 +10,8 @@
     {
       "id": "urn:umedia:participant:7c9a1f2e4b6d8035",
       "roles": [
-        "supporter"
+        "subject",
+        "https://u.media/mpp/roles/supporter"
       ]
     },
     {
