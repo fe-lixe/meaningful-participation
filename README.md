@@ -45,6 +45,8 @@ MPP provides a common way to represent participation while leaving each ecosyste
 
 If you are new to the project, the **Working Paper** is the best place to begin. Implementers should then refer to the **MPP Specification**.
 
+Each released version's schemas and vocabularies are published at `https://fe-lixe.github.io/meaningful-participation/<version>/` and never changed after release (see section 28 of the specification).
+
 ## Why Meaningful Participation?
 
 Ecosystems depend on participation to achieve their objectives. Yet the participation they measure, recognise and reward is often what is easiest to observe rather than what creates the most value.

@@ -1,6 +1,6 @@
 {
   "type": "ParticipationRecord",
-  "mppVersion": "0.1",
+  "mppVersion": "1.0",
   "id": "urn:uuid:9f2c1d84-6a3e-4a5b-8c17-2be0f4d9a731",
   "ecosystem": {
     "id": "urn:mpp:ecosystem:01K2M4PQXR7T9V0C3E5G8H1J4N",

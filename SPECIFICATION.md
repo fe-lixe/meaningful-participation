@@ -830,8 +830,8 @@ recognition of the Participation.
 - Ecosystem-specific extensions MUST NOT redefine the meaning of the
   four core Commitment Classes.
 
-- A future version of MPP may add, deprecate or refine Commitment
-  Classes following ontology testing and public review.
+- A future major version of MPP may add, deprecate or refine Commitment
+  Classes following ontology testing and public review (see section 28).
 
 ## 6. Ecosystem Identification
 
@@ -1085,7 +1085,7 @@ participation and Meaning Profiles.
 ```json
 {
   "type": "EcosystemRelationship",
-  "mppVersion": "0.1",
+  "mppVersion": "1.0",
   "id": "urn:uuid:52d115ef-b83e-44fa-a962-73ec548e91a2",
   "sourceEcosystem": {
     "id": "urn:mpp:ecosystem:fifa",
@@ -1314,7 +1314,7 @@ measure of meaningfulness.
 ```json
 {
   "type": "MeaningProfile",
-  "mppVersion": "0.1",
+  "mppVersion": "1.0",
   "id": "https://example.org/mpp/meaning-profiles/verified-peer-review/v1",
   "ecosystem": "urn:mpp:ecosystem:01JQ4C6AQ9H9H30C27Y4HPRT52",
   "name": "Verified Peer Review",
@@ -1557,7 +1557,7 @@ section 20 as superseded by the corrected Participation Record in
 ```json
 {
   "type": "StatusStatement",
-  "mppVersion": "0.1",
+  "mppVersion": "1.0",
   "id": "urn:uuid:8ce46dc6-623f-4a27-ad6b-11c88c41de87",
   "subject": "urn:uuid:77bf495d-f8ca-4661-9ed2-5b2c499607de",
   "status": "superseded",
@@ -1791,7 +1791,7 @@ MPP.
 ```json
 {
   "type": "ParticipationRecord",
-  "mppVersion": "0.1",
+  "mppVersion": "1.0",
   "id": "urn:uuid:77bf495d-f8ca-4661-9ed2-5b2c499607de",
   "ecosystem": "urn:mpp:ecosystem:01JQ4C6AQ9H9H30C27Y4HPRT52",
   "participants": [
@@ -1853,7 +1853,7 @@ conforming to MPP.
 ```json
 {
   "type": "ParticipationRecord",
-  "mppVersion": "0.1",
+  "mppVersion": "1.0",
   "id": "urn:uuid:3d0b6c11-52af-4a90-9f3e-7c1d84a06e52",
   "commitmentClasses": [
     "effort"
@@ -1903,9 +1903,10 @@ Each MPP Protocol Object has its own JSON Schema. This section defines
 only the schema for Participation Records.
 
 The schema is maintained as a separate file at [`schemas/participation-record.schema.json`](schemas/participation-record.schema.json),
-which is the authoritative version. It is identified by:
+which is the authoritative version. It is identified by the following URL,
+at which it is published when version 1.0 is released (see section 28):
 
-    https://raw.githubusercontent.com/fe-lixe/meaningful-participation/main/schemas/participation-record.schema.json
+    https://fe-lixe.github.io/meaningful-participation/1.0/schemas/participation-record.schema.json
 
 Examples that validate against it are provided in
 [`examples/`](examples/).
@@ -1949,8 +1950,12 @@ The schema enforces the following requirements:
 - Verification and Status Statements are not embedded because they may
   be issued after the immutable Participation Record;
 
-- unknown top-level properties are prohibited, and Ecosystem-specific
-  additions must use the `extensions` property.
+- `mppVersion` is a 1.x version;
+
+- unknown properties are permitted at the top level and in Participant
+  and privacy objects, so that Participation Records from later 1.x
+  versions validate (see section 28); Ecosystem-specific additions must
+  nevertheless use the `extensions` property.
 
 #### Out of Scope
 
@@ -1996,9 +2001,10 @@ either by a persistent identifier alone or by a constrained reference
 object containing limited informative or integrity-related metadata.
 
 The schema is maintained as a separate file at [`schemas/ecosystem-relationship.schema.json`](schemas/ecosystem-relationship.schema.json),
-which is the authoritative version. It is identified by:
+which is the authoritative version. It is identified by the following URL,
+at which it is published when version 1.0 is released (see section 28):
 
-    https://raw.githubusercontent.com/fe-lixe/meaningful-participation/main/schemas/ecosystem-relationship.schema.json
+    https://fe-lixe.github.io/meaningful-participation/1.0/schemas/ecosystem-relationship.schema.json
 
 Examples that validate against it are provided in
 [`examples/`](examples/).
@@ -2037,7 +2043,11 @@ The Ecosystem Relationship schema enforces the following requirements:
   Meaning Profiles, Verification requirements, effective periods and
   domains;
 
-- unknown top-level properties are prohibited; and
+- `mppVersion` is a 1.x version;
+
+- unknown properties are permitted at the top level and in the asserting
+  Participant, Relationship Scope and privacy objects, so that Ecosystem
+  Relationships from later 1.x versions validate (see section 28); and
 
 - Ecosystem-specific additions must use the `extensions` property.
 
@@ -2223,7 +2233,7 @@ corresponding change of Status.
 ```json
 {
   "type": "ParticipationRecord",
-  "mppVersion": "0.1",
+  "mppVersion": "1.0",
   "id": "urn:uuid:019fff9a-a240-7a3f-91c2-9e84b7d05f6e",
   "supersedes": "urn:uuid:77bf495d-f8ca-4661-9ed2-5b2c499607de",
   "ecosystem": "urn:mpp:ecosystem:01JQ4C6AQ9H9H30C27Y4HPRT52",
@@ -2545,3 +2555,54 @@ compromised, or may have included text supplied by others.
 
 - Resolved content is untrusted content and is subject to the
   requirements of this section.
+
+## 28. Versioning and Publication
+
+### Version Numbers
+
+MPP versions are numbered MAJOR.MINOR, for example `1.0`. Every
+Protocol Object states the version to which it conforms in its
+`mppVersion` property.
+
+### Compatibility
+
+- A minor version MUST be backward compatible with earlier minor
+  versions of the same major version. It MAY add optional properties and
+  clarify existing text. It MUST NOT add required properties, remove
+  properties, or change the meaning of existing properties or terms.
+
+- Core vocabulary terms, including Commitment Classes, Participant
+  Roles, Relationship Types, Verification outcomes and Status Values, are
+  added, removed or changed only in a new major version.
+
+- A major version MAY make incompatible changes.
+
+- An implementation that supports a minor version of a major version
+  MUST accept Protocol Objects that state any minor version of that
+  major version. It MUST ignore properties that it does not support, in
+  accordance with section 18.
+
+- Properties not defined by this specification are reserved for future
+  versions of MPP. Ecosystems MUST NOT add them, and MUST use the
+  `extensions` property instead, in accordance with section 17.
+
+### Published Artefacts
+
+The JSON Schemas, vocabularies and other machine-readable artefacts of
+each version are published at:
+
+    https://fe-lixe.github.io/meaningful-participation/<version>/
+
+for example
+`https://fe-lixe.github.io/meaningful-participation/1.0/schemas/participation-record.schema.json`.
+
+- The artefacts of a version MUST NOT be changed after publication.
+  Corrections are published as a new version.
+
+- The identifiers of schemas, vocabularies and vocabulary terms include
+  the version in which they were published, and remain valid after
+  later versions are published.
+
+- These locations are interim. If MPP adopts a permanent domain or
+  permanent-identifier service, artefacts already published will remain
+  available at the locations above.

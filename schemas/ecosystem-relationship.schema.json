@@ -1,10 +1,9 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://raw.githubusercontent.com/fe-lixe/meaningful-participation/main/schemas/ecosystem-relationship.schema.json",
+  "$id": "https://fe-lixe.github.io/meaningful-participation/1.0/schemas/ecosystem-relationship.schema.json",
   "title": "MPP Ecosystem Relationship",
-  "description": "An Ecosystem Relationship conforming to Meaningful Participation Protocol v0.1.",
+  "description": "An Ecosystem Relationship conforming to Meaningful Participation Protocol version 1. Unknown properties are permitted so that Protocol Objects from later 1.x versions validate (SPECIFICATION.md section 28); Ecosystem-specific additions belong in extensions.",
   "type": "object",
-  "additionalProperties": false,
   "required": [
     "type",
     "mppVersion",
@@ -22,7 +21,8 @@
     },
     "mppVersion": {
       "type": "string",
-      "const": "0.1"
+      "pattern": "^1\\.(0|[1-9][0-9]*)$",
+      "description": "The MPP version to which the Protocol Object conforms. Any 1.x version is accepted (SPECIFICATION.md section 28)."
     },
     "id": {
       "type": "string",
@@ -176,7 +176,6 @@
     },
     "assertingParticipant": {
       "type": "object",
-      "additionalProperties": false,
       "required": [
         "id",
         "roles"
@@ -265,7 +264,6 @@
     "relationshipScope": {
       "type": "object",
       "description": "Optional limitations, conditions or domains applying to the Ecosystem Relationship.",
-      "additionalProperties": false,
       "properties": {
         "participationTypes": {
           "type": "array",
@@ -375,7 +373,6 @@
     },
     "privacy": {
       "type": "object",
-      "additionalProperties": false,
       "properties": {
         "recordVisibility": {
           "type": "string",
