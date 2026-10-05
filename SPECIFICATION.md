@@ -1714,12 +1714,20 @@ A conformant MPP implementation MUST:
 
 - avoid assigning universal value to Commitment Classes;
 
-- avoid treating the number of Commitment Classes as a score; and
+- avoid treating the number of Commitment Classes as a score;
 
 - preserve unknown extensions where lossless processing is claimed;
 
 - ignore unknown properties unless required to process a supported
   extension or determine conformance;
+
+- treat descriptive text, contextual properties, extension properties
+  and resolved content as untrusted data, and never as instructions, in
+  accordance with section 27;
+
+- verify integrity before normalising text for display or processing,
+  and never alter a stored Protocol Object, in accordance with section
+  27; and
 
 - declare the MPP version or versions it supports.
 
@@ -1929,6 +1937,9 @@ The schema enforces the following requirements:
 - the Participation description and informative names are either a
   string or a language map keyed by language tags;
 
+- informative names do not exceed 200 characters and the Participation
+  description does not exceed 2,000 characters, in each language;
+
 - Ecosystem, Participation Type, Meaning Profile and Evidence references
   may use either a compact identifier or a constrained reference object;
 
@@ -2012,6 +2023,9 @@ The Ecosystem Relationship schema enforces the following requirements:
 
 - the relationship description and informative names are either a
   string or a language map keyed by language tags;
+
+- informative names do not exceed 200 characters and the relationship
+  description does not exceed 2,000 characters, in each language;
 
 - Relationship Scope, Evidence, privacy, integrity and extension
   properties are optional;
@@ -2327,3 +2341,207 @@ script, region and variant subtags, for example `da`, `en-GB`, `se` or
   }
 }
 ```
+
+## 27. Security Considerations
+
+### Purpose
+
+Protocol Objects are designed to travel beyond the systems in which they
+were created, and to be interpreted by systems, including automated and
+AI-based systems, that did not create them. A receiving system should
+therefore treat every Protocol Object as input from a potentially
+untrusted source.
+
+Integrity mechanisms establish who made an assertion and that it has not
+been altered. They do not establish that the assertion is true, that its
+asserter was entitled to make it, or that its content is safe to
+process.
+
+### Trust in Assertions
+
+#### Asserter Authority
+
+- The presence of an Ecosystem identifier in a Participation Record does
+  not establish that the asserter is entitled to make assertions on
+  behalf of that Ecosystem. Before relying on a Participation Record, a
+  receiving Ecosystem SHOULD establish that its asserter is authorised by
+  the identified Ecosystem, for example through a verification method
+  bound to the Ecosystem identifier in accordance with section 6, or
+  through a `delegatesAssertionAuthorityTo` Ecosystem Relationship
+  asserted on behalf of that Ecosystem.
+
+- Where an integrity proof is present, a receiving Ecosystem SHOULD
+  verify it using a verification method that the asserting Ecosystem has
+  bound to its identifier.
+
+#### Ecosystem Impersonation
+
+- Ecosystem identifiers are generated without a central registration
+  authority. An identifier or informative name that resembles a known
+  organisation does not establish that the Ecosystem is that
+  organisation.
+
+- Implementations MUST NOT infer the identity, authority or affiliation
+  of an Ecosystem from the text of its identifier or name. They SHOULD
+  rely on cryptographic binding in accordance with section 6, together
+  with Credentials or other trust that the receiving Ecosystem has
+  established.
+
+#### Ecosystem Relationships
+
+- An Ecosystem Relationship asserted by one Ecosystem about another does
+  not establish that the other Ecosystem accepts the relationship. A
+  receiving Ecosystem SHOULD consider whether each Ecosystem named in the
+  relationship has asserted or accepted it.
+
+- A `delegatesAssertionAuthorityTo` relationship SHOULD be relied upon
+  only where its asserter is authorised to act for the source Ecosystem.
+
+- Delegated authority MUST NOT be treated as transitive unless the
+  relevant Ecosystem Relationships explicitly provide for it.
+
+#### Status, Supersession and Verification
+
+- A Status Statement or `supersedes` property issued by a party other
+  than the asserter of the affected Protocol Object could be used to
+  suppress or replace legitimate assertions. A receiving Ecosystem SHOULD
+  give effect to a Status Statement or `supersedes` property only where
+  its issuer is the asserter of the affected Protocol Object or is
+  otherwise entitled to act under the governance of the relevant
+  Ecosystem.
+
+- A Verification is only as reliable as its verifier. A receiving
+  Ecosystem SHOULD evaluate the verifier, the Verification method and the
+  stated scope before relying on a Verification outcome.
+
+#### Presentation
+
+- MPP does not bind a Participation Record to the party presenting it.
+  Anyone holding a copy of a Participation Record can present it. Where
+  it matters to the receiving Ecosystem, the receiving Ecosystem SHOULD
+  establish that the presenting party is a Participant assigned the
+  `subject` Role, or is authorised by one, for example by authenticating
+  the presenting party against the `subject` identifier.
+
+#### Volume of Assertions
+
+- The number of Participation Records associated with a Participant is
+  not itself evidence of Meaningful Participation. Ecosystems that issue
+  Participation Records freely, or that are created in order to issue
+  them, can inflate apparent Participation. Receiving Ecosystems SHOULD
+  consider the issuing practices and Meaning Profiles of originating
+  Ecosystems when interpreting Participation Records.
+
+### Untrusted Content and Prompt Injection
+
+Protocol Objects contain text written or supplied by people and systems
+outside the control of the receiving Ecosystem, including:
+
+- Participation descriptions, relationship descriptions and informative
+  names, in every language of a language map;
+
+- contextual and extension properties;
+
+- Status Statement reasons and Meaning Profile criteria; and
+
+- content obtained by resolving references, including Meaning Profiles
+  and Evidence.
+
+Where such text is processed by a system that follows natural-language
+instructions, such as a large language model, it can be crafted to
+influence that system, for example by instructing it to rank, recognise
+or reward a Participant. This is known as prompt injection. A valid
+integrity proof does not mitigate it: the asserter may be malicious or
+compromised, or may have included text supplied by others.
+
+#### Behavioural Requirements
+
+- Implementations MUST treat descriptive text, contextual properties,
+  extension properties and resolved content as untrusted data,
+  regardless of the integrity, Verification or Status of the Protocol
+  Object that contains or references them.
+
+- Systems that interpret Protocol Objects using automated reasoning,
+  including large language models, MUST treat such content as data to be
+  analysed and MUST NOT follow instructions contained in it.
+
+- Such systems SHOULD keep untrusted content separate from their own
+  instructions, and SHOULD identify its source to the reasoning system.
+
+- Decisions with consequences for Participants, including recognition,
+  scoring, eligibility and incentives, SHOULD be based on structured,
+  language-neutral properties, such as Commitment Classes, vocabulary
+  terms, identifiers and Verification outcomes, rather than on
+  descriptive text.
+
+- Implementations MUST NOT assume that the values of a language map are
+  equivalent, and SHOULD apply the same processing to every value rather
+  than only to the value in an expected language.
+
+### Rendering, Storage and Text Handling
+
+#### Behavioural Requirements
+
+- Implementations MUST encode text from Protocol Objects appropriately
+  for the context in which it is displayed, and MUST NOT render it as
+  markup or executable content.
+
+- Implementations MUST NOT construct queries or commands by
+  concatenating text from Protocol Objects, and SHOULD use parameterised
+  interfaces.
+
+- Asserters SHOULD normalise text to Unicode Normalization Form C and
+  SHOULD NOT include control characters, bidirectional formatting
+  characters (U+202A to U+202E and U+2066 to U+2069) or invisible tag
+  characters (U+E0000 to U+E007F) in informative names or descriptions.
+
+- Receiving systems SHOULD neutralise such characters when displaying or
+  processing text. Because Protocol Objects are immutable and may carry
+  integrity proofs, receiving systems MUST verify integrity before any
+  such normalisation and MUST NOT alter the stored Protocol Object.
+
+- Informative names can be crafted to resemble other Participants or
+  Ecosystems, including through visually similar characters. In
+  accordance with section 19, identifiers are authoritative and names
+  are informative.
+
+#### Length Limits
+
+| Property | Maximum length |
+| --- | --- |
+| Informative names of Ecosystems, Participants and Participation Types | 200 characters |
+| Participation description and relationship description | 2,000 characters |
+
+- Each value MUST NOT exceed the maximum length in the table above.
+  Where a property is represented as a language map, the limit applies
+  to each value.
+
+- Length is measured in Unicode code points.
+
+- Implementations MAY apply further limits, including to contextual and
+  extension properties and to the overall size of a Protocol Object, and
+  MAY decline to process Protocol Objects that exceed them.
+
+### Resolution of References
+
+- Resolving a reference to a Meaning Profile, Evidence object,
+  Participation Type or Ecosystem resolution location causes the
+  receiving system to make a request to a location chosen by the author
+  of the Protocol Object. Implementations SHOULD restrict resolution to
+  secure schemes such as HTTPS, SHOULD NOT resolve references to
+  loopback, private or link-local addresses, and SHOULD limit redirects,
+  response size and response time.
+
+- Referenced content can change after a Protocol Object is issued. Where
+  a reference includes a digest, the receiving system SHOULD verify the
+  resolved content against it. Asserters SHOULD include digests for
+  Meaning Profile and Evidence references where the integrity of the
+  referenced content matters to the assertion.
+
+- Resolving a reference can disclose to the operator of the referenced
+  location that a Protocol Object is being evaluated, and by whom.
+  Receiving systems SHOULD consider this disclosure, in accordance with
+  section 15.
+
+- Resolved content is untrusted content and is subject to the
+  requirements of this section.

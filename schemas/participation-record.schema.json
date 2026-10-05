@@ -82,7 +82,7 @@
       "$ref": "#/$defs/participationTypeReference"
     },
     "participationDescription": {
-      "$ref": "#/$defs/text",
+      "$ref": "#/$defs/descriptionText",
       "description": "A description of the specific instance of Participation."
     },
     "meaningProfile": {
@@ -134,12 +134,13 @@
     }
   },
   "$defs": {
-    "text": {
-      "description": "A string, or a language map whose keys are BCP 47 language tags and whose values represent the same text in each language.",
+    "nameText": {
+      "description": "An informative name: a string, or a language map whose keys are BCP 47 language tags and whose values represent the same text in each language. Each value is at most 200 characters (SPECIFICATION.md section 27).",
       "anyOf": [
         {
           "type": "string",
-          "minLength": 1
+          "minLength": 1,
+          "maxLength": 200
         },
         {
           "type": "object",
@@ -150,7 +151,31 @@
           },
           "additionalProperties": {
             "type": "string",
-            "minLength": 1
+            "minLength": 1,
+            "maxLength": 200
+          }
+        }
+      ]
+    },
+    "descriptionText": {
+      "description": "A description: a string, or a language map whose keys are BCP 47 language tags and whose values represent the same text in each language. Each value is at most 2,000 characters (SPECIFICATION.md section 27).",
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        },
+        {
+          "type": "object",
+          "minProperties": 1,
+          "propertyNames": {
+            "type": "string",
+            "pattern": "^[A-Za-z]{2,3}(-[A-Za-z0-9]{1,8})*$"
+          },
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
           }
         }
       ]
@@ -182,7 +207,7 @@
           "description": "An identifier for the Participant."
         },
         "name": {
-          "$ref": "#/$defs/text",
+          "$ref": "#/$defs/nameText",
           "description": "An optional informative name for the Participant."
         },
         "roles": {
@@ -262,7 +287,7 @@
               "$ref": "#/$defs/identifier"
             },
             "name": {
-              "$ref": "#/$defs/text",
+              "$ref": "#/$defs/nameText",
               "description": "An informative human-readable Ecosystem name."
             }
           }
@@ -286,7 +311,7 @@
               "$ref": "#/$defs/identifier"
             },
             "name": {
-              "$ref": "#/$defs/text",
+              "$ref": "#/$defs/nameText",
               "description": "An informative human-readable Participation Type name."
             }
           }
