@@ -38,7 +38,7 @@ MPP provides a common way to represent participation while leaving each ecosyste
 
 If you are new to the project, the **White Paper**, *Recognising What Matters*, is the best place to begin. Implementers should then refer to the **MPP Specification**.
 
-Each released version's schemas and vocabularies are published at `https://fe-lixe.github.io/meaningful-participation/<version>/` and never changed after release (see section 28 of the specification).
+The schemas, vocabularies and JSON-LD context of each protocol version are published at `https://fe-lixe.github.io/meaningful-participation/<MAJOR.MINOR>/` and never changed after release (see section 28 of the specification).
 
 ## Why Meaningful Participation?
 
@@ -115,4 +115,4 @@ Governance, commercial separation, contributions, decision-making and protection
 
 ## Status
 
-MPP and MPRA are at version 1.0. They continue to be developed openly, and changes to the protocol follow the versioning policy in section 28 of the specification.
+The current release is 1.0.0, protocol version 1.0. Releases are numbered MAJOR.MINOR.PATCH: patch releases correct and clarify without changing the protocol, minor releases add to it compatibly, and major releases may change it incompatibly (see section 28 of the specification). MPP and MPRA continue to be developed openly.

@@ -1,13 +1,16 @@
 name: Publish release
 
-# Publishes a tagged version's schemas, vocabularies and context to GitHub
-# Pages under /<version>/ (SPECIFICATION.md section 28). A published version
-# is never changed: re-running for an existing version fails.
+# Releases are tagged vMAJOR.MINOR.PATCH (SPECIFICATION.md section 28).
+# vX.Y.0 publishes the artefacts for protocol version X.Y to GitHub Pages
+# under /X.Y/; a published version is never changed. vX.Y.Z with Z > 0 is a
+# patch release: it publishes nothing and fails if it changes artefacts.
+# The legacy tag v1.0 is release 1.0.0.
 
 on:
   push:
     tags:
       - 'v[0-9]+.[0-9]+'
+      - 'v[0-9]+.[0-9]+.[0-9]+'
 
 permissions:
   contents: write
@@ -21,23 +24,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-node@v4
         with:
           node-version: 22
 
-      - name: Read version from tag
-        id: version
-        run: echo "version=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
+      - name: Plan release
+        id: plan
+        run: node scripts/release.mjs "$GITHUB_REF_NAME"
 
       - name: Validate release
         env:
-          MPP_RELEASE_VERSION: ${{ steps.version.outputs.version }}
+          MPP_RELEASE_VERSION: ${{ steps.plan.outputs.protocol-version }}
         run: |
           npm install --no-audit --no-fund
           npm run validate
 
       - name: Check out gh-pages
+        if: steps.plan.outputs.mode == 'publish'
         run: |
           if git fetch --depth 1 origin gh-pages:refs/remotes/origin/gh-pages; then
             git worktree add -B gh-pages site origin/gh-pages
@@ -48,8 +54,9 @@ jobs:
           fi
 
       - name: Add version folder
+        if: steps.plan.outputs.mode == 'publish'
         env:
-          VERSION: ${{ steps.version.outputs.version }}
+          VERSION: ${{ steps.plan.outputs.protocol-version }}
         run: |
           if [ -e "site/$VERSION" ]; then
             echo "::error::Version $VERSION is already published and cannot be changed."
@@ -62,9 +69,10 @@ jobs:
           touch site/.nojekyll
 
       - name: Commit and push
+        if: steps.plan.outputs.mode == 'publish'
         working-directory: site
         env:
-          VERSION: ${{ steps.version.outputs.version }}
+          VERSION: ${{ steps.plan.outputs.protocol-version }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
