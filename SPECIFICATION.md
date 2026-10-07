@@ -2565,11 +2565,20 @@ compromised, or may have included text supplied by others.
 
 ### Version Numbers
 
-MPP versions are numbered MAJOR.MINOR, for example `1.0`. Every
-Protocol Object states the version to which it conforms in its
-`mppVersion` property.
+MPP releases are numbered MAJOR.MINOR.PATCH, for example `1.0.1`. The
+release tagged `v1.0` is release `1.0.0`.
+
+The protocol version is MAJOR.MINOR, for example `1.0`. Every Protocol
+Object states the protocol version to which it conforms in its
+`mppVersion` property. A patch release does not change the protocol
+version, so `mppVersion` never includes a patch number.
 
 ### Compatibility
+
+- A patch release MAY correct errors, clarify text without changing its
+  meaning, and update examples and non-normative material. It MUST NOT
+  change normative requirements, schemas, vocabularies or the JSON-LD
+  context.
 
 - A minor version MUST be backward compatible with earlier minor
   versions of the same major version. It MAY add optional properties and
@@ -2594,15 +2603,16 @@ Protocol Object states the version to which it conforms in its
 ### Published Artefacts
 
 The JSON Schemas, vocabularies, JSON-LD context and other
-machine-readable artefacts of each version are published at:
+machine-readable artefacts of each protocol version are published at:
 
-    https://fe-lixe.github.io/meaningful-participation/<version>/
+    https://fe-lixe.github.io/meaningful-participation/<MAJOR.MINOR>/
 
 for example
 `https://fe-lixe.github.io/meaningful-participation/1.0/schemas/participation-record.schema.json`.
+Patch releases publish no artefacts, because they do not change them.
 
 - The artefacts of a version MUST NOT be changed after publication.
-  Corrections are published as a new version.
+  Corrections to them are published in a new minor or major version.
 
 - The identifiers of schemas, vocabularies and vocabulary terms include
   the version in which they were published, and remain valid after
