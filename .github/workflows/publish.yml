@@ -3,8 +3,10 @@ name: Publish release
 # Releases are tagged vMAJOR.MINOR.PATCH (SPECIFICATION.md section 28).
 # vX.Y.0 publishes the artefacts for protocol version X.Y to GitHub Pages
 # under /X.Y/; a published version is never changed. vX.Y.Z with Z > 0 is a
-# patch release: it publishes nothing and fails if it changes artefacts.
-# The legacy tag v1.0 is release 1.0.0.
+# patch release: it publishes no artefacts and fails if it changes them.
+# Every release regenerates the site's index.html, which lists the published
+# versions; it sits outside the version folders. The legacy tag v1.0 is
+# release 1.0.0.
 
 on:
   push:
@@ -43,7 +45,6 @@ jobs:
           npm run validate
 
       - name: Check out gh-pages
-        if: steps.plan.outputs.mode == 'publish'
         run: |
           if git fetch --depth 1 origin gh-pages:refs/remotes/origin/gh-pages; then
             git worktree add -B gh-pages site origin/gh-pages
@@ -66,16 +67,26 @@ jobs:
           for dir in schemas vocabularies context; do
             if [ -d "$dir" ]; then cp -r "$dir" "site/$VERSION/"; fi
           done
-          touch site/.nojekyll
+
+      - name: Update index page
+        run: node scripts/site-index.mjs site
 
       - name: Commit and push
-        if: steps.plan.outputs.mode == 'publish'
         working-directory: site
         env:
           VERSION: ${{ steps.plan.outputs.protocol-version }}
+          MODE: ${{ steps.plan.outputs.mode }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
-          git commit -m "Publish MPP $VERSION"
+          if git diff --cached --quiet; then
+            echo "Nothing to publish."
+            exit 0
+          fi
+          if [ "$MODE" = publish ]; then
+            git commit -m "Publish MPP $VERSION"
+          else
+            git commit -m "Update index for release $GITHUB_REF_NAME"
+          fi
           git push origin gh-pages

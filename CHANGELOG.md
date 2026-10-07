@@ -12,6 +12,7 @@ Planned as patch release 1.0.1. Protocol version 1.0 and its published artefacts
 
 - `mappings/`: non-normative notes on how MPP relates to other standards, starting with the Common Impact Data Standard.
 - This changelog.
+- A landing page at `https://fe-lixe.github.io/meaningful-participation/` listing each published protocol version and its files. Every release regenerates it; it sits outside the version folders, so published artefacts are unchanged.
 
 ### Changed
 
