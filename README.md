@@ -60,9 +60,9 @@ A Participation Record can therefore travel beyond the ecosystem in which it ori
 
 MPRA separates Meaningful Participation into five layers:
 
-1. **Identity** - Who are you?
-2. **Credentials** - What are you qualified, authorised or entitled to do?
-3. **Participation** - What did you commit or contribute?
+1. **Identity** - Who is participating?
+2. **Credentials** - What are they qualified, authorised or recognised to do?
+3. **Participation** - What did they commit or contribute?
 4. **Interpretation** - What does that participation mean here?
 5. **Incentives** - What recognition, access, opportunity or reward follows?
 

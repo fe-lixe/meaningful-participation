@@ -112,10 +112,10 @@ By separating these layers, MPRA enables portability where participants benefit 
 | Layer | Purpose |
 | --- | --- |
 | Identity | Who is participating? |
-| Credentials | What recognised attributes do they possess? |
-| Participation | What has the participant done? |
+| Credentials | What are they qualified, authorised or recognised to do? |
+| Participation | What did they commit or contribute? |
 | Interpretation | What does that participation mean here? |
-| Incentives | How should future behaviour be encouraged? |
+| Incentives | What recognition, access, opportunity or reward follows? |
 
 ### Identity
 
@@ -217,7 +217,7 @@ The Meaningful Participation Protocol is guided by the following principles:
 - **Technology Neutral** – MPP can be implemented using centralised, federated or decentralised technologies.
 - **Portable and Interoperable** – Participation Records should be portable between ecosystems under participant control, while the protocol should provide shared infrastructure through which ecosystems can establish their own interoperability policies.
 
-MPP represents Meaningful Participation and Ecosystem Relationships through a minimal set of interoperable concepts. Participation Records identify Participants, originating Ecosystems, Commitment Classes and supporting Evidence. Ecosystem Relationships separately describe how Ecosystems relate, including recognition, delegation and structural relationships. Together these objects enable interoperability while preserving ecosystem-specific interpretation.
+MPP represents Meaningful Participation and Ecosystem Relationships through a minimal set of interoperable concepts. Participation Records identify Participants, originating Ecosystems, Commitment Classes and supporting Evidence. Ecosystem Relationships separately describe how Ecosystems relate, including structural and delegated-authority relationships. Together these objects enable interoperability while preserving ecosystem-specific interpretation.
 
 This paper intentionally focuses on the protocol's conceptual architecture. Detailed definitions of the protocol objects, schemas, exchange mechanisms and conformance requirements are provided in the accompanying **Meaningful Participation Protocol Specification**.
 
@@ -239,7 +239,7 @@ Participation Records are designed to be participant-held. Rather than remaining
 
 ### Commitment Classes
 
-The Meaningful Participation Protocol is not intended to represent every digital interaction. Instead, it provides a common framework for representing participation that reflects meaningful commitments made in support of an ecosystem's objectives. While different ecosystems may value different forms of contribution, many recognise contributions that involve one or more of four universal Commitment Classes:
+The Meaningful Participation Protocol is not intended to represent every digital interaction. Instead, it provides a common framework for representing participation that reflects meaningful commitments made in support of an ecosystem's objectives. While different ecosystems may value different forms of contribution, many recognise contributions that involve one or more of four common Commitment Classes:
 
 | Commitment Class | Description | Examples |
 | --- | --- | --- |
@@ -250,7 +250,7 @@ The Meaningful Participation Protocol is not intended to represent every digital
 
 These Commitment Classes describe **what is being committed** rather than the activities through which participation occurs. They distinguish between the commitment of resources (Capital), the application of human capacity (Effort), the contribution of information or expertise (Knowledge), and the commitment of recognised position (Standing).
 
-MPP standardises these four universal Commitment Classes rather than ecosystem-specific activity types. This enables diverse forms of participation to be represented consistently across different ecosystems while allowing each ecosystem to determine how those commitments should be interpreted, verified and valued.
+MPP standardises these four common Commitment Classes rather than ecosystem-specific activity types. This enables diverse forms of participation to be represented consistently across different ecosystems while allowing each ecosystem to determine how those commitments should be interpreted, verified and valued.
 
 ### Why These Commitment Classes?
 
@@ -269,7 +269,8 @@ The example below illustrates how a sports club ecosystem might apply the Commit
 | Buying a ticket for a sports event | ✓ |  |  |  |
 | Attending that event |  | ✓ |  |  |
 | Buying team merchandise | ✓ |  |  |  |
-| Posting about the event on social media |  |  |  | ✓ |
+| Posting about the event on social media |  | ✓ |  |  |
+| Publicly endorsing the club as a well-known local figure |  |  |  | ✓ |
 | Volunteering at the event |  | ✓ | ✓ |  |
 | Coaching a youth team |  | ✓ | ✓ | ✓ |
 | Refereeing a match |  | ✓ | ✓ | ✓ |
@@ -285,8 +286,10 @@ Over time, this enables the club to develop a more complete understanding of how
 
 An Ecosystem Relationship describes how one ecosystem relates to another. Relationships may describe:
 
-- **Structural relationships**, such as membership within a wider federation or delegated assertion authority.
-- **Recognition relationships**, which define whether and under what conditions Participation Records from another ecosystem may be recognised.
+- **Structural relationships**, such as membership within a wider federation or operation by another ecosystem.
+- **Delegated-authority relationships**, in which one ecosystem authorises another to make specified assertions on its behalf.
+
+Whether Participation Records from another ecosystem are recognised is not itself an Ecosystem Relationship. Each receiving ecosystem decides that through its own interoperability policy, which may take Ecosystem Relationships into account.
 
 Unlike Participation Records, Ecosystem Relationships are ecosystem-held because they describe relationships asserted or maintained by ecosystems rather than individual participation.
 
@@ -455,5 +458,5 @@ A useful starting prompt is:
 > Using the Meaningful Participation Reference Architecture (MPRA) and the Meaningful Participation Protocol (MPP), analyse my organisation, community or ecosystem. Identify the participants, ecosystem boundaries and forms of Meaningful Participation that contribute to long-term ecosystem health. Propose appropriate Participation Records, Credentials, Ecosystem Relationships, interoperability policies, Interpretation models, participation graphs and Incentive models. Recommend how these components should work together, identify opportunities to strengthen participant agency and ecosystem health, and describe a phased roadmap from internal deployment to wider ecosystem interoperability. Where appropriate, identify where interoperability with neighbouring ecosystems would create sufficient value to justify shared infrastructure.
 
 [^1]: [*The 2026 AI Index Report*](https://hai.stanford.edu/ai-index/2026-ai-index-report), Stanford University, accessed 4 August 2026.
-[^2]: [*The Dynamics of Costly Signaling*](https://www.mdpi.com/2073-4336/4/2/163), University of Amsterdam, 26 April 2013.
+[^2]: Elliott Wagner, [*The Dynamics of Costly Signaling*](https://doi.org/10.3390/g4020163), *Games* 4(2), 163–181, 26 April 2013.
 [^3]: [*Understanding the News Media Crisis: Three Threats to Consequential Media*](https://felixe.com/understanding-the-news-media-crisis/), Felixe, 27 January 2026.
